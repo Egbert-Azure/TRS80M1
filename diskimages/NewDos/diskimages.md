@@ -16,7 +16,7 @@ PDRAW vers 1.2 by Kim Watts, Breeze/QSD Inc, Dallas
 3. NewDos 80 Systemdiskette H. Schuller
 ![alt text](image-3.png)
 
-4. NewDos80: esnd-04.dmk
+4. NewDos80 mit erweiterter LIB: esnd-04.dmk
 ![alt text](image-6.png)
 
 5. NewDos80+10 (+ erweiterte Lib) 40Tr DSDD: esnd-04.dmk
@@ -61,5 +61,37 @@ Lesefehler Inhaltsverzeichnis
 ![alt text](image-21.png)
 
 11. Gdos 40 Track - keine Systemdiskette esnd-11.dmk
+ColorGenie Basic and Tools
 
-12. 
+12. Gegras: esnd-12.dmk
+nicht lauffaehig unter sdltrs.
+Zu Gegras gab es ein Club80 Artikel
+
+13. esnd-13, 13a, 13b.dmk
+Disks fehlerhaft
+
+14. NewDos80- +10
+Gegras autostart mit do do/jcl beendet mit
+![alt text](image-23.png)
+Ausserdem loadhrg und ein image
+![alt text](image-22.png)
+
+15. NewDos80
+ALCOR Pascal System mit HRG1b
+
+16. NewDos80 40track- ohne System esnd-16.dmk
+Visicalc und VisiGraph files zu Sorbit Versuchsreihen
+![alt text](image-24.png)
+
+17. GDos 2.2 40track, no sys esnd-17.dmk
+Visicalc Uebungen. Disk ist fehelrhaft
+
+18. NewDos80 40 Track, no sys
+BASCOM/CMD und ein Basic game MONARCHI/BAS
+![alt text](image-25.png)
+
+19. NewDos80 mit erw LIB: esnd-19.dmk
+Graflix Editor
+![alt text](image-26.png)
+![alt text](image-27.png)
+
