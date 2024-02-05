@@ -48,4 +48,18 @@ HRGPack
 ![alt text](image-17.png)
 BASCOM/CMD Basic compiler mit runtime library
 
-9. : esnd-09.dmk
+9. NewDos80 +10 Version 2.5: esnd-09.dmk
+![alt text](image-18.png)
+Disassembler, Assembler, ZBASIC 2.2 Compiler
+VL/CMD
+![alt text](image-19.png)
+and some other tools, such as
+![alt text](image-20.png)
+
+10. 
+Lesefehler Inhaltsverzeichnis
+![alt text](image-21.png)
+
+11. Gdos 40 Track - keine Systemdiskette esnd-11.dmk
+
+12. 
