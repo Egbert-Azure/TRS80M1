@@ -114,3 +114,15 @@ KI System, regelbasiert in rekursivem BASIC gechrieben, mit dem man leidlich ein
 ![alt text](image-31.png)
 ![alt text](image-32.png)
 
+24. Pascal SRC files
+no sys, 40 track
+
+25. NewDos80 40 Track
+Alcor Pascal Programm
+
+26. NewDos80 
+Pascal80
+
+27. NewDos80, no sys
+![alt text](image-33.png)
+
