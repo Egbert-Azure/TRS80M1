@@ -38,3 +38,12 @@ Basic program cfgmake/bas zur Definition von Formaten
 ![alt text](image-14.png)
 ![alt text](image-12.png)
 ![alt text](image-13.png)
+
+8. NewDos80 +10 Version 2.5: esnd-08.dmk
+![alt text](image-15.png)
+Loadhrg/cmd schaltet Hrg1b ein und laedt ein Image im Format /hrg. CHL/CMD loescht den HRG1b Bildschirm
+![alt text](image-16.png)
+
+HRGPack
+![alt text](image-17.png)
+BASCOM/CMD Basic compiler mit runtime library
