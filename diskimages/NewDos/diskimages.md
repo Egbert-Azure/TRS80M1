@@ -103,3 +103,14 @@ accel3/cmd seems to be missing to run H/JCL
 
 ![alt text](image-28.png)
 ![alt text](image-29.png)
+
+21. is missing but
+22. is the NewDos80 System Disk
+![alt text](image-30.png)
+
+23. NewDos80 80 tr, no sys
+KI System, regelbasiert in rekursivem BASIC gechrieben, mit dem man leidlich ein Radio reparieren kann. In der Wissensbasis TESTEN (start mit wc:1 und dann testen:1 in der Eingabe) sind 13 Fragen, Regeln etc installiert.
+
+![alt text](image-31.png)
+![alt text](image-32.png)
+
