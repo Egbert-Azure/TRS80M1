@@ -95,3 +95,11 @@ Graflix Editor
 ![alt text](image-26.png)
 ![alt text](image-27.png)
 
+20. damaged esnd-20.dmk
+20. a)
+NewDos80 +10 40 Track
+
+accel3/cmd seems to be missing to run H/JCL
+
+![alt text](image-28.png)
+![alt text](image-29.png)
