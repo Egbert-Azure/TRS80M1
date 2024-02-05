@@ -21,3 +21,7 @@ und Scripsit Erweiterung von Egbert Schröer (c) 1988
 ![alt text](image-8.png)
 start mit WP SP
 Club 80 Artikel?
+6. NewDos80: esnd-06.dmk
+![alt text](image-9.png)
+![alt text](image-10.png)
+[Basic commands](http://www.trs-80.org/trsdos-model1-basic/)
