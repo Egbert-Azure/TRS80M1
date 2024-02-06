@@ -123,6 +123,36 @@ Alcor Pascal Programm
 26. NewDos80 
 Pascal80
 
-27. NewDos80, no sys
+27. NewDos80, no sys, 40 Track
 ![alt text](image-33.png)
+
+28. NewDos80 40 track
+Macro80
+
+29. NewDos80
+NewBasic; einige files waren geloescht und konnten mit RESCUE/CMD rekonstruiert werden
+
+30. NewDos80, 40 track
+![alt text](image-34.png)
+Periodic Table.
+Grossbuchstaben KBD
+
+31. fehlerhaft oder keine TRS80 Disk
+![alt text](image-35.png)
+
+32. NewDos80 40track
+SUPERDIR/BAS Disk Katalog System
+
+33. GDos, 40 Track fehlerhaft
+
+34. NewDos80
+EDIT80/CMD
+
+35. no sys
+Grape (???)
+
+36. 
+
+
+
 
