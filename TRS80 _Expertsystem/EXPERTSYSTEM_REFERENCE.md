@@ -5,8 +5,11 @@ expert system works, demonstrating the **recursive BASIC technique** for an infe
 engine. Original concept by Dr. H.-J. Soll (1987); ported and extended for the TRS-80
 Model I by Egbert Schröer (1989–1990).
 
-The radio-repair knowledge base (`testen`) is only a sample domain to show the method working — the actual subject of the program is the
+The radio-repair knowledge base (`testen`) is only a
+sample domain to show the method working — the actual subject of the program is the
 inference mechanism itself.
+
+![Overview diagram of the educational expert system](expertsystem_overview.png)
 
 ## What the whole thing is
 
