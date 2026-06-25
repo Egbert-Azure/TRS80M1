@@ -278,7 +278,7 @@ makes the rule true; the rule is false only if every premise fails.
 
 ```basic
 2640 IF OSTATUS%(N%)*WF%(PZAEHLER%(STACK%),SRNR%(STACK%))=1 THEN RSTATUS%(SRNR%(STACK%))=1:NM$=DANN$(SRNR%(STACK%)):GOSUB 3430:OSTATUS%(N%)=1:GOTO 2030
-2650 PZAEHLER%(STACK%)=PZAHLER%(STACK%)+1
+2650 PZAEHLER%(STACK%)=PZAEHLER%(STACK%)+1
 2660 GOTO 2510
 ```
 
@@ -382,3 +382,58 @@ This system is an **instructional model of an inference engine**, not a domain�
 diagnostic tool. The radio‑fault knowledge base (`testen`) is a vehicle for demonstrating
 the mechanism; the mechanism — backward chaining, the manual recursion stack, and the
 integer/string encoding of three‑valued logic — is the subject being taught.
+
+---
+
+## 7. Engineering Highlights
+
+The interesting part of this port is what it does *despite* the constraints of TRS‑80
+Level II BASIC. Six moves stand out.
+
+**1. Recursion without recursion (the central trick).** Level II BASIC has no recursive
+subroutines: `GOSUB` cannot re‑enter a running routine while keeping separate state per
+call. Backward chaining is naturally recursive — proving a goal means proving its
+sub‑goals to arbitrary depth. The solution is a hand‑built call stack: the arrays
+`SRNR%()` (which rule a frame is working on) and `PZAEHLER%()` (which premise) together
+*are* a stack frame; `GOSUB 3220` is the CALL, decrementing `STACK%` is the RETURN. The
+program implements the language feature the hardware lacked.
+
+**2. Three‑valued logic in plain integers.** True / false / unknown are encoded as
+`+1 / -1 / 0`. No special type is needed, and this choice sets up move 3.
+
+**3. Negation as multiplication.** A premise is tested in one operation,
+`OSTATUS%(object) * WF%`. Because a negated premise carries weight `WF% = -1`, the
+multiply handles `NOT` for free — a negated premise is satisfied exactly when its object
+is false (`-1 × -1 = +1`). There is no separate "is this negated?" branch; the sign
+arithmetic *is* the logic. This works only because of the `±1/0` encoding in move 2.
+
+**4. AND and OR as mirror‑image fast exits.** AND fails fast on the first `<>1`; OR
+succeeds fast on the first `=1`. The same evaluation skeleton with the opposite test —
+compact and symmetric, which matters on a 1.77 MHz Z80 with tight memory.
+
+**5. Clean editor/engine separation.** Knowledge acquisition (`wbedit`) and inference
+(`w.bas`) are fully decoupled through the knowledge‑base file. This is textbook
+expert‑system *shell* architecture — one engine runs any knowledge base — achieved on
+1980s hardware.
+
+**6. The input mask reuses video memory as the data buffer.** Instead of a rigid stack
+of `INPUT` prompts (what the older `wedit` / `fremedit` editors do), `wbedit` uses a
+full‑screen fill‑in form:
+
+- `maskgen.bas` draws the form once and saves the rendered screen as `maske1.dum`
+  (question form) and `maske2.dum` (rule form).
+- `wbedit` loads the whole form instantly with `CMD"load maske1/dum"` — no field‑by‑field
+  redraw.
+- It then reads the user's typed answers **straight out of screen RAM with `PEEK`**
+  (line 4140 onward).
+
+The screen itself becomes the input buffer — video memory does double duty as display
+*and* data store. The result is a form‑style UI (move around fields, looks like a real
+application) on a machine with no input‑widget concept. The `PEEK`‑the‑screen idiom was
+known on the TRS‑80 (screen RAM was memory‑mapped at a fixed address, which is why it
+works), so this is using the machine well rather than inventing a new technique — but it
+is a clear step up from the line‑by‑line editors.
+
+Of these, move 1 — the manual recursion stack — is the least obvious and the most
+genuinely clever: it is the one that makes a recursive algorithm run on a
+non‑recursive language.
