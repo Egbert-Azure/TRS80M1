@@ -125,3 +125,260 @@ A session demonstrates the technique: the learner answers a few yes/no questions
 the engine works backward from each candidate goal — asking only the questions a goal
 needs, recursing into sub-rules via the manual stack — until it confirms the goal(s)
 the evidence supports.
+
+# Expert System — Theory Overview (TRS‑80 Model I, Soll 1987 / Schröer 1989–90)
+
+This document summarizes the theoretical essence of the TRS‑80 Model I educational
+expert‑system shell. It explains what the system *is*, how it reasons, and how recursion
+is implemented manually in Level II BASIC.
+
+All code shown is taken verbatim from `w.bas` (the inference engine, source of the
+compiled `WC/CMD`); line numbers are the program's own.
+
+![Overview diagram of the educational expert system](expertsystem_overview.png)
+
+---
+
+## 1. A Rule‑Based Expert System Shell
+
+The system is a full expert‑system shell consisting of:
+
+- **Objects** (`OA$`, `OSTATUS%`, `ODIAG%`)
+- **Questions** (`FTEXT$`, `FA$`, `FOBJEKT$`)
+- **Rules** (`WENN$`, `WF%`, `DANN$`, `TYP%`)
+- **Constraints** (editor‑side only — the engine does not load them)
+
+Knowledge acquisition (editor) and knowledge inference (engine) are cleanly separated.
+
+**Relevant code (`w.bas`, lines 20–100):**
+
+```basic
+20  MSTACK%=100
+30  DIM SRNR%(MSTACK%),PZAEHLER%(MSTACK%)
+80  DIM OA$(OBJEKTE%),OSTATUS%(OBJEKTE%),ODIAG%(OBJEKTE%)
+90  DIM FTEXT$(FRAGEN%),FA$(2,FRAGEN%),FSTATUS%(FRAGEN%),FOBJEKT$(FRAGEN%)
+100 DIM RSTATUS%(REGELN%),WENN$(5,REGELN%),WF%(5,REGELN%),DANN$(REGELN%),TYP%(REGELN%)
+```
+
+Line 30 allocates the manual recursion stack (see §3); lines 80–100 allocate the
+objects, questions, and rules.
+
+---
+
+## 2. Pure Backward‑Chaining Inference Engine
+
+The inference engine (`w.bas` / `WC/CMD`) performs goal‑driven reasoning:
+
+- It begins with **all diagnosis rules** pushed onto the stack.
+- For each goal, it attempts to prove all premises.
+- If a premise is unknown, it tries to prove it via another rule (**sub‑goal**).
+- Only when no rule yields the fact does it **ask the user**.
+
+There is **no forward chaining and no hybrid inference**.
+
+**Seeding the goals (`w.bas`, lines 1120–1140):**
+
+```basic
+1120 FOR N%=1 TO REGELN%
+1130 IF TYP%(N%)=1 GOSUB 3220   ' push every diagnosis rule as a goal
+1140 NEXT N%
+```
+
+**The recursive sub‑goal (`w.bas`, line 3030):**
+
+```basic
+3030 IF DANN$(K%)=OA$(N%) THEN M%=N%:N%=K%:GOSUB 3220:N%=M%:GOTO 2020
+```
+
+When the object needed by the current goal (`OA$(N%)`) is itself the conclusion
+(`DANN$`) of another rule `K%`, that rule is pushed and proved first — a sub‑goal
+interrupting the current goal. This is the recursion, expressed without a recursive
+call. If no rule concludes the object, control falls through to the dialog component
+(line 4410) and the user is asked.
+
+---
+
+## 3. Recursion Re‑Implemented Manually (Explicit Stack)
+
+Level II BASIC has no recursion, so the system simulates it using:
+
+- `SRNR%(STACK%)` → rule number for this frame
+- `PZAEHLER%(STACK%)` → which premise (1–5) is being evaluated
+- `STACK%` → current depth (`MSTACK%=100`)
+
+This stack behaves exactly like recursive calls: a `GOSUB 3220` pushes a frame (a
+simulated CALL), and decrementing `STACK%` pops one (a simulated RETURN).
+
+**Push frame — simulated CALL (`w.bas`, lines 3220–3250):**
+
+```basic
+3220 IF STACK%=MSTACK% THEN CLS:PRINT"**** Stack-Überlauf ****":END
+3230 STACK%=STACK%+1
+3240 SRNR%(STACK%)=N%:PZAEHLER%(STACK%)=1
+3250 RETURN
+```
+
+Line 3220 is the depth guard (stack‑overflow check); 3230 grows the stack; 3240 writes
+the new frame — the rule number `N%` and premise counter reset to 1.
+
+**Pop frame — simulated RETURN (`w.bas`, lines 2010–2030):**
+
+```basic
+2010 IF STACK%=0 GOTO 4010      ' stack empty -> output diagnoses
+2020 IF RSTATUS%(SRNR%(STACK%))=0 GOTO 2510   ' rule not yet resolved -> keep working it
+2030 STACK%=STACK%-1            ' rule resolved -> pop the frame, return to caller
+```
+
+The main loop tests the top frame: if the stack is empty, reasoning is finished and the
+engine outputs its diagnoses (line 4010). If the current rule is still unresolved, it
+continues evaluating its premises. Once the rule has a definite status, line 2030 pops
+the frame and the loop resumes on the caller's frame — exactly the behaviour of
+returning from a recursive call.
+
+`STACK%` is initialised to 0 at line 1110, before the goals are seeded.
+
+---
+
+## 4. Logical Model: AND, OR, and Negation
+
+The system implements a compact three‑valued logic:
+
+- `+1` = true
+- `-1` = false
+- `0` = unknown
+
+Each premise carries a weight `WF%` of `+1` (plain) or `-1` (negated). A premise is
+satisfied when `OSTATUS%(object) * WF% = 1` — a single multiply that handles negation:
+a negated premise (`WF% = -1`) is satisfied precisely when its object is false
+(`-1 * -1 = 1`).
+
+### AND‑rules
+
+The default. Every premise must be satisfied; the first failure makes the whole rule
+false. A rule is an AND‑rule when premise slot 1 is **not** the `"- oder -"` sentinel.
+
+**`w.bas`, line 2600 (the AND test):**
+
+```basic
+2600 IF OSTATUS%(N%)*WF%(PZAEHLER%(STACK%),SRNR%(STACK%))<>1 THEN RSTATUS%(SRNR%(STACK%))=(-1):NM$=DANN$(SRNR%(STACK%)):GOSUB 3430:OSTATUS%(N%)=(-1):GOTO 2030
+2610 PZAEHLER%(STACK%)=PZAEHLER%(STACK%)+1
+2620 GOTO 2510
+```
+
+If any premise fails the `…<>1` test, the rule's conclusion is set false and the frame
+is popped (`GOTO 2030`). Otherwise the premise counter advances and the next premise is
+checked. If all five pass, line 2510 sets the rule true.
+
+### OR‑rules
+
+Marked by the sentinel `"- oder -"` in premise slot 1. Any single satisfied premise
+makes the rule true; the rule is false only if every premise fails.
+
+**`w.bas`, line 2640 (the OR test):**
+
+```basic
+2640 IF OSTATUS%(N%)*WF%(PZAEHLER%(STACK%),SRNR%(STACK%))=1 THEN RSTATUS%(SRNR%(STACK%))=1:NM$=DANN$(SRNR%(STACK%)):GOSUB 3430:OSTATUS%(N%)=1:GOTO 2030
+2650 PZAEHLER%(STACK%)=PZAHLER%(STACK%)+1
+2660 GOTO 2510
+```
+
+The first premise that passes the `…=1` test sets the conclusion true and pops the
+frame. The AND/OR symmetry is clean: AND fails fast on the first `<>1`, OR succeeds fast
+on the first `=1`.
+
+### Termination of a rule
+
+The premise loop ends at line 2510/2520 once `PZAEHLER%` exceeds 5:
+
+```basic
+2510 IF (PZAEHLER%(STACK%)>5 AND WENN$(1,SRNR%(STACK%))<>"- oder -") THEN RSTATUS%(...)=1 ...   ' AND: all premises held -> true
+2520 IF (PZAEHLER%(STACK%)>5 AND WENN$(1,SRNR%(STACK%))="- oder -") THEN RSTATUS%(...)=-1 ...   ' OR: none held -> false
+```
+
+So an AND‑rule that reaches the end without a failure is **true**; an OR‑rule that
+reaches the end without a success is **false**.
+
+---
+
+## 5. Epistemic Model: How Knowledge Is Represented
+
+The system distinguishes four kinds of knowledge:
+
+- **Facts** — objects carrying a status (`OSTATUS%`: `0`/`+1`/`-1`).
+- **Questions** — bound to an object via `FOBJEKT$`; used to acquire evidence from the
+  user.
+- **Rules** — logical inference (`WENN$` premises → `DANN$` conclusion).
+- **Diagnoses** — rules flagged `TYP%=1`; these are the goals the engine tries to prove.
+
+Backward chaining means the engine asks only questions **relevant to the goals it is
+currently pursuing** — it never asks about objects that no rule chain needs. (It is not
+guaranteed to be the theoretical minimum: diagnosis goals are pursued in stored order,
+so rule ordering can occasionally cause a question whose answer turns out not to be
+decisive.)
+
+### A question is bound to an object
+
+When the engine needs an unknown object, it finds the matching question by name:
+
+**`w.bas`, lines 4410–4420:**
+
+```basic
+4410 FOR L%=1 TO FRAGEN%
+4420 IF OA$(N%)=FOBJEKT$(L%) THEN 4520   ' question whose FOBJEKT$ = this object
+4430 NEXT L%
+```
+
+If no question is bound to the object, the engine falls back to a plain yes/no prompt
+(line 4460, "Es fehlt die Frage für …").
+
+### Asking the question and recording the answer
+
+**`w.bas`, lines 4520–4600:**
+
+```basic
+4520 CLS
+4530 PRINT @128,FTEXT$(L%)
+4540 PRINT @256,"1 -  ";FA$(1,L%)
+4550 PRINT @384,"2 -  ";FA$(2,L%)
+4560 PRINT @968,"Welche Antwort ist korrekt ? (1,2) ";
+4570 I$=INKEY$:IF I$="" THEN 4570
+4590 IF I$="1" THEN I%=1:FSTATUS%(L%)=I%:CLS:RETURN
+4600 IF I$="2" THEN I%=-1:FSTATUS%(L%)=I%:CLS:RETURN
+```
+
+Answer 1 yields `+1` (true), answer 2 yields `-1` (false). The answer code returns in
+`I%`.
+
+### The answer closes back into the inference state
+
+**`w.bas`, lines 3050–3070:**
+
+```basic
+3050 GOSUB 4410        ' ask the question
+3060 OSTATUS%(N%)=I%   ' write the answer into the object's status
+3070 GOTO 2580         ' resume evaluating the rule that needed it
+```
+
+This is the full epistemic loop: an unknown object triggers a bound question, the user's
+answer becomes the object's status, and the engine resumes the rule that needed it. A
+diagnosis is confirmed when its rule reaches status `+1`:
+
+```basic
+4030 IF (TYP%(N%)=1 AND RSTATUS%(N%)=1) THEN ANZAHL%=ANZAHL%+1:DIAG%=N%
+```
+
+---
+
+## 6. Educational Purpose
+
+Although the sample domain is radio repair, the actual purpose is to teach:
+
+- How expert systems represent knowledge.
+- How backward chaining works.
+- How recursion can be simulated without language support.
+- How logical inference can be encoded using integers and strings.
+
+This system is an **instructional model of an inference engine**, not a domain‑specific
+diagnostic tool. The radio‑fault knowledge base (`testen`) is a vehicle for demonstrating
+the mechanism; the mechanism — backward chaining, the manual recursion stack, and the
+integer/string encoding of three‑valued logic — is the subject being taught.
