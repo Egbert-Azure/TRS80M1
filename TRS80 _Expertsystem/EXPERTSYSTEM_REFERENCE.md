@@ -135,7 +135,7 @@ is implemented manually in Level II BASIC.
 All code shown is taken verbatim from `w.bas` (the inference engine, source of the
 compiled `WC/CMD`); line numbers are the program's own.
 
-![Overview diagram of the educational expert system](expertsystem_overview.png)
+![Stack trace: the manual recursion stack proving a goal](recursion_stack_trace.png)
 
 ---
 
