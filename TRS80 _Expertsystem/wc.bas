@@ -94,7 +94,7 @@
 2630 'oder-Regel
 2640 WF%=WF%(PZAEHLER%(STACK%),SRNR%(STACK%))
 2645 IF OSTATUS%(N%)*WF%=1THEN RSTATUS%(SRNR%(STACK%))=1:NM$=DANN$(SRNR%(STACK%)):TRACER$="5="+NM$+"=1="+WENN$(PZAEHLER%(STACK%),SRNR%(STACK%))+"="+STR$(WF%):GOSUB 2810:GOSUB 3430:OSTATUS%(N%)=1:GOSUB 5010:GOTO 2030
-2650 PZAEHLER%(STACK%)=PZAHLER%(STACK%)+1
+2650 PZAEHLER%(STACK%)=PZAEHLER%(STACK%)+1 'bugfix: PZAHLER%` instead of `PZAEHLER%`. Because BASIC treats the misspelling as a separate, always-zero variable, an OR-rule's premise counter does not advance correctly past the first premise. The AND path (line 2610) is spelled correctly.
 2660 GOTO 2510
 2800 'Tracer eintragen
 2810 IF TRACER%=MTRACER% THEN TRACER$="9=**** ]berlauf ****"
