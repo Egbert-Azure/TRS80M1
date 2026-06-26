@@ -30,10 +30,42 @@ The system as it ran:
 - **Tooling** — Python utilities for parsing DMK images, decoding NEWDOS/80
   directories, identifying the OS via boot-sector signatures, and extracting
   BASIC source.
+- **Emulator** — a compiled macOS build of SDLTRS, plus a configuration file
+  to run the disks under emulation.
 
 ## Disk images
 
 [Disk images (DMK) — NEWDOS](diskimages/NewDos/diskimages.md)
+
+## Running on macOS (SDLTRS)
+
+The disks run under **SDLTRS**, a TRS-80 Model I/III/4/4P emulator derived
+from Tim Mann's xtrs. A compiled macOS build is included in this repository,
+so there is no need to build it yourself. ROM images are not bundled with the
+emulator and must be supplied separately.
+
+A configuration file (`.t8c`) sets the machine type, attached disk images,
+and ROM path. **This file is a starting point — edit it to match your own
+paths and the disks you want mounted before running.**
+
+### Launch with Automator
+
+An Automator application wraps the launch so the emulator can be started by
+double-clicking instead of from the command line:
+
+1. Create a new **Application** in Automator.
+2. Add a **Run Shell Script** action.
+3. Point it at the SDLTRS binary and the config file, for example:
+
+   ```bash
+   /path/to/sdltrs -conf /path/to/your.t8c
+   ```
+
+4. Save as an application and double-click to run.
+
+**Note:** SDLTRS 1.1 and newer number disk drives from 0 (earlier versions
+started at 1). Older config files and `-disk` / `-hard` options need
+adjusting for this change.
 
 ## Expert system
 
