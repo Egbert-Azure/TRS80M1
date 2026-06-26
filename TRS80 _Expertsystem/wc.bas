@@ -245,7 +245,7 @@
 6500 ZEILE%=2
 6510 NEXT M%
 6520 PRINT"------------------------------------------"
-6530 PRINT @968,"Ende - bitte eine Taste dr}cken !";
+6530 PRINT @968,"Ende - bitte eine Taste dr}cken !";
 6540 I$=INKEY$:IF I$="" THEN 6540
 6550 GOTO 6010
 6700 'Tracer aufschl}sseln
