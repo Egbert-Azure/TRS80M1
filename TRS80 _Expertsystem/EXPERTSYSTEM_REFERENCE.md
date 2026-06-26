@@ -22,7 +22,7 @@ The system has two halves that share a data file:
 
 ### The inference type: backward only
 
-The engine `w.bas` is a **pure backward-chaining (goal-driven) inference engine**. It is
+The engine `wc.bas` is a **pure backward-chaining (goal-driven) inference engine**. It is
 *not* forward-chaining and not hybrid. Evidence from the code:
 
 - It seeds the stack with **only the diagnosis rules** (`IF TYP%(N%)=1`, line 1130) —
@@ -32,7 +32,7 @@ The engine `w.bas` is a **pure backward-chaining (goal-driven) inference engine*
   it ask the user (line 3050).
 - There is **no forward sweep** — no loop firing every applicable rule from known facts.
   The constraint routine (the one mildly forward element) lives only in the editors and
-  is absent from `w.bas`.
+  is absent from `wc.bas`.
 
 ### The recursive BASIC technique (the point of the exercise)
 
@@ -55,28 +55,33 @@ changed from language-recursion to a hand-rolled stack, because the hardware for
 
 | File | Role | Status |
 |------|------|--------|
-| `w.bas` | Inference engine (`'Expertensystem / Inferenzkomponente`, 1990). Source of the compiled `WC/CMD`. | **Current — the engine you run** |
+| `wc.bas` | Inference engine (`'Expertensystem / Inferenzkomponente`, 1990). **Full version** — justification, tracer, constraints, printer. Source of the compiled `WC/CMD`. | **Current — the engine you run** |
+| `w.bas` | Stripped inference engine (165 lines vs 393). Same backward-chaining core, but justification stubbed, tracer and constraints removed. | Cut-down variant |
 | `wbedit.bas` | Knowledge-base editor (`'Wissenserwerbskomponente`, 1989). Full-screen input mask; both save-bugs already fixed. | **Current — the editor you use** |
 | `maskgen.bas` | Generates the input-mask screens used by `wbedit`. | Current — build-time tool |
 | `maske1.dum`, `maske2.dum` | Saved screen images of the question form and rule form. | Current — data for `wbedit` |
 | `testen` | A complete knowledge base: the radio-repair rule set. | Current — sample/working KB |
 | `wedit.bas`, `fremedit.bas` | Older editor versions. Inline (line-by-line) input instead of the mask; still contain two save-bugs. | Superseded |
 | `druck.bas` | A 3-line `LPRINT` printer fragment, not a standalone program. | Fragment |
-| `WC/CMD` | Compiled binary of `w.bas`. Runs without BASIC; this is what the startup screenshots show. | Current — compiled engine |
+| `WC/CMD` | Compiled binary of `wc.bas`. Runs without BASIC; this is what the startup screenshots show. | Current — compiled engine |
 
-Newest working pair: **`wbedit.bas` (edit) + `w.bas` / `WC/CMD` (consult)**.
+Newest working pair: **`wbedit.bas` (edit) + `wc.bas` / `WC/CMD` (consult)**.
 
 ## Dependencies
 
 - `wbedit.bas` → loads `maske1/dum` and `maske2/dum` at runtime via `CMD"load …"`
   (lines 4010 and 7010). Those `.dum` files are produced by `maskgen.bas`. Without
   them, `wbedit` cannot draw its entry forms.
-- `w.bas` / `WC/CMD` → needs a **knowledge-base file** (e.g. `testen`), entered at the
+- `wc.bas` / `WC/CMD` → needs a **knowledge-base file** (e.g. `testen`), entered at the
   `Name der Wissensbasis` prompt. No knowledge base = nothing to reason over.
 - `wedit.bas` / `fremedit.bas` → self-contained (inline mask), need only a KB file.
-- `w.bas` reads only objects, questions, and rules from the KB; it reads the constraint
-  and entry-question counts but **does not load or apply them**. Constraints are an
-  editor-side feature.
+- `wc.bas` loads and **applies** constraints (`CN$`/`CS%`): after a rule fires it calls
+  the constraint evaluator (`GOSUB 5010`) to force dependent facts. It also records a
+  full inference **trace** (`TRACER$`) used by the justification component.
+- A stripped variant, `w.bas` (165 lines vs 393), exists with the justification, tracer,
+  and constraint code removed — its line 6010 prints "Begründungs-Komponente ist nicht
+  vorhanden" and it ignores constraints. `wc.bas` is the complete engine and the source
+  of `WC/CMD`.
 
 ## How the editor captures input (the "Maske" difference)
 
@@ -132,7 +137,7 @@ This document summarizes the theoretical essence of the TRS‑80 Model I educati
 expert‑system shell. It explains what the system *is*, how it reasons, and how recursion
 is implemented manually in Level II BASIC.
 
-All code shown is taken verbatim from `w.bas` (the inference engine, source of the
+All code shown is taken verbatim from `wc.bas` (the inference engine, source of the
 compiled `WC/CMD`); line numbers are the program's own.
 
 ![Stack trace: the manual recursion stack proving a goal](recursion_stack_trace.png)
@@ -146,11 +151,11 @@ The system is a full expert‑system shell consisting of:
 - **Objects** (`OA$`, `OSTATUS%`, `ODIAG%`)
 - **Questions** (`FTEXT$`, `FA$`, `FOBJEKT$`)
 - **Rules** (`WENN$`, `WF%`, `DANN$`, `TYP%`)
-- **Constraints** (editor‑side only — the engine does not load them)
+- **Constraints** (`CN$`, `CS%`) — loaded and applied by `wc.bas` via the evaluator at line 5000
 
 Knowledge acquisition (editor) and knowledge inference (engine) are cleanly separated.
 
-**Relevant code (`w.bas`, lines 20–100):**
+**Relevant code (`wc.bas`, lines 20–100):**
 
 ```basic
 20  MSTACK%=100
@@ -167,7 +172,7 @@ objects, questions, and rules.
 
 ## 2. Pure Backward‑Chaining Inference Engine
 
-The inference engine (`w.bas` / `WC/CMD`) performs goal‑driven reasoning:
+The inference engine (`wc.bas` / `WC/CMD`) performs goal‑driven reasoning:
 
 - It begins with **all diagnosis rules** pushed onto the stack.
 - For each goal, it attempts to prove all premises.
@@ -176,15 +181,15 @@ The inference engine (`w.bas` / `WC/CMD`) performs goal‑driven reasoning:
 
 There is **no forward chaining and no hybrid inference**.
 
-**Seeding the goals (`w.bas`, lines 1120–1140):**
+**Seeding the goals (`wc.bas`, lines 1120–1140):**
 
 ```basic
 1120 FOR N%=1 TO REGELN%
-1130 IF TYP%(N%)=1 GOSUB 3220   ' push every diagnosis rule as a goal
+1130 IF TYP%(N%)=1 GOSUB 3220:TRACER$="1="+DANN$(N%):GOSUB 2810   ' push every diagnosis rule as a goal, log it
 1140 NEXT N%
 ```
 
-**The recursive sub‑goal (`w.bas`, line 3030):**
+**The recursive sub‑goal (`wc.bas`, line 3030):**
 
 ```basic
 3030 IF DANN$(K%)=OA$(N%) THEN M%=N%:N%=K%:GOSUB 3220:N%=M%:GOTO 2020
@@ -209,7 +214,7 @@ Level II BASIC has no recursion, so the system simulates it using:
 This stack behaves exactly like recursive calls: a `GOSUB 3220` pushes a frame (a
 simulated CALL), and decrementing `STACK%` pops one (a simulated RETURN).
 
-**Push frame — simulated CALL (`w.bas`, lines 3220–3250):**
+**Push frame — simulated CALL (`wc.bas`, lines 3220–3250):**
 
 ```basic
 3220 IF STACK%=MSTACK% THEN CLS:PRINT"**** Stack-Überlauf ****":END
@@ -221,7 +226,7 @@ simulated CALL), and decrementing `STACK%` pops one (a simulated RETURN).
 Line 3220 is the depth guard (stack‑overflow check); 3230 grows the stack; 3240 writes
 the new frame — the rule number `N%` and premise counter reset to 1.
 
-**Pop frame — simulated RETURN (`w.bas`, lines 2010–2030):**
+**Pop frame — simulated RETURN (`wc.bas`, lines 2010–2030):**
 
 ```basic
 2010 IF STACK%=0 GOTO 4010      ' stack empty -> output diagnoses
@@ -257,10 +262,12 @@ a negated premise (`WF% = -1`) is satisfied precisely when its object is false
 The default. Every premise must be satisfied; the first failure makes the whole rule
 false. A rule is an AND‑rule when premise slot 1 is **not** the `"- oder -"` sentinel.
 
-**`w.bas`, line 2600 (the AND test):**
+**`wc.bas`, line 2600 (the AND test):**
 
 ```basic
-2600 IF OSTATUS%(N%)*WF%(PZAEHLER%(STACK%),SRNR%(STACK%))<>1 THEN RSTATUS%(SRNR%(STACK%))=(-1):NM$=DANN$(SRNR%(STACK%)):GOSUB 3430:OSTATUS%(N%)=(-1):GOTO 2030
+2580 IF WENN$(1,SRNR%(STACK%))="- oder -" GOTO 2645
+2600 WF%=WF%(PZAEHLER%(STACK%),SRNR%(STACK%))
+2605 IF OSTATUS%(N%)*WF%<>1 THEN RSTATUS%(SRNR%(STACK%))=(-1):NM$=DANN$(SRNR%(STACK%)):TRACER$="2="+NM$+"=-1="+WENN$(PZAEHLER%(STACK%),SRNR%(STACK%))+"="+STR$(WF%):GOSUB 2810:GOSUB 3430:OSTATUS%(N%)=(-1):GOTO 2030
 2610 PZAEHLER%(STACK%)=PZAEHLER%(STACK%)+1
 2620 GOTO 2510
 ```
@@ -274,17 +281,19 @@ checked. If all five pass, line 2510 sets the rule true.
 Marked by the sentinel `"- oder -"` in premise slot 1. Any single satisfied premise
 makes the rule true; the rule is false only if every premise fails.
 
-**`w.bas`, line 2640 (the OR test):**
+**`wc.bas`, line 2640 (the OR test):**
 
 ```basic
-2640 IF OSTATUS%(N%)*WF%(PZAEHLER%(STACK%),SRNR%(STACK%))=1 THEN RSTATUS%(SRNR%(STACK%))=1:NM$=DANN$(SRNR%(STACK%)):GOSUB 3430:OSTATUS%(N%)=1:GOTO 2030
-2650 PZAEHLER%(STACK%)=PZAEHLER%(STACK%)+1
+2640 WF%=WF%(PZAEHLER%(STACK%),SRNR%(STACK%))
+2645 IF OSTATUS%(N%)*WF%=1 THEN RSTATUS%(SRNR%(STACK%))=1:NM$=DANN$(SRNR%(STACK%)):TRACER$="5="+NM$+"=1="+WENN$(PZAEHLER%(STACK%),SRNR%(STACK%))+"="+STR$(WF%):GOSUB 2810:GOSUB 3430:OSTATUS%(N%)=1:GOSUB 5010:GOTO 2030
+2650 PZAEHLER%(STACK%)=PZAHLER%(STACK%)+1
 2660 GOTO 2510
 ```
 
 The first premise that passes the `…=1` test sets the conclusion true and pops the
 frame. The AND/OR symmetry is clean: AND fails fast on the first `<>1`, OR succeeds fast
-on the first `=1`.
+on the first `=1`. When a rule fires true, `GOSUB 5010` runs the constraint evaluator
+(see §7) and a `TRACER$` entry is recorded for the justification component.
 
 ### Termination of a rule
 
@@ -320,7 +329,7 @@ decisive.)
 
 When the engine needs an unknown object, it finds the matching question by name:
 
-**`w.bas`, lines 4410–4420:**
+**`wc.bas`, lines 4410–4420:**
 
 ```basic
 4410 FOR L%=1 TO FRAGEN%
@@ -333,7 +342,7 @@ If no question is bound to the object, the engine falls back to a plain yes/no p
 
 ### Asking the question and recording the answer
 
-**`w.bas`, lines 4520–4600:**
+**`wc.bas`, lines 4520–4600:**
 
 ```basic
 4520 CLS
@@ -342,20 +351,20 @@ If no question is bound to the object, the engine falls back to a plain yes/no p
 4550 PRINT @384,"2 -  ";FA$(2,L%)
 4560 PRINT @968,"Welche Antwort ist korrekt ? (1,2) ";
 4570 I$=INKEY$:IF I$="" THEN 4570
-4590 IF I$="1" THEN I%=1:FSTATUS%(L%)=I%:CLS:RETURN
-4600 IF I$="2" THEN I%=-1:FSTATUS%(L%)=I%:CLS:RETURN
+4590 IF I$="1" THEN I%=1:FSTATUS%(L%)=I%:TRACER$="4="+FOBJEKT$(L%)+"=1="+FTEXT$(L%)+"="+FA$(1,L%):GOSUB 2810:CLS:RETURN
+4600 IF I$="2" THEN I%=-1:FSTATUS%(L%)=I%:TRACER$="4="+FOBJEKT$(L%)+"=-1"+FTEXT$(L%)+"="+FA$(2,L%):GOSUB 2810:CLS:RETURN
 ```
 
-Answer 1 yields `+1` (true), answer 2 yields `-1` (false). The answer code returns in
-`I%`.
+Answer 1 yields `+1` (true), answer 2 yields `-1` (false), and each answer also logs a
+`"4="` tracer entry recording the question and the chosen answer.
 
 ### The answer closes back into the inference state
 
-**`w.bas`, lines 3050–3070:**
+**`wc.bas`, lines 3050–3070:**
 
 ```basic
 3050 GOSUB 4410        ' ask the question
-3060 OSTATUS%(N%)=I%   ' write the answer into the object's status
+3060 OSTATUS%(N%)=I%:IF OSTATUS%(N%)=1 THEN GOSUB 5010   ' record answer; if true, fire constraints
 3070 GOTO 2580         ' resume evaluating the rule that needed it
 ```
 
@@ -412,7 +421,7 @@ succeeds fast on the first `=1`. The same evaluation skeleton with the opposite 
 compact and symmetric, which matters on a 1.77 MHz Z80 with tight memory.
 
 **5. Clean editor/engine separation.** Knowledge acquisition (`wbedit`) and inference
-(`w.bas`) are fully decoupled through the knowledge‑base file. This is textbook
+(`wc.bas`) are fully decoupled through the knowledge‑base file. This is textbook
 expert‑system *shell* architecture — one engine runs any knowledge base — achieved on
 1980s hardware.
 
@@ -438,6 +447,19 @@ Of these, move 1 — the manual recursion stack — is the least obvious and the
 genuinely clever: it is the one that makes a recursive algorithm run on a
 non‑recursive language.
 
+**7. A self-describing trace as a tiny serialization format.** Every inference step in
+`wc.bas` appends a coded string to `TRACER$()` — for example `"2="+name+"=-1="+premise+"="+weight`.
+The leading digit is a record type (`1`=goal pushed, `2`=AND-rule resolved, `5`=OR-rule
+resolved, `3`=constraint, `4`=user answer, `9`=overflow), and `=` separates the fields.
+The justification component (the *Begründungskomponente*, blocks 6000–8300) later reads
+these back with a small parser (`6700 Tracer aufschlüsseln`): it reads the type digit,
+splits on `=`, and reconstructs a human-readable explanation of *why* each fact was
+concluded — "X is satisfied because all premises held", and so on. In effect the program
+defines a compact tagged record format, writes an audit log in it during reasoning, and
+decodes it on demand to explain itself. Building an explanation facility this way — log
+structured events, parse them back later — is a sound design idea that holds up well
+beyond 8-bit BASIC. (This whole component is the main thing the cut-down `w.bas` drops.)
+
 ---
 
 ## 8. Source / Reference
@@ -462,6 +484,30 @@ same Franzis series also appeared with examples in Forth, so when searching, the
 edition is the relevant one for this program.
 
 **Relationship to this code:** the `WENN$`/`DANN$` rule tables, the three‑valued status
-logic, and the backward‑chaining inference loop in `w.bas` follow the book's method
+logic, and the backward‑chaining inference loop in `wc.bas` follow the book's method
 directly; the manual recursion stack (§3) is the implementation route taken because
 TRS‑80 Level II BASIC lacks recursive subroutines.
+
+**Direct correspondence between the book's structure and this code.** The component
+names in the program are taken straight from the book — the source files' own header
+comments (`Wissenserwerbskomponente`, `Inferenzkomponente`) are the book's chapter
+titles. The actual table of contents (Deutsche Nationalbibliothek, d‑nb.info/881349542)
+maps onto the code as follows:
+
+| Book section | In this code |
+|--------------|--------------|
+| 2.1 Die Wissensbasis | the knowledge‑base file (objects, questions, rules) |
+| 2.2 Die Wissenserwerbskomponente | `wbedit.bas` (its header comment is this exact title) |
+| 2.3 Die Inferenzkomponente | `wc.bas` (header comment `Inferenzkomponente`); backward chaining = §2–§4 here |
+| 2.3.2 Produktionensysteme | the `WENN$ → DANN$` production rules |
+| 2.3.4 Ablaufsteuerung | the manual stack control loop (`SRNR%`/`PZAEHLER%`) |
+| 2.4 Die Dialogkomponente | the question‑asking routine (line 4410+) |
+| 2.5 Die Begründungskomponente | the justification component — fully implemented in `wc.bas` (blocks 6000–8300, printout 10000); only a stub in the cut-down `w.bas` |
+| 3.1 Constraints | the `CN$`/`CS%` mechanism — evaluated in `wc.bas` at line 5000 (`GOSUB 5010`) |
+| 3.2 Tracestrukturen | the `TRACER$` trace log (writer 2810, decoder 6700) — the basis of the Begründung |
+| 3.6 Vorwärtsverkettung | forward chaining — a later book topic, **not** implemented in `wc.bas` (which is backward‑only) |
+
+This confirms the lineage precisely: the program implements the book's core architecture
+(chapter 2 — knowledge base, acquisition, inference, dialog) plus the constraint and
+trace techniques from chapter 3, while the chapter‑3 forward‑chaining and
+uncertainty extensions were not carried into this engine.
