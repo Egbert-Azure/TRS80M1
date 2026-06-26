@@ -144,6 +144,65 @@ compiled `WC/CMD`); line numbers are the program's own.
 
 ---
 
+## 0. Background: the expert-system tradition
+
+This program belongs to a specific lineage in AI history — the **expert‑system** tradition
+— which is worth sketching, because the rest of this document assumes it.
+
+In the 1970s–80s, "AI that reasons over rules" developed along two largely parallel
+tracks. One is **logic programming** (Prolog, SLD resolution), grown from formal logic and
+theorem proving. The other is **expert systems**, grown from a practical question: can a
+human specialist's know‑how be captured as rules and applied by a machine? This program,
+via Soll's book, sits in the second tradition. (The separate `TRS80_vs_Prolog.md`
+comparison uses Prolog as a *familiar reference point* for backward chaining, not as this
+program's ancestor.)
+
+**MYCIN** is the keystone of the expert‑system tradition: an early backward‑chaining
+expert system developed in the early 1970s at Stanford (Edward Shortliffe's dissertation,
+under Buchanan and Cohen), built to diagnose bacterial infections and recommend
+antibiotics. Three of its hallmarks reappear directly in this program:
+
+1. **Separation of knowledge base from inference engine** — the same engine can run
+   different rule sets. This is the "expert‑system shell" idea, and it is exactly the
+   `wc.bas` (engine) vs. knowledge‑base‑file split here.
+2. **Backward chaining over IF‑THEN rules**, asking the user for facts it lacks — the loop
+   `wc.bas` implements almost exactly.
+3. **Self‑explanation** — answering "why?" and "how?" by walking the rule trace. This is
+   the *Begründungskomponente* (§6).
+
+A telling detail: MYCIN handled uncertainty with **certainty factors** on a scale from −1
+("certain falsity") through 0 ("no evidence") to +1 ("certain truth"). This program's
+three‑valued status (`-1`/`0`/`+1`) is exactly that scale at its integer extremes — minus
+the intermediate degrees of belief. (Soll's book covers uncertainty in a later chapter;
+this engine did not implement the probabilistic part.)
+
+**Production rules / production systems** is the formal name for the rule format itself: a
+*production* of the form IF ⟨conditions⟩ THEN ⟨conclusion⟩. The term predates expert
+systems (Post in the 1940s; Newell & Simon's cognitive models in the 1960s). Here,
+`WENN$ → DANN$` *is* a production rule; the book's contents even include "2.3.2
+Produktionensysteme". The forward‑chaining branch of this family is exemplified by **OPS5**
+(production matching via the RETE algorithm) — a different emphasis from this engine's
+backward chaining.
+
+**Knowledge base** is the tradition's term for the rule/fact store, kept deliberately
+separate from the engine. The 1980s bottleneck was **knowledge acquisition** — getting an
+expert's knowledge *into* the base — which is why these systems shipped a dedicated
+**knowledge‑acquisition component** for entering and editing rules. That is precisely what
+`wbedit` is; the book names it `Wissenserwerbskomponente`.
+
+The standard component model of an expert system — **knowledge base · inference engine ·
+knowledge‑acquisition component · dialog component · explanation component** — is the
+skeleton of both Soll's chapter 2 and this program's file set. The mapping is given in §10.
+
+> **A note on lineage.** MYCIN, production systems, and the knowledge‑base/shell model are
+> the *tradition* this program belongs to; this is not a claim that Soll's book cited MYCIN
+> specifically, only that the program is a faithful instance of the paradigm those systems
+> established. The Explainable‑AI connection is likewise a lineage observation — 1970s–80s
+> expert systems pioneered the idea of a system justifying its own conclusions, which is
+> the ancestor of today's XAI.
+
+---
+
 ## 1. A Rule‑Based Expert System Shell
 
 The system is a full expert‑system shell consisting of:
@@ -562,3 +621,12 @@ This confirms the lineage precisely: the program implements the book's core arch
 (chapter 2 — knowledge base, acquisition, inference, dialog) plus the constraint and
 trace techniques from chapter 3, while the chapter‑3 forward‑chaining and
 uncertainty extensions were not carried into this engine.
+
+---
+
+## Related documents
+
+- **`TRS80_vs_Prolog.md`** — a side‑by‑side comparison of this engine's inference model
+  with Prolog's SLD resolution: where the hand‑built backward chainer matches Prolog, and
+  where it deliberately stops short (no backtracking, no unification). Uses Prolog as a
+  reference lens, not as a claim of descent (see §0).
