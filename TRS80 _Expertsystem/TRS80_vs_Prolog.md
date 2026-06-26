@@ -18,6 +18,46 @@ informative: it lets us name precisely what this engine is, in terms a reader al
 understands, and measure where it matches Prolog and where it deliberately does not.
 The comparison is therefore a *lens*, not a claim of descent.
 
+### What is Prolog? (a primer for today's reader)
+
+If you have only seen languages like Python, Java, or BASIC, Prolog will look strange,
+because it works the opposite way. In those *imperative* languages you write step‑by‑step
+instructions: do this, then that. **Prolog is declarative**: you describe a *knowledge
+base* of facts and rules — what is true — and then ask questions ("queries"). A built‑in
+**inference engine** figures out *how* to answer, searching the rules for you. You never
+write the search procedure; the language is the search procedure.
+
+A tiny example: you state the facts `parent(tom, bob).` and `parent(bob, ann).` and the
+rule `grandparent(X, Z) :- parent(X, Y), parent(Y, Z).` — then ask
+`grandparent(tom, ann)?` and Prolog answers *yes*, having chained the rules itself. It
+proves goals by **backward chaining** (start from the question, reduce it to sub‑goals)
+with two mechanisms this document keeps returning to: **unification** (matching a query
+against rule heads, binding variables) and **backtracking** (on a dead end, undo and try
+another rule).
+
+Prolog was created in the early 1970s (Colmerauer and Kowalski) and is still in use today.
+Modern systems such as SWI‑Prolog and SICStus are applied to:
+
+- **Expert systems and rule engines** — modelling complex rule environments such as
+  compliance checks, configuration, and security‑permission logic.
+- **Natural‑language processing** — parsing grammar and analysing meaning (its built‑in
+  grammar rules make this natural).
+- **Theorem proving and symbolic logic** — evaluating mathematical and logical statements;
+  Prolog's core *is* a resolution theorem prover.
+
+This is why Prolog is the right yardstick for the TRS‑80 engine: it is the best‑known
+language built *entirely* around the "knowledge base + inference engine + backward
+chaining" idea that the TRS‑80 program implements by hand. (Historically the two even ran
+side by side — by 1987, the year of Soll's book, Prolog was already being used for
+real‑time expert systems and security‑rule analysers.)
+
+> **One conceptual difference worth holding onto.** The TRS‑80 *knowledge base* (the rules
+> in `testen`) is declarative — it states relationships, not procedures. But the *engine*
+> (`wc.bas`) is hand‑written, step‑by‑step BASIC: it is an **imperative implementation of a
+> declarative idea**. Prolog folds both into one declarative language and supplies the
+> engine for free. That is precisely why building this engine by hand was real work — the
+> author wrote, in BASIC, the inference machinery that Prolog gives you built‑in.
+
 ---
 
 ## 1. Core Inference Paradigm
