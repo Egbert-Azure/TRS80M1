@@ -286,14 +286,14 @@ makes the rule true; the rule is false only if every premise fails.
 ```basic
 2640 WF%=WF%(PZAEHLER%(STACK%),SRNR%(STACK%))
 2645 IF OSTATUS%(N%)*WF%=1 THEN RSTATUS%(SRNR%(STACK%))=1:NM$=DANN$(SRNR%(STACK%)):TRACER$="5="+NM$+"=1="+WENN$(PZAEHLER%(STACK%),SRNR%(STACK%))+"="+STR$(WF%):GOSUB 2810:GOSUB 3430:OSTATUS%(N%)=1:GOSUB 5010:GOTO 2030
-2650 PZAEHLER%(STACK%)=PZAHLER%(STACK%)+1
+2650 PZAEHLER%(STACK%)=PZAEHLER%(STACK%)+1
 2660 GOTO 2510
 ```
 
 The first premise that passes the `…=1` test sets the conclusion true and pops the
 frame. The AND/OR symmetry is clean: AND fails fast on the first `<>1`, OR succeeds fast
-on the first `=1`. When a rule fires true, `GOSUB 5010` runs the constraint evaluator
-(see §7) and a `TRACER$` entry is recorded for the justification component.
+on the first `=1`. When a rule fires true, `GOSUB 5010` runs the constraint evaluator and
+a `TRACER$` entry is recorded for the justification component (§6).
 
 ### Termination of a rule
 
@@ -378,7 +378,49 @@ diagnosis is confirmed when its rule reaches status `+1`:
 
 ---
 
-## 6. Educational Purpose
+## 6. The Begründungskomponente (Explanation Component)
+
+The engine `wc.bas` includes a genuine **explanation facility** — the
+*Begründungskomponente* of the book (chapter 2.5). It does three things:
+
+- **Parses the tracer entries** written during inference. Each reasoning step logged a
+  tagged record into `TRACER$()` (writer at line 2810); the decoder reads them back.
+- **Reconstructs the reasoning chain** that led to each conclusion — which rule fired,
+  which premises held, which answers the user gave, which constraints propagated.
+- **Prints human-readable explanations** of *why* a fact was derived (blocks 6000–8300),
+  with optional printer output (block 10000).
+
+The decoder is small and direct (`6700 Tracer aufschlüsseln`):
+
+```basic
+6700 'Tracer aufschlüsseln
+6730 TRACER$=TRACER$(N%)
+6740 TYP%=VAL(LEFT$(TRACER$,1))                       ' first char = record type
+6750 TRACER$=RIGHT$(TRACER$,LEN(TRACER$)-2):IF TRACER$="" THEN RETURN
+```
+
+It reads the leading type digit, then splits the remaining `=`-separated fields to
+rebuild the explanation. The display blocks then phrase it: list all possible facts
+(6200), list the determined facts (6300), show a specific rule (7000), and render an
+AND-rule (7500) or OR-rule (7800) as "rule applies / does not apply / undetermined".
+
+### Historical context
+
+This is the same class of feature that made **MYCIN** notable: the ability to explain
+its conclusions by walking its reasoning trace and answering *why* a result was reached.
+A justification component like this places the program squarely in the 1980s
+expert-system explanation tradition — the lineage that prefigured what is now called
+**Explainable AI (XAI)**, long before the term existed. (The comparison is to MYCIN's
+explanation facility specifically; systems such as PROSPECTOR and OPS5 were known for
+other things — probabilistic inference and forward-chaining production matching
+respectively — so MYCIN is the apt reference here.)
+
+This whole component is the main capability that the stripped `w.bas` variant drops —
+in `w.bas` it is replaced by the stub "Begründungs-Komponente ist nicht vorhanden".
+
+---
+
+## 7. Educational Purpose
 
 Although the sample domain is radio repair, the actual purpose is to teach:
 
@@ -394,7 +436,7 @@ integer/string encoding of three‑valued logic — is the subject being taught.
 
 ---
 
-## 7. Engineering Highlights
+## 8. Engineering Highlights
 
 The interesting part of this port is what it does *despite* the constraints of TRS‑80
 Level II BASIC. Six moves stand out.
@@ -456,13 +498,22 @@ these back with a small parser (`6700 Tracer aufschlüsseln`): it reads the type
 splits on `=`, and reconstructs a human-readable explanation of *why* each fact was
 concluded — "X is satisfied because all premises held", and so on. In effect the program
 defines a compact tagged record format, writes an audit log in it during reasoning, and
-decodes it on demand to explain itself. Building an explanation facility this way — log
-structured events, parse them back later — is a sound design idea that holds up well
-beyond 8-bit BASIC. (This whole component is the main thing the cut-down `w.bas` drops.)
+decodes it on demand to explain itself (see §6 for the explanation component this feeds).
+Building an explanation facility this way — log structured events, parse them back later
+— is a sound design idea that holds up well beyond 8-bit BASIC.
 
 ---
 
-## 8. Source / Reference
+## 9. What This System Really Is (in one sentence)
+
+A complete educational expert‑system shell that demonstrates backward chaining, manual
+recursion, three‑valued logic, constraint propagation, and explainable inference — all
+implemented by hand in 1980s BASIC on a TRS‑80 Model I. Not a toy: a working teaching
+machine for inference theory.
+
+---
+
+## 10. Source / Reference
 
 This program is an adaptation of the rule‑based BASIC expert‑system example published by
 Hans‑Jürgen Soll. The original concept, the recursive inference technique, and the
