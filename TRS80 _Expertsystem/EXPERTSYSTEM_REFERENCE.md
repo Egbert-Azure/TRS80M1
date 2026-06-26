@@ -437,3 +437,31 @@ is a clear step up from the line‑by‑line editors.
 Of these, move 1 — the manual recursion stack — is the least obvious and the most
 genuinely clever: it is the one that makes a recursive algorithm run on a
 non‑recursive language.
+
+---
+
+## 8. Source / Reference
+
+This program is an adaptation of the rule‑based BASIC expert‑system example published by
+Hans‑Jürgen Soll. The original concept, the recursive inference technique, and the
+overall shell architecture are his; the TRS‑80 Model I port, the German‑umlaut handling,
+the input‑mask system, and the engine/editor split documented here are the adaptations
+made on the Model I (and continued on the Genie III).
+
+**Book:**
+
+> Soll, Hans‑Jürgen. *KI: Expertensysteme programmieren — Einführung in die
+> Funktionsweise mit Beispielen in BASIC.* München: Franzis Verlag.
+> 195 pages, 10 figures, gebundene Ausgabe (hardback).
+> ISBN‑13: 978‑3‑7723‑7622‑1 · ISBN‑10: 3‑7723‑7622‑3.
+> Out of print (no longer available from the publisher).
+
+**Edition note:** the copy referenced here is the 1991 Franzis edition. Some catalogues
+list a first edition of 1988; the 1991 printing is the one confirmed for this work. The
+same Franzis series also appeared with examples in Forth, so when searching, the BASIC
+edition is the relevant one for this program.
+
+**Relationship to this code:** the `WENN$`/`DANN$` rule tables, the three‑valued status
+logic, and the backward‑chaining inference loop in `w.bas` follow the book's method
+directly; the manual recursion stack (§3) is the implementation route taken because
+TRS‑80 Level II BASIC lacks recursive subroutines.
