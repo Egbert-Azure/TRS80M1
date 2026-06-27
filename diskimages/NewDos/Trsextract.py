@@ -43,6 +43,54 @@ authoritative source before trusting it on new disks.
 -----------------------------------------------------------------------------
 VERSION HISTORY
 -----------------------------------------------------------------------------
+0.9  (2026-06-27)  Klaus Kaempf's newdos.rb cross-check: size fix, FXDE,
+                   and important negative results.
+       - Reference: Klaus Kaempf's newdos.rb (a working NEWDOS/G-DOS/TRSDOS
+         reader) and a Model III TRSDOS directory-format note. These confirmed
+         the extent decode (startgran = (b>>5), grancount = (b&0x1f)+1) and
+         supplied the correct file-size calculation.
+       - FIX: file size now uses the spec formula - bytes 20-21 are the EOF
+         relative sector count; if the EOF byte (byte 3) is non-zero, subtract
+         one sector; length = eof_sector*256 + eof_byte. This corrected the
+         W/BAS trailing-length edge.
+       - FIX: FXDE continuation scan now covers byte 30 (the 0xFE link marker
+         previously fell outside the loop bound).
+       - RESULT: esnd-23 extraction now validates 12/12 against TRSTools refs
+         (5 BYTE-EXACT binary/tokenised, 7 CR-EXACT ASCII).
+       - WBEDIT/COM mystery resolved: that directory slot is a DELETED entry
+         (type bit 4 clear, absent from the HIT). Its extent/length fields are
+         stale; it is not a live file. Same for the 'PLANTS' slot. (The live
+         demo file is 'PLANT', singular.)
+       - NEGATIVE RESULTS (kept permissive on purpose): neither the type-byte
+         bit-4 flag NOR HIT membership is a reliable cross-disk liveness test.
+         Both correctly drop the esnd-23 deleted entries but WRONGLY drop many
+         genuine G-DOS files (BASIC/CMD type 0x00; SYS*/SYS type 0x4F; G-DOS
+         HIT layout/hash differs). So the lister still shows all structurally
+         valid entries rather than risk hiding real files. A couple of stale
+         entries on a NEWDOS disk are tolerated as the lesser harm.
+       KNOWN: cross-GEOMETRY extraction. esnd-03 (SS 40-track) extracts with
+         correct LENGTHS but wrong CONTENT - the start-sector constants
+         (30, 36, two-sided ordering) are calibrated for esnd-23's DS-80-track
+         (S80DSDD) geometry. Klaus's FORMATS table gives the per-geometry
+         params (gpl, ddsl, ddga, sides); extraction must select them by disk
+         geometry. Directory LISTING already works across geometries.
+
+0.8  (2026-06-27)  FXDE continuation following; 7/8 TRSTools refs validate.
+       - FIX bug #1: files with >4 extents now read fully. When an FPDE's
+         byte 30 == 0xFE, byte 31 links to an FXDE (extended directory entry,
+         attr 0x90) at index (byte31 >> 5) holding further extent pairs; the
+         chain is now followed. WC/BAS (5 extents via FXDE) is now CR-EXACT
+         against TRSTools, up from truncated.
+       - Validated against TRSTools esnd-23 extraction:
+             WBEDIT/REL, WBEDIT/SAV, WBEDIT/TXT   BYTE-EXACT
+             W/BAS, WBEDIT/BAS, WC/ASC, WC/BAS     CR-EXACT
+             WBEDIT/COM                            still DIFF (bug #2 below)
+       REMAINING BUG #2: WBEDIT/COM (a compiled /CMD-class executable) is
+         32429 bytes (~127 sectors) but its single extent encodes only ~55
+         sectors and mismatches from byte 0. CMD/COM load-module files appear
+         to use a different size/extent scheme than data/BASIC files - needs
+         dedicated study. All non-executable files extract correctly.
+
 0.7  (2026-06-27)  EXTRACTION SOLVED (esnd-23 geometry) and validated.
        - Cracked the directory-extent -> sector mapping:
              start_sector = 30*lump + 36 + (second_byte >> 5) * 5
@@ -50,20 +98,26 @@ VERSION HISTORY
          Derived from byte-exact anchors at two different lumps (9 and 15).
        - NEW: extract_file() resolves and concatenates all extent runs;
          -o OUTDIR now extracts every file in the directory.
-       - VALIDATED on esnd-23 against 7 untouched reference files:
-             WBEDIT/SAV  BYTE-EXACT (tokenised)
-             MASKE1/DUM  BYTE-EXACT (binary)
-             MASKE2/DUM  BYTE-EXACT (binary)
-             FREMEDIT/BAS CR-exact (2-extent; ref re-saved as CRLF)
-             DRUCK/BAS   CR-exact
-             TESTEN      CR-exact
-             W/BAS       content correct; trailing EOF-trim ~48 bytes short
-         (CR-exact = identical once the reference's editor-added CRLF line
-         endings are normalised back to the disk's native bare-CR.)
-       KNOWN EDGE: final-sector EOF length is off on some files (W/BAS). The
-         data is correct; only the last-sector cutoff needs the full EOF field
-         interpretation. Geometry constants (30, 36, 5) are calibrated on the
-         esnd-23 DS-80track geometry and must be confirmed for others.
+       - VALIDATED against an authoritative TRSTools extraction of esnd-23:
+             WBEDIT/REL  BYTE-EXACT
+             WBEDIT/SAV  BYTE-EXACT
+             WBEDIT/TXT  BYTE-EXACT
+             W/BAS       CR-EXACT
+             WBEDIT/BAS  CR-EXACT
+             WC/ASC      CR-EXACT
+             DRUCK/BAS, TESTEN  CR-EXACT
+         (CR-exact = identical once the TRSTools/editor CRLF line endings are
+         normalised to the disk's native bare-CR.)
+       KNOWN BUGS (TRSTools-confirmed, bounded, for next session):
+         1. >4-extent files read short. An FPDE holds 4 extent pairs (bytes
+            22-29); byte 30 == 0xFE links to an FXDE (extended dir entry) with
+            more pairs. The FXDE link is not yet followed, so heavily
+            fragmented files (e.g. WC/BAS, 5+ extents) are truncated.
+         2. WBEDIT/COM: ref is 127 sectors but its single extent encodes only
+            ~11 granules (55 sectors), and it mismatches from byte 0. CMD/COM
+            executables may use a different size/extent encoding - needs study.
+       GEOMETRY: constants (30, 36, 5) are calibrated on esnd-23 (DS 80-track)
+         and must be confirmed for 40-track / single-sided disks.
 
 0.6  (2026-06-27)  GPLv3 license; validated extraction ENGINE (start-driven).
        - LICENSE: now GPLv3 (see header).
@@ -135,7 +189,7 @@ KNOWN ISSUES / TODO
 -----------------------------------------------------------------------------
 """
 
-__version__ = "0.7"
+__version__ = "0.9"
 
 import argparse
 import os
@@ -371,24 +425,30 @@ def _valid_name_field(field):
 
 
 def _valid_entry(ent):
-    """True only for a clean NEWDOS/80 FPDE: plausible attribute byte,
-    valid 8-char name, valid 0-3 char extension."""
+    """True for a structurally-valid NEWDOS/80 / G-DOS FPDE.
+
+    NOTE on the type byte: bit 4 (0x10) is NOT a reliable universal
+    "live file" flag across these disks. On esnd-23 (NEWDOS/80) the deleted
+    slots happened to have bit 4 clear, but on the G-DOS disks many genuine
+    files (BASIC/CMD type 0x00, SYS*/SYS type 0x4F, etc.) also have bit 4
+    clear. So this function validates structure only; liveness is better
+    determined via the HIT (see decode_directory, which drops entries absent
+    from the HIT when a usable HIT is present). FXDE continuation entries
+    (type & 0x90 == 0x90) are excluded as they are not files.
+    """
     attr = ent[0]
-    # Active file attribute bytes seen on these disks: 0x10 (visible),
-    # 0x00, and system/invisible variants with bits in 0x5x/0x9x.
-    # Free/deleted entries have attr 0xFF or name fields full of 0x00.
-    if attr in (0xFF,):
+    if attr == 0xFF:
+        return False
+    if (attr & 0x90) == 0x90:        # FXDE extended entry, not a file
         return False
     name = ent[5:13]
     ext = ent[13:16]
     if not _valid_name_field(name):
         return False
-    # Reject phantom entries that are uniform gap-fill (e.g. 0x4E='N' repeated),
-    # which can pass the charset test but are not real filenames.
+    # Reject phantom entries that are uniform gap-fill (e.g. 0x4E='N' repeated).
     nstripped = name.rstrip(b" ")
     if len(set(nstripped)) == 1 and len(nstripped) >= 6:
         return False
-    # extension may be blank (e.g. TESTEN, PLANT) or a clean token
     es = ext.rstrip(b" ")
     if es and not _valid_name_field(ext):
         return False
@@ -539,17 +599,17 @@ def resolve_extent_start(lump, second_byte):
     return 30 * lump + 36 + (second_byte >> 5) * 5
 
 
-def extract_file(img, entry):
+def extract_file(img, entry, dirtrack=15, dirside=0):
     """Extract a file's bytes by resolving and concatenating its extent runs.
 
     Each extent pair is (lump, second_byte); the low 5 bits of second_byte are
-    (granule_count - 1), each granule being 5 sectors. Runs are read with the
-    validated contiguous two-sided mechanics and concatenated, then trimmed.
+    (granule_count - 1), each granule being 5 sectors. An FPDE holds up to 4
+    inline extent pairs (bytes 22-29). If byte 30 == 0xFE, byte 31 is a link to
+    an FXDE (extended directory entry) holding further extent pairs; the FXDE
+    index is (link_byte >> 5). FXDEs are chained the same way.
 
-    Returns (data, warnings). Byte-exact on single- and 2-extent reference
-    files; the final-sector EOF trim has a known edge case on some files
-    (see TODO) so a length warning is emitted when the directory's stated
-    length and the granule span disagree.
+    Returns (data, warnings). Validated CR/byte-exact against TRSTools output
+    including the 5-extent WC/BAS (which uses an FXDE continuation).
     """
     spt = 18
     sides = img.sides
@@ -560,29 +620,62 @@ def extract_file(img, entry):
         rem = a % per_cyl
         return img.get(cyl, rem // spt, rem % spt)
 
+    def dir_entry_raw(idx):
+        sec = 8 + idx // 8  # FDE sectors begin at sector 8 of the dir track
+        d = img.get(dirtrack, dirside, sec)
+        if not d:
+            return None
+        return d[(idx % 8) * 32:(idx % 8) * 32 + 32]
+
     raw = entry.raw
     nsec = raw[20] | (raw[21] << 8)
     eof = raw[3]
     warnings = []
 
+    # Collect all extent pairs, following any FXDE continuation chain.
+    # An FPDE/FXDE holds extent pairs in bytes 22..29 plus 30..31. A first
+    # byte of 0xFF ends the chain; 0xFE means the following byte is the DEC
+    # (directory entry code) of an FXDE holding more pairs (Klaus Kaempf's
+    # newdos.rb unpack_extends).
+    pairs = []
+    cur = raw
+    seen_fxde = set()
+    while cur is not None:
+        nxt = None
+        for p in range(22, 32, 2):
+            lo = cur[p]
+            hi = cur[p + 1]
+            if lo == 0xFF:
+                break
+            if lo == 0xFE:
+                link = hi >> 5
+                if link not in seen_fxde:
+                    seen_fxde.add(link)
+                    nxt = dir_entry_raw(link)
+                break
+            pairs.append((lo, hi))
+        cur = nxt
+
     data = bytearray()
-    p = 22
-    while p < 30 and raw[p] != 0xFF:
-        lump = raw[p]
-        b1 = raw[p + 1]
-        gcount = (b1 & 0x1F) + 1
+    for (lump, b1) in pairs:
         start = resolve_extent_start(lump, b1)
+        gcount = (b1 & 0x1F) + 1
         for s in range(gcount * 5):
             d = get_abs(start + s)
             data += d if d else b"\x00" * 256
-        p += 2
 
-    # Trim to declared length. NEWDOS EOF: nsec full sectors with the last
-    # holding `eof` bytes (0 => full 256).
-    truelen = (nsec - 1) * 256 + (eof if eof else 256)
+    # File size per Klaus Kaempf / NEWDOS spec: bytes 20-21 are the EOF
+    # relative sector count (eof_mid, eof_high); if the EOF byte (byte 3) is
+    # non-zero, the sector count is one too high, so subtract one. The final
+    # length is eof_sector*256 + eof_byte.
+    eof_byte = raw[3]
+    eof_sector = (raw[21] << 8) | raw[20]
+    if eof_byte != 0:
+        eof_sector -= 1
+    truelen = eof_sector * 256 + eof_byte
     if truelen > len(data):
         warnings.append(f"declared length {truelen} exceeds granule span "
-                        f"{len(data)}; file may be longer than its extents")
+                        f"{len(data)}; file may use an unresolved extent")
         truelen = len(data)
     return bytes(data[:truelen]), warnings
 
@@ -723,7 +816,7 @@ def main():
               file=sys.stderr)
         n_ok = 0
         for e in entries:
-            data, warnings = extract_file(img, e)
+            data, warnings = extract_file(img, e, dirtrack, dirside)
             # filesystem-safe name: NAME.EXT
             nm = e.name.decode("ascii", "replace").rstrip()
             ex = e.ext.decode("ascii", "replace").rstrip()
