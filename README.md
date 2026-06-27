@@ -28,14 +28,32 @@ The system as it ran:
   Dr. H.-J. Soll, 1987) ported to the TRS-80 Model I in 1989. BASIC source
   included.
 - **Tooling** — Python utilities for parsing DMK images, decoding NEWDOS/80
-  directories, identifying the OS via boot-sector signatures, and extracting
-  BASIC source.
+  and G-DOS directories, identifying the OS via boot-sector signatures, and
+  extracting files byte-for-byte. See **[trsextract](diskimages/NewDos/trsextract.md)**,
+  a native, dependency-free directory lister and file extractor.
 - **Emulator** — a compiled macOS build of SDLTRS, plus a configuration file
   to run the disks under emulation.
 
 ## Disk images
 
 [Disk images (DMK) — NEWDOS](diskimages/NewDos/diskimages.md)
+
+## Reading and extracting disks (trsextract)
+
+**[trsextract](diskimages/NewDos/trsextract.md)** is a native Python 3 tool
+(no emulator, no Windows, no external dependencies) that lists directories and
+extracts files byte-exact from NEWDOS/80 and G-DOS disk images. It
+auto-detects disk geometry (sides, density, granules-per-lump) and has been
+validated against authoritative TRSTools extractions across single-sided
+single-density G-DOS and double-sided double-density NEWDOS disks.
+
+```
+python3 trsextract.py DISK.dmk                 # list the directory
+python3 trsextract.py DISK.dmk -o OUTDIR/      # extract all files
+```
+
+See the **[trsextract documentation](diskimages/NewDos/trsextract.md)** for
+full usage, supported geometries, and notes.
 
 ## Running on macOS (SDLTRS)
 
