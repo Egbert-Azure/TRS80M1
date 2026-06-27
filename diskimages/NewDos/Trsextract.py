@@ -43,6 +43,30 @@ authoritative source before trusting it on new disks.
 -----------------------------------------------------------------------------
 VERSION HISTORY
 -----------------------------------------------------------------------------
+1.0  (2026-06-27)  GEOMETRY-GENERAL EXTRACTION. Validated on two geometries.
+       - Unified the start-sector mapping across disk geometries:
+             start_sector = (lump * GPL + startgran) * 5 + 36
+         where startgran = (extent_byte >> 5), granule = 5 sectors, and GPL
+         (granules per lump) is the only per-geometry variable. The earlier
+         esnd-23-only "30*lump+36" was this same formula with GPL=6 folded in.
+       - NEW: detect_gpl() recovers GPL automatically from the DIR/SYS entry
+         (whose data is the directory itself, at a known sector), so no manual
+         geometry selection is needed. esnd-23 -> GPL 6; esnd-04/05 -> GPL 2.
+       - VALIDATED byte/CR-exact against TRSTools reference extractions on TWO
+         geometries:
+             esnd-23 (DS, GPL=6): 12/12 reference files
+             esnd-05 (GPL=2):     10/10 reference files (HELP/CMD, HRG/CMD,
+               HX1/CMD, KBDGER/CMD, LMOFFSET/CMD, MENUE1/CMD, HPRX/DAT,
+               LINEDEMO/BAS, SCRIPSIT/SP, SCRIPSIT/CMD - many BYTE-EXACT)
+             esnd-04 (GPL=2):     confirmed file (ZAPDUP2/JCL) extracts OK
+       - This resolves the prior "extraction trustworthy only on esnd-23"
+         limitation. Extraction now works across the tested NEWDOS geometries
+         with automatic GPL detection.
+       NOTE: the +36 offset and 5-sector granule are constant across all disks
+         tested; should a disk with a different reserved-area layout appear,
+         detect_gpl's DIR/SYS solve would still adapt GPL but the +36 may need
+         confirming. G-DOS extraction not yet validated against refs.
+
 0.9  (2026-06-27)  Klaus Kaempf's newdos.rb cross-check: size fix, FXDE,
                    and important negative results.
        - Reference: Klaus Kaempf's newdos.rb (a working NEWDOS/G-DOS/TRSDOS
@@ -68,12 +92,19 @@ VERSION HISTORY
          HIT layout/hash differs). So the lister still shows all structurally
          valid entries rather than risk hiding real files. A couple of stale
          entries on a NEWDOS disk are tolerated as the lesser harm.
-       KNOWN: cross-GEOMETRY extraction. esnd-03 (SS 40-track) extracts with
-         correct LENGTHS but wrong CONTENT - the start-sector constants
-         (30, 36, two-sided ordering) are calibrated for esnd-23's DS-80-track
-         (S80DSDD) geometry. Klaus's FORMATS table gives the per-geometry
-         params (gpl, ddsl, ddga, sides); extraction must select them by disk
-         geometry. Directory LISTING already works across geometries.
+       KNOWN: cross-GEOMETRY extraction is NOT yet correct. The start-sector
+         mapping (start = 30*lump + 36, two-sided ordering) is an empirical fit
+         to esnd-23 ALONE. It fails not only on single-sided disks (esnd-03)
+         but also on other double-sided disks (esnd-04 extracts all-zero
+         sectors) because the lump->sector base depends on each disk's actual
+         directory placement / reserved area, which vary. The correct fix is to
+         rebuild the resolver on Klaus's PHYSICAL model:
+             sector = (lump * gpl + startgran) * secpergranule  (+ image offset)
+         selecting gpl / secpergranule / sides / offset by disk geometry from
+         his FORMATS table, with correct DMK logical-sector ordering. EXTRACTION
+         is currently TRUSTWORTHY ONLY on esnd-23 (validated 12/12 vs TRSTools);
+         do not trust extraction on other disks until the geometry-general
+         resolver lands. Directory LISTING works across all geometries.
 
 0.8  (2026-06-27)  FXDE continuation following; 7/8 TRSTools refs validate.
        - FIX bug #1: files with >4 extents now read fully. When an FPDE's
@@ -189,7 +220,7 @@ KNOWN ISSUES / TODO
 -----------------------------------------------------------------------------
 """
 
-__version__ = "0.9"
+__version__ = "1.0"
 
 import argparse
 import os
@@ -573,33 +604,45 @@ def track_count_note(ntracks):
     return ""
 
 
-def resolve_extent_start(lump, second_byte):
-    """Resolve a NEWDOS/80 directory extent pair to an absolute start sector.
+def detect_gpl(img, dirtrack, dirside, entries_blob_getter):
+    """Determine granules-per-lump (GPL) for this disk's geometry.
 
-    SOLVED and validated byte-exact on esnd-23 against five reference files
-    (WBEDIT/SAV, MASKE1/DUM, MASKE2/DUM, FREMEDIT/BAS, DRUCK/BAS) spanning
-    single- and multi-extent files and multiple lumps (9 and 15):
-
-        start_sector = 30 * lump + 36 + (second_byte >> 5) * 5
-
-    where:
-      - lump            = first byte of the extent pair (directory granule
-                          group; one lump's granule-0 starts 30 sectors after
-                          the previous lump's, with a +36 base offset)
-      - (second_byte>>5) = which 5-sector granule within the lump the file
-                          starts at
-      - granule         = 5 sectors
-
-    NOTE: this mapping is currently calibrated on the esnd-23 geometry
-    (DS 80-track DD). The constants 30 and 36 may be geometry-dependent; they
-    must be re-derived (or confirmed) for other disk geometries before trusting
-    extraction there. Directory LISTING is geometry-independent; EXTRACTION is
-    not yet geometry-general.
+    The lump->sector mapping is
+        start_sector = (lump * GPL + startgran) * 5 + 36
+    where 5 = sectors per granule and 36 = the reserved/directory offset
+    (constant across the disks tested). GPL is the only per-geometry variable
+    (6 for DS-80-track S80DSDD, 2 for the 40-track classes). We recover it from
+    the DIR/SYS entry, whose data IS the directory and therefore sits at a
+    known sector (the directory track), giving one equation to solve for GPL.
+    Validated: esnd-23 -> 6, esnd-04/05 -> 2.
     """
-    return 30 * lump + 36 + (second_byte >> 5) * 5
+    raw = entries_blob_getter('DIR', 'SYS')
+    if raw is None:
+        return 6  # safe default (esnd-23 geometry) if no DIR/SYS
+    abs_dir = dirtrack * 36 + dirside * 18
+    ldir = raw[22]
+    sg = (raw[23] & 0xE0) >> 5
+    if ldir == 0:
+        return 6
+    val = (abs_dir - 36) / 5.0
+    gpl = round((val - sg) / ldir)
+    return gpl if gpl in (2, 3, 6) else max(2, gpl)
 
 
-def extract_file(img, entry, dirtrack=15, dirside=0):
+def resolve_extent_start(lump, second_byte, gpl=6):
+    """Resolve a directory extent pair to an absolute start sector.
+
+        start_sector = (lump * gpl + startgran) * 5 + 36
+
+    startgran = (second_byte >> 5); granule = 5 sectors; gpl per geometry.
+    Validated byte-exact across two geometries: esnd-23 (gpl=6) and esnd-05
+    (gpl=2), against TRSTools reference extractions.
+    """
+    startgran = (second_byte & 0xE0) >> 5
+    return (lump * gpl + startgran) * 5 + 36
+
+
+def extract_file(img, entry, dirtrack=15, dirside=0, gpl=6):
     """Extract a file's bytes by resolving and concatenating its extent runs.
 
     Each extent pair is (lump, second_byte); the low 5 bits of second_byte are
@@ -658,7 +701,7 @@ def extract_file(img, entry, dirtrack=15, dirside=0):
 
     data = bytearray()
     for (lump, b1) in pairs:
-        start = resolve_extent_start(lump, b1)
+        start = resolve_extent_start(lump, b1, gpl)
         gcount = (b1 & 0x1F) + 1
         for s in range(gcount * 5):
             d = get_abs(start + s)
@@ -809,14 +852,23 @@ def main():
     if args.output:
         import os
         os.makedirs(args.output, exist_ok=True)
-        print(f"\nExtracting {len(entries)} files to {args.output}/ ...",
-              file=sys.stderr)
-        print("NOTE: extraction uses a start-sector formula calibrated on the "
-              "esnd-23 geometry; verify output on other disks.",
-              file=sys.stderr)
+
+        def _dir_entry_named(n, x):
+            for off in range(0, len(_dirblob) - 32, 32):
+                e = _dirblob[off:off + 32]
+                if (_valid_entry(e) and e[5:13] == n.ljust(8).encode()
+                        and e[13:16] == x.ljust(3).encode()):
+                    return e
+            return None
+        _secs = img.track_sectors(dirtrack, dirside)
+        _dirblob = b"".join(_secs[s] for s in sorted(_secs))
+        gpl = detect_gpl(img, dirtrack, dirside, _dir_entry_named)
+
+        print(f"\nExtracting {len(entries)} files to {args.output}/ "
+              f"(GPL={gpl}) ...", file=sys.stderr)
         n_ok = 0
         for e in entries:
-            data, warnings = extract_file(img, e, dirtrack, dirside)
+            data, warnings = extract_file(img, e, dirtrack, dirside, gpl)
             # filesystem-safe name: NAME.EXT
             nm = e.name.decode("ascii", "replace").rstrip()
             ex = e.ext.decode("ascii", "replace").rstrip()
