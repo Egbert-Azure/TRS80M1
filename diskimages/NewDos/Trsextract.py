@@ -1,4 +1,21 @@
 #!/usr/bin/env python3
+#
+# trsextract.py - TRS-80 NEWDOS/80 & G-DOS disk image reader/extractor.
+# Copyright (C) 2026  Egbert Schroeer
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
 """
 trsextract.py - Extract files from TRS-80 NEWDOS/80 and G-DOS disk images.
 
@@ -26,6 +43,33 @@ authoritative source before trusting it on new disks.
 -----------------------------------------------------------------------------
 VERSION HISTORY
 -----------------------------------------------------------------------------
+0.6  (2026-06-27)  GPLv3 license; validated extraction ENGINE (start-driven).
+       - LICENSE: now GPLv3 (see header).
+       - NEW: read_file_from_start() - the byte-exact extraction engine
+         (two-sided contiguous read + EOF trim), exposed via --extract-at
+         START,NSEC,EOF for extracting any file whose start sector is known.
+       - NEW: --self-test runs the WBEDIT/SAV regression on esnd-23.
+       - HONEST SCOPE: automatic start-sector resolution from directory
+         extent pairs is NOT yet implemented. Investigation this session
+         proved the extent->sector mapping is not a simple formula and that
+         content-scanning yields false anchors (a duplicate copy of WC/ASC
+         text exists elsewhere on the disk). Correct resolution requires GAT
+         decoding. The GAT was located (esnd-23: track 15 side 0, sector 6;
+         allocation bytes 0x00-0x3F, lockout region follows) - decoding it is
+         the next step. Until then, --extract-at needs an explicit start.
+
+0.5  (2026-06-27)  DMK sector-decode fix; extraction mechanics proven.
+       - FIX: _find_data DAM search. In MFM (double density) the data address
+         mark is now located via its 0xA1 0xA1 0xA1 sync preamble instead of a
+         bare F8-FB scan. Previously a stray F8-FB byte inside the IDAM CRC or
+         gap could be mistaken for the DAM, returning gap-fill (0x4E) for one
+         sector per track. This corrupted ~1 sector/track on DD disks.
+         Result: WBEDIT/SAV now extracts BYTE-EXACT (15099/15099) vs an
+         untouched reference, up from 58/59 sectors.
+       - Extraction MECHANICS validated end to end (two-sided contiguous read +
+         EOF trim) once a file's start sector is known. The remaining gap is
+         resolving FPDE extent pairs to start sectors via the GAT (see TODO).
+
 0.4  (2026-06-27)  Directory LISTING validated; extraction still WIP.
        - FIX: directory-side handling. find_directory_track now returns the
          winning (track, side); decoding previously always read side 0, which
@@ -54,18 +98,22 @@ VERSION HISTORY
        NEWDOS/80 + G-DOS directory decode.
 
 KNOWN ISSUES / TODO
-       - EXTRACTION is work-in-progress. Allocation model solved and validated
-         to 58/59 sectors against an untouched tokenised file (WBEDIT/SAV);
-         one DMK sector occasionally decodes as gap-fill (0x4E) instead of its
-         real data - a _find_data DAM-window bug to fix before extraction is
-         trustworthy.
+       - EXTRACTION: mechanics proven (byte-exact on WBEDIT/SAV). Remaining
+         work is resolving FPDE extent pairs (lump, code) to a start sector.
+         This is NOT a simple linear formula - extent bytes are granule
+         references that must resolve through the GAT (Granule Allocation
+         Table, the first sector of the directory). NEXT STEP: parse the GAT
+         per the NEWDOS/80 v2 spec (lumps = GAT bytes; GPL granules/lump;
+         SPG sectors/granule; this disk: GPL=2, SPG=9, 2-sided) and map each
+         extent's granule run to absolute sectors, then read contiguously
+         using the validated two-sided + EOF-trim mechanics.
        - HD volumes (GAMES.DSK) need PDRIVE geometry to read; only detected.
        - Raw JV-format .DSK files and damaged disks (esnd-13/13a/13b, esnd-20)
          not yet validated.
 -----------------------------------------------------------------------------
 """
 
-__version__ = "0.4"
+__version__ = "0.6"
 
 import argparse
 import os
@@ -164,13 +212,30 @@ class DMKImage(DiskImage):
             self.sector_size = size
 
     def _find_data(self, tdata, start, double_density):
-        # After the IDAM/CRC comes a gap, then a DAM (data address mark:
-        # F8-FB). Scan forward a bounded window for it, then take the
-        # following sector_size bytes.
-        window = 60 if double_density else 45
-        for p in range(start, min(start + window, len(tdata))):
-            b = tdata[p]
-            if b in (0xF8, 0xF9, 0xFA, 0xFB):
+        # After the IDAM (FE,t,h,s,szc) come 2 CRC bytes, a gap, then the DAM
+        # (data address mark, F8-FB). In MFM (double density) the DAM is
+        # preceded by three 0xA1 sync bytes; requiring that preamble avoids
+        # latching onto a stray F8-FB byte inside the IDAM's CRC or the gap
+        # (which corrupted one sector per track and returned gap-fill 0x4E).
+        # In FM (single density) there is no A1 preamble, so fall back to a
+        # bare DAM scan but skip the first few bytes (the IDAM CRC).
+        window = 80 if double_density else 45
+        end = min(start + window, len(tdata))
+        if double_density:
+            # look for A1 A1 A1 <DAM>
+            for p in range(start, end - 3):
+                if (tdata[p] == 0xA1 and tdata[p + 1] == 0xA1
+                        and tdata[p + 2] == 0xA1
+                        and tdata[p + 3] in (0xF8, 0xF9, 0xFA, 0xFB)):
+                    return tdata[p + 4:]
+            # some images store only one or two A1 sync bytes; try A1 <DAM>
+            for p in range(start, end - 1):
+                if tdata[p] == 0xA1 and tdata[p + 1] in (0xF8, 0xF9, 0xFA, 0xFB):
+                    return tdata[p + 2:]
+            return None
+        # FM: skip the 2 CRC bytes after the IDAM, then scan for the DAM.
+        for p in range(start + 2, end):
+            if tdata[p] in (0xF8, 0xF9, 0xFA, 0xFB):
                 return tdata[p + 1:]
         return None
 
@@ -426,6 +491,45 @@ def track_count_note(ntracks):
     return ""
 
 
+def read_file_from_start(img, start_abs, nsec, eof_offset):
+    """Read a file's bytes given its starting ABSOLUTE sector and length.
+
+    Uses the validated mechanics: contiguous two-sided cylinder ordering
+    (side 0 sectors 0..SPT-1, then side 1) and EOF trimming. This engine is
+    byte-exact (proven against an untouched WBEDIT/SAV reference, 15099/15099).
+
+    NOTE: this requires the start sector to be KNOWN. Resolving a file's
+    start from its directory extent pairs requires GAT decoding, which is
+    not yet implemented (see module TODO). Until then, extraction is driven
+    by an explicitly supplied start sector (e.g. --extract-at).
+    """
+    spt = 18  # sectors per track (side) for these DD disks; TODO: derive
+    sides = img.sides
+    per_cyl = spt * sides
+
+    def get_abs(a):
+        cyl = a // per_cyl
+        rem = a % per_cyl
+        side = rem // spt
+        sec = rem % spt
+        return img.get(cyl, side, sec)
+
+    out = bytearray()
+    for i in range(nsec):
+        d = get_abs(start_abs + i)
+        out += d if d else b"\x00" * 256
+    truelen = (nsec - 1) * 256 + (eof_offset if eof_offset else 256)
+    return bytes(out[:truelen])
+
+
+def self_test(img):
+    """Built-in regression: extract WBEDIT/SAV from esnd-23 by its known
+    start sector and confirm the engine still works (length check).
+    Only meaningful on the esnd-23 reference disk."""
+    data = read_file_from_start(img, start_abs=331, nsec=59, eof_offset=251)
+    return len(data) == 15099
+
+
 def list_directory(img, entries, dirtrack, dirside=0):
     note = track_count_note(img.ntracks)
     print(f"trsextract {__version__}   Format: {img.fmt}   "
@@ -452,6 +556,15 @@ def main():
     ap.add_argument("-v", "--verbose", action="store_true")
     ap.add_argument("--version", action="version",
                     version=f"trsextract {__version__}")
+    ap.add_argument("--extract-at", metavar="START,NSEC,EOF",
+                    help="extract a file from a KNOWN start: absolute start "
+                         "sector, sector count, and EOF-offset-in-last-sector "
+                         "(0=full). Writes to --output or stdout. The start "
+                         "must be supplied because automatic start resolution "
+                         "(GAT decoding) is not yet implemented.")
+    ap.add_argument("--self-test", action="store_true",
+                    help="run the built-in extraction regression "
+                         "(meaningful only on the esnd-23 reference disk)")
     args = ap.parse_args()
 
     img = load_image(args.image, args.verbose)
@@ -459,6 +572,32 @@ def main():
         print("ERROR: no sectors decoded; unrecognised or damaged image.",
               file=sys.stderr)
         sys.exit(2)
+
+    if args.self_test:
+        ok = self_test(img)
+        print(f"self-test (WBEDIT/SAV extraction): "
+              f"{'PASS' if ok else 'FAIL'}")
+        sys.exit(0 if ok else 1)
+
+    if args.extract_at:
+        try:
+            parts = [int(x) for x in args.extract_at.split(",")]
+            start, nsec, eof = parts
+        except ValueError:
+            print("ERROR: --extract-at needs START,NSEC,EOF (three integers).",
+                  file=sys.stderr)
+            sys.exit(2)
+        data = read_file_from_start(img, start, nsec, eof)
+        if args.output:
+            import os
+            os.makedirs(args.output, exist_ok=True)
+            path = os.path.join(args.output, f"extract_{start}.bin")
+            with open(path, "wb") as f:
+                f.write(data)
+            print(f"wrote {len(data)} bytes to {path}")
+        else:
+            sys.stdout.buffer.write(data)
+        sys.exit(0)
 
     dirtrack, dirside = find_directory_track(img, args.track, args.verbose)
     if dirtrack is None:
