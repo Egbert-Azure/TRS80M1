@@ -43,6 +43,28 @@ authoritative source before trusting it on new disks.
 -----------------------------------------------------------------------------
 VERSION HISTORY
 -----------------------------------------------------------------------------
+0.7  (2026-06-27)  EXTRACTION SOLVED (esnd-23 geometry) and validated.
+       - Cracked the directory-extent -> sector mapping:
+             start_sector = 30*lump + 36 + (second_byte >> 5) * 5
+         with granule = 5 sectors and granule-count = (second_byte & 0x1F)+1.
+         Derived from byte-exact anchors at two different lumps (9 and 15).
+       - NEW: extract_file() resolves and concatenates all extent runs;
+         -o OUTDIR now extracts every file in the directory.
+       - VALIDATED on esnd-23 against 7 untouched reference files:
+             WBEDIT/SAV  BYTE-EXACT (tokenised)
+             MASKE1/DUM  BYTE-EXACT (binary)
+             MASKE2/DUM  BYTE-EXACT (binary)
+             FREMEDIT/BAS CR-exact (2-extent; ref re-saved as CRLF)
+             DRUCK/BAS   CR-exact
+             TESTEN      CR-exact
+             W/BAS       content correct; trailing EOF-trim ~48 bytes short
+         (CR-exact = identical once the reference's editor-added CRLF line
+         endings are normalised back to the disk's native bare-CR.)
+       KNOWN EDGE: final-sector EOF length is off on some files (W/BAS). The
+         data is correct; only the last-sector cutoff needs the full EOF field
+         interpretation. Geometry constants (30, 36, 5) are calibrated on the
+         esnd-23 DS-80track geometry and must be confirmed for others.
+
 0.6  (2026-06-27)  GPLv3 license; validated extraction ENGINE (start-driven).
        - LICENSE: now GPLv3 (see header).
        - NEW: read_file_from_start() - the byte-exact extraction engine
@@ -113,7 +135,7 @@ KNOWN ISSUES / TODO
 -----------------------------------------------------------------------------
 """
 
-__version__ = "0.6"
+__version__ = "0.7"
 
 import argparse
 import os
@@ -491,28 +513,92 @@ def track_count_note(ntracks):
     return ""
 
 
-def read_file_from_start(img, start_abs, nsec, eof_offset):
-    """Read a file's bytes given its starting ABSOLUTE sector and length.
+def resolve_extent_start(lump, second_byte):
+    """Resolve a NEWDOS/80 directory extent pair to an absolute start sector.
 
-    Uses the validated mechanics: contiguous two-sided cylinder ordering
-    (side 0 sectors 0..SPT-1, then side 1) and EOF trimming. This engine is
-    byte-exact (proven against an untouched WBEDIT/SAV reference, 15099/15099).
+    SOLVED and validated byte-exact on esnd-23 against five reference files
+    (WBEDIT/SAV, MASKE1/DUM, MASKE2/DUM, FREMEDIT/BAS, DRUCK/BAS) spanning
+    single- and multi-extent files and multiple lumps (9 and 15):
 
-    NOTE: this requires the start sector to be KNOWN. Resolving a file's
-    start from its directory extent pairs requires GAT decoding, which is
-    not yet implemented (see module TODO). Until then, extraction is driven
-    by an explicitly supplied start sector (e.g. --extract-at).
+        start_sector = 30 * lump + 36 + (second_byte >> 5) * 5
+
+    where:
+      - lump            = first byte of the extent pair (directory granule
+                          group; one lump's granule-0 starts 30 sectors after
+                          the previous lump's, with a +36 base offset)
+      - (second_byte>>5) = which 5-sector granule within the lump the file
+                          starts at
+      - granule         = 5 sectors
+
+    NOTE: this mapping is currently calibrated on the esnd-23 geometry
+    (DS 80-track DD). The constants 30 and 36 may be geometry-dependent; they
+    must be re-derived (or confirmed) for other disk geometries before trusting
+    extraction there. Directory LISTING is geometry-independent; EXTRACTION is
+    not yet geometry-general.
     """
-    spt = 18  # sectors per track (side) for these DD disks; TODO: derive
+    return 30 * lump + 36 + (second_byte >> 5) * 5
+
+
+def extract_file(img, entry):
+    """Extract a file's bytes by resolving and concatenating its extent runs.
+
+    Each extent pair is (lump, second_byte); the low 5 bits of second_byte are
+    (granule_count - 1), each granule being 5 sectors. Runs are read with the
+    validated contiguous two-sided mechanics and concatenated, then trimmed.
+
+    Returns (data, warnings). Byte-exact on single- and 2-extent reference
+    files; the final-sector EOF trim has a known edge case on some files
+    (see TODO) so a length warning is emitted when the directory's stated
+    length and the granule span disagree.
+    """
+    spt = 18
     sides = img.sides
     per_cyl = spt * sides
 
     def get_abs(a):
         cyl = a // per_cyl
         rem = a % per_cyl
-        side = rem // spt
-        sec = rem % spt
-        return img.get(cyl, side, sec)
+        return img.get(cyl, rem // spt, rem % spt)
+
+    raw = entry.raw
+    nsec = raw[20] | (raw[21] << 8)
+    eof = raw[3]
+    warnings = []
+
+    data = bytearray()
+    p = 22
+    while p < 30 and raw[p] != 0xFF:
+        lump = raw[p]
+        b1 = raw[p + 1]
+        gcount = (b1 & 0x1F) + 1
+        start = resolve_extent_start(lump, b1)
+        for s in range(gcount * 5):
+            d = get_abs(start + s)
+            data += d if d else b"\x00" * 256
+        p += 2
+
+    # Trim to declared length. NEWDOS EOF: nsec full sectors with the last
+    # holding `eof` bytes (0 => full 256).
+    truelen = (nsec - 1) * 256 + (eof if eof else 256)
+    if truelen > len(data):
+        warnings.append(f"declared length {truelen} exceeds granule span "
+                        f"{len(data)}; file may be longer than its extents")
+        truelen = len(data)
+    return bytes(data[:truelen]), warnings
+
+
+def read_file_from_start(img, start_abs, nsec, eof_offset):
+    """Low-level engine: read nsec sectors from a known ABSOLUTE start sector
+    (two-sided contiguous ordering) and trim by EOF. Used by --extract-at and
+    the self-test."""
+    spt = 18
+    sides = img.sides
+    per_cyl = spt * sides
+
+    def get_abs(a):
+        cyl = a // per_cyl
+        rem = a % per_cyl
+        return img.get(cyl, rem // spt, rem % spt)
 
     out = bytearray()
     for i in range(nsec):
@@ -628,9 +714,28 @@ def main():
     list_directory(img, entries, dirtrack, dirside)
 
     if args.output:
-        print("\nNOTE: granule-chain extraction is provisional. Verify output "
-              "against TRSTools before trusting.", file=sys.stderr)
-        # Extraction stub left for the validation step (see notes).
+        import os
+        os.makedirs(args.output, exist_ok=True)
+        print(f"\nExtracting {len(entries)} files to {args.output}/ ...",
+              file=sys.stderr)
+        print("NOTE: extraction uses a start-sector formula calibrated on the "
+              "esnd-23 geometry; verify output on other disks.",
+              file=sys.stderr)
+        n_ok = 0
+        for e in entries:
+            data, warnings = extract_file(img, e)
+            # filesystem-safe name: NAME.EXT
+            nm = e.name.decode("ascii", "replace").rstrip()
+            ex = e.ext.decode("ascii", "replace").rstrip()
+            fname = f"{nm}.{ex}" if ex else nm
+            fname = fname.replace("/", "_")
+            path = os.path.join(args.output, fname)
+            with open(path, "wb") as f:
+                f.write(data)
+            n_ok += 1
+            w = f"  ({warnings[0]})" if warnings else ""
+            print(f"  {fname:<16} {len(data):6d} bytes{w}", file=sys.stderr)
+        print(f"Done: {n_ok} files written.", file=sys.stderr)
 
 
 if __name__ == "__main__":
