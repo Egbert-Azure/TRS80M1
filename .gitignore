@@ -1,2 +1,39 @@
+# ─────────────────────────────────────────────────────────────
+# .gitignore for the TRS80M1 archive/working repo
+#
+# Keep disk images and emulator binaries OUT of GitHub. They are
+# large preservation artifacts and/or rebuildable binaries that
+# do not belong in version control.
+# ─────────────────────────────────────────────────────────────
 
-TRS80-M1/
+# ── Emulator binaries (rebuildable; never upload) ────────────
+sdltrs
+sdl2trs
+sdl2trs64
+*.exe
+sdltrs-version.txt
+sdltrs-src/
+
+# ── Disk images & media — NEVER upload to GitHub ─────────────
+*.dmk
+*.dsk
+*.DMK
+*.DSK
+*.jv1
+*.jv3
+*.hdv
+*.hdr
+*.cas
+*.wav
+
+# ── ROM files (often copyrighted — keep off GitHub) ──────────
+*.rom
+*.ROM
+*.bin
+
+# ── macOS cruft ──────────────────────────────────────────────
+.DS_Store
+
+# ── Editor ───────────────────────────────────────────────────
+.vscode/
+*.swp
