@@ -1,7 +1,7 @@
 # TRS80M1
 
 Software, disk images, and tooling for a **TRS-80 Model I** equipped with a
-**Schmidtke Elektronik HRG1-B** high-resolution graphics card.
+**RB Electronic (Rolf Best) HRG-1B** high-resolution graphics card.
 
 My first "real" computer — this repository preserves its disks and the tools
 used to read them.
@@ -11,7 +11,8 @@ used to read them.
 The system as it ran:
 
 - **TRS-80 Model I** with a double-density floppy controller upgrade
-- **Schmidtke Elektronik HRG1-B** high-resolution graphics card
+- **RB Electronic (Rolf Best) HRG-1B** high-resolution graphics card
+  (RB Electronic GmbH, Eitorf)
 - **Four floppy drives** — two 80-track, two 40-track
 - **NEWDOS/80 v2.0** (Apparat Inc.), heavily modified, including a custom
   SYS-extension scheme
@@ -60,7 +61,7 @@ full usage, supported geometries, and notes.
 
 The disks run under **SDLTRS / SDL2TRS**, a TRS-80 Model I/III/4/4P emulator
 derived from Tim Mann's xtrs, maintained by Jens Günther at
-<https://gitlab.com/jengun/sdltrs>. In Model I mode it emulates the HRG1-B
+<https://gitlab.com/jengun/sdltrs>. In Model I mode it emulates the HRG-1B
 graphics card, which is why these disks run correctly under it.
 
 ### Maintained launcher: SDLTRS-Wrapper
