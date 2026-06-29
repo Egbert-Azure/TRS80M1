@@ -31,12 +31,13 @@ The system as it ran:
   and G-DOS directories, identifying the OS via boot-sector signatures, and
   extracting files byte-for-byte. See **[trsextract](diskimages/NewDos/trsextract.md)**,
   a native, dependency-free directory lister and file extractor.
-- **Emulator** — a compiled macOS build of SDLTRS, plus a configuration file
-  to run the disks under emulation.
+- **Emulation** — run the disks under SDLTRS on macOS. See
+  [Running on macOS](#running-on-macos-sdltrs) below; the maintained launcher
+  now lives in its own repository.
 
 ## Disk images
 
-[Disk images (DMK) — NEWDOS](diskimages/NewDos/diskimages.md)
+[Disk images (DMK) — NEWDOS](diskimages/diskimages.md)
 
 ## Reading and extracting disks (trsextract)
 
@@ -57,33 +58,34 @@ full usage, supported geometries, and notes.
 
 ## Running on macOS (SDLTRS)
 
-The disks run under **SDLTRS**, a TRS-80 Model I/III/4/4P emulator derived
-from Tim Mann's xtrs. A compiled macOS build is included in this repository,
-so there is no need to build it yourself. ROM images are not bundled with the
-emulator and must be supplied separately.
+The disks run under **SDLTRS / SDL2TRS**, a TRS-80 Model I/III/4/4P emulator
+derived from Tim Mann's xtrs, maintained by Jens Günther at
+<https://gitlab.com/jengun/sdltrs>. In Model I mode it emulates the HRG1-B
+graphics card, which is why these disks run correctly under it.
 
-A configuration file (`.t8c`) sets the machine type, attached disk images,
-and ROM path. **This file is a starting point — edit it to match your own
-paths and the disks you want mounted before running.**
+### Maintained launcher: SDLTRS-Wrapper
 
-### Launch with Automator
+The recommended way to run the disks on macOS is the **SDLTRS-Wrapper**, a
+native SwiftUI launcher in its own repository:
 
-An Automator application wraps the launch so the emulator can be started by
-double-clicking instead of from the command line:
+> **https://github.com/Egbert-Azure/SDLTRS-Wrapper**
 
-1. Create a new **Application** in Automator.
-2. Add a **Run Shell Script** action.
-3. Point it at the SDLTRS binary and the config file, for example:
+It provides a real macOS window with drag-and-drop floppy and hard-disk slots,
+machine presets (including the TCS Genie IIIs), ROM and `.t8c` config
+selection, and a helper that builds the current **`sdl2` branch** of SDLTRS
+from source (hardware rendering, resizable window; binary named `sdl2trs`).
 
-   ```bash
-   /path/to/sdltrs -conf /path/to/your.t8c
-   ```
+> **Note:** the older pre-compiled SDLTRS binary and Automator launcher
+> previously kept in this repository are **no longer updated**. Use the
+> SDLTRS-Wrapper repository above for the current build and launcher.
 
-4. Save as an application and double-click to run.
+ROM images are not bundled and must be supplied separately. A `.t8c`
+configuration file sets the machine type, attached disk images, and ROM path;
+treat any included one as a starting point and edit it to match your own paths.
 
-**Note:** SDLTRS 1.1 and newer number disk drives from 0 (earlier versions
-started at 1). Older config files and `-disk` / `-hard` options need
-adjusting for this change.
+> **Drive numbering:** SDLTRS 1.1 and newer number disk drives from 0 (earlier
+> versions started at 1). Older config files and `-disk` / `-hard` options
+> need adjusting for this change.
 
 ## Expert system
 
