@@ -19,9 +19,9 @@ Eigenständige Signaturen im Binärcode bestätigen die Autorschaft:
 
 Ein frisch erzeugtes, bootfähiges Master-Image dieses Systems steht zum Download bereit:
 
-- **Disk-Image:** [weikamp.dmk](dmk/weikamp.dmk) — 80 Spuren DS-DD, NEWDOS/80 (DL9YAPDOS), per SYSGEN von der Original-Systemdiskette erzeugt. Enthält das System (SYS0–SYS28) und die Boot-Spuren, ohne Anwenderdateien.
+- **Disk-Image:** [weikamp.dmk](DMK/weikamp.dmk) — 80 Spuren DS-DD, NEWDOS/80 (DL9YAPDOS), per SYSGEN von der Original-Systemdiskette erzeugt. Enthält das System (SYS0–SYS28) und die Boot-Spuren, ohne Anwenderdateien.
 
-![Weikamp NEWDOS/80 02.03.87 bootet unter SDLTRS](dmk/weikamp-boot.png)
+![Weikamp NEWDOS/80 02.03.87 bootet unter SDLTRS](DMK/weikamp-boot.png)
 
 *Boot unter SDLTRS (Model I / HRG-1B). `DIR` der sauberen Master-Diskette: 80 Spuren, 112 Datei-Einträge, 526 freie Granulen.*
 
