@@ -25,6 +25,8 @@ Ein frisch erzeugtes, bootfähiges Master-Image dieses Systems steht zum Downloa
 
 *Boot unter SDLTRS (Model I / HRG-1B). `DIR` der sauberen Master-Diskette: 80 Spuren, 112 Datei-Einträge, 526 freie Granulen.*
 
+Zusätzlich zu den deutschen Original-Texten (`DOS0387/TXT`, `UEBERSIC/TXT`) enthält das Image englische On-Disk-Übersetzungen im selben TRS-80-Format (`OVERVIEW/TXT`, `DOS0387E/TXT`). Diese Dateien sind nur innerhalb des DMK-Images vorhanden.
+
 ### 2. Architektur der Erweiterungen (verifiziert)
 
 Die Library wurde von SYS1/SYS in das ursprünglich ungenutzte **SYS15/SYS** ausgedehnt. SYS15 ist auf dieser Diskette nur 241 Byte groß und enthält im Wesentlichen die **Befehlsnamen-Tabelle** der erweiterten LIB — die ASCII-Namen sind direkt im File ablesbar:
@@ -143,6 +145,8 @@ A freshly generated, bootable master image of this system is available for downl
 ![Weikamp NEWDOS/80 02.03.87 booting under SDLTRS](DMK/weikamp-boot.png)
 
 *Booting under SDLTRS (Model I / HRG-1B). `DIR` of the clean master: 80 tracks, 112 file slots, 526 granules free.*
+
+In addition to the original German texts (`DOS0387/TXT`, `UEBERSIC/TXT`), the image includes English on-disk translations in the same TRS-80 format (`OVERVIEW/TXT`, `DOS0387E/TXT`). These files exist only inside the DMK image.
 
 ### 2. Extension Architecture (verified)
 
