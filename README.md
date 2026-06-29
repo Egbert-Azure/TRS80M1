@@ -25,6 +25,9 @@ The system as it ran:
   MFM double-density), plus hard-disk volumes.
 - **Disk inventory** — a catalog with per-disk volume labels, dates,
   geometries, density, OS identification, and file listings.
+- **NEWDOS/80 variants** — per-build documentation of the modified NEWDOS/80
+  disks (Weikamp 02.03.87 and others), verified from their SYS overlays.
+  See [NEWDOS/80 variants](diskimages/NewDos/dos-versions/README.md).
 - **Expert system** — a German rule-based expert system (originally by
   Dr. H.-J. Soll, 1987) ported to the TRS-80 Model I in 1989. BASIC source
   included.
@@ -56,6 +59,15 @@ python3 trsextract.py DISK.dmk -o OUTDIR/      # extract all files
 
 See the **[trsextract documentation](diskimages/NewDos/trsextract.md)** for
 full usage, supported geometries, and notes.
+
+## NEWDOS/80 variants
+
+These disks descend from NEWDOS/80 V2.0 (Apparat Inc.) but were extended by
+different authors. Each build is documented from its own SYS overlays —
+author signatures, LIB command tables, embedded strings — with release notes
+used as corroboration.
+
+[NEWDOS/80 variants](diskimages/NewDos/dos-versions/README.md)
 
 ## Running on macOS (SDLTRS)
 
