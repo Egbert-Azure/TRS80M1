@@ -138,9 +138,9 @@ Authorship is confirmed by signatures inside the binaries:
 
 A freshly generated, bootable master image of this system is available for download:
 
-- **Disk image:** [weikamp.dmk](dmk/weikamp.dmk) — 80-track DS-DD, NEWDOS/80 (DL9YAPDOS), generated via SYSGEN from the original system disk. Contains the system (SYS0–SYS28) and boot tracks, with no user files.
+- **Disk image:** [weikamp.dmk](DMK/weikamp.dmk) — 80-track DS-DD, NEWDOS/80 (DL9YAPDOS), generated via SYSGEN from the original system disk. Contains the system (SYS0–SYS28) and boot tracks, with no user files.
 
-![Weikamp NEWDOS/80 02.03.87 booting under SDLTRS](dmk/weikamp-boot.png)
+![Weikamp NEWDOS/80 02.03.87 booting under SDLTRS](DMK/weikamp-boot.png)
 
 *Booting under SDLTRS (Model I / HRG-1B). `DIR` of the clean master: 80 tracks, 112 file slots, 526 granules free.*
 
