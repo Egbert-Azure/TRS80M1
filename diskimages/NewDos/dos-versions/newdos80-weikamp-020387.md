@@ -15,6 +15,16 @@ Eigenständige Signaturen im Binärcode bestätigen die Autorschaft:
 - SYS25/SYS enthält den Klartext **`DL9YAP FEB. 1987`**.
 - Der von SYS26/SYS aufgerufene SYSGEN installiert auf der Zieldiskette ein DOS namens **`DL9YAPDOS`** (String `DL9YAPDOS INSTALLED`).
 
+### Saubere Master-Diskette (Download)
+
+Ein frisch erzeugtes, bootfähiges Master-Image dieses Systems steht zum Download bereit:
+
+- **Disk-Image:** [weikamp.dmk](dmk/weikamp.dmk) — 80 Spuren DS-DD, NEWDOS/80 (DL9YAPDOS), per SYSGEN von der Original-Systemdiskette erzeugt. Enthält das System (SYS0–SYS28) und die Boot-Spuren, ohne Anwenderdateien.
+
+![Weikamp NEWDOS/80 02.03.87 bootet unter SDLTRS](dmk/weikamp-boot.png)
+
+*Boot unter SDLTRS (Model I / HRG-1B). `DIR` der sauberen Master-Diskette: 80 Spuren, 112 Datei-Einträge, 526 freie Granulen.*
+
 ### 2. Architektur der Erweiterungen (verifiziert)
 
 Die Library wurde von SYS1/SYS in das ursprünglich ungenutzte **SYS15/SYS** ausgedehnt. SYS15 ist auf dieser Diskette nur 241 Byte groß und enthält im Wesentlichen die **Befehlsnamen-Tabelle** der erweiterten LIB — die ASCII-Namen sind direkt im File ablesbar:
@@ -123,6 +133,16 @@ An extended variant of **NEWDOS/80 V2.0** (originally Apparat Inc.), revised and
 Authorship is confirmed by signatures inside the binaries:
 - SYS25/SYS contains the plaintext **`DL9YAP FEB. 1987`**.
 - The SYSGEN in SYS26/SYS installs a DOS named **`DL9YAPDOS`** on the target disk (string `DL9YAPDOS INSTALLED`).
+
+### Clean master image (download)
+
+A freshly generated, bootable master image of this system is available for download:
+
+- **Disk image:** [weikamp.dmk](dmk/weikamp.dmk) — 80-track DS-DD, NEWDOS/80 (DL9YAPDOS), generated via SYSGEN from the original system disk. Contains the system (SYS0–SYS28) and boot tracks, with no user files.
+
+![Weikamp NEWDOS/80 02.03.87 booting under SDLTRS](dmk/weikamp-boot.png)
+
+*Booting under SDLTRS (Model I / HRG-1B). `DIR` of the clean master: 80 tracks, 112 file slots, 526 granules free.*
 
 ### 2. Extension Architecture (verified)
 
