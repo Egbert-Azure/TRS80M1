@@ -28,3 +28,6 @@ __pycache__/
 
 # Extracted file folders
 diskimages/**/*_extract/
+
+#no sdltrs config files
+*.t8c
