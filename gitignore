@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# Build artifacts
+build/
+*.app/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor
+*.swp
+*~
+
+# TRS-80 disk images — local only, never on GitHub
+diskimages/**/*.dmk
+diskimages/**/*.DMK
+diskimages/**/*.dsk
+diskimages/**/*.DSK
+diskimages/**/*.hdv
+diskimages/**/*.HDV
+diskimages/**/*.jv1
+diskimages/**/*.JV1
+diskimages/**/*.jv3
+diskimages/**/*.JV3
+
+# Extracted file folders
+diskimages/**/*_extract/
