@@ -1,3 +1,5 @@
+<!-- readme.md DMK-->
+<!-- (c) E. Schroeer -->
 # NEWDOS/80 variants
 
 Per-build documentation of the modified NEWDOS/80 disks in this collection. Each

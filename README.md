@@ -1,3 +1,5 @@
+<!-- readme.md main -->
+<!-- (c) E. Schroeer -->
 # TRS80M1
 
 Software, disk images, and tooling for a **TRS-80 Model I** equipped with a
@@ -5,6 +7,36 @@ Software, disk images, and tooling for a **TRS-80 Model I** equipped with a
 
 My first "real" computer — this repository preserves its disks and the tools
 used to read them.
+
+## Repository layout
+
+```
+TRS80M1/
+├── README.md                      ← you are here
+├── diskimages/                    the disk images, plus every document about them
+│   ├── README.md                  documentation index (start here)
+│   ├── Disk_Catalog.md            auto-generated catalog of every disk image
+│   ├── diskimages.md              annotated, screenshot-by-screenshot walkthrough
+│   ├── esnd-20a.md                notable disk: repaired esnd-20 (HRG/ACCEL3)
+│   ├── images/                    screenshots used by diskimages.md
+│   └── NewDos/
+│       ├── trsextract.md          trsextract tool documentation
+│       └── dos-versions/          per-build NEWDOS/80 edition docs
+│           ├── README.md          variants index
+│           ├── newdos80-weikamp-020387.md
+│           └── DMK/               disk image + boot screenshot per edition
+│               ├── weikamp.dmk
+│               └── weikamp-boot.png
+├── TRS80_Expertsystem/            German rule-based expert system (1989 port)
+│   └── EXPERTSYSTEM_REFERENCE.md
+├── rom/                           ROM images for the emulator
+│   ├── LEVEL2.ROM
+│   └── MODEL1.ROM
+└── LICENSE
+```
+
+> The maintained macOS launcher lives now in its own repository:
+> **[SDLTRS-Wrapper](https://github.com/Egbert-Azure/SDLTRS-Wrapper)**.
 
 ## Hardware
 
