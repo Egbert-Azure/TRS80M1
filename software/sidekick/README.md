@@ -8,7 +8,7 @@
 **Status:** Good. The on-disk SideKick assembler source is complete and clean.
 
 **Files here:** [`SIDEKICK.JV1`](SIDEKICK.JV1) (disk image) ·
-[`SIDEKICK.SRC`](SIDEKICK.SRC) (Z80 source, reference copy extracted from the disk)
+[`SIDEKICK.SRC`](SIDEKICK.Z80) (Z80 source, reference copy extracted from the disk)
 
 *Sources: the `SIDEKICK/SRC` Z80 source; Gerald Schröder's original article and
 listing in Club80 Nr. 17 (1986), pp. 8–15; Helmut Bernhardt's banker hardware
@@ -26,7 +26,7 @@ sources, not inferred.*
 
 ## 1. What SideKick is
 
-`SIDEKICK/SRC` is the complete, commented Z80 source of a resident utility that
+`SIDEKICK/Z80` is the complete, commented Z80 source of a resident utility that
 keeps **four independent "computers"** — four complete machine states — in
 bank-switched memory at once, and lets you hotkey between them. Only the active
 computer runs; the others are frozen. It is a fast manual context switch
