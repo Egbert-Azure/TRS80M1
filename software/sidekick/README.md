@@ -7,11 +7,20 @@
 **Directory:** Track 17, 23 file entries, 56 free granules (per `DIR` under SDLTRS)
 **Status:** Good. The on-disk SideKick assembler source is complete and clean.
 
+**Files here:** [`SIDEKICK.JV1`](SIDEKICK.JV1) (disk image) ·
+[`SIDEKICK.SRC`](SIDEKICK.SRC) (Z80 source, reference copy extracted from the disk)
+
 *Sources: the `SIDEKICK/SRC` Z80 source; Gerald Schröder's original article and
 listing in Club80 Nr. 17 (1986), pp. 8–15; Helmut Bernhardt's banker hardware
 in BHV-03 (1986), pp. 5–10; the disk directory under SDLTRS; and the JV1 byte
 image. Statements about authorship and mechanism are read from these primary
 sources, not inferred.*
+
+> **Note on extraction:** early trsextract runs returned zero-filled copies of
+> `CHAINTST/JCL` and `NWD80V2/XLF` on this disk — the disk carries both live
+> (attr `0x10`) and superseded (attr `0x00`) directory slots for those names,
+> and the dead slots were being read. This is a trsextract directory-liveness
+> issue, tracked separately; the disk itself is intact.
 
 ---
 
@@ -125,7 +134,7 @@ RAM-disk on **drive :4** — rather than as four parallel computers. So:
 
 | File | Type | Contents |
 |------|------|----------|
-| `SIDEKICK/SRC` | Z80 source | Multi-computer banker, commented (German); 11,146 bytes. Header credits Sopp / Bernhardt / G. Schröder 1986 / Günther 2024. |
+| [`SIDEKICK/SRC`](SIDEKICK.SRC) | Z80 source | Multi-computer banker, commented (German); 11,146 bytes. Header credits Sopp / Bernhardt / G. Schröder 1986 / Günther 2024. |
 | `SIDEKICK/CMD` | Program | Assembled SideKick. |
 | `EDTASM/CMD` | Assembler | Editor/assembler. |
 | `ZEUS/CMD`, `ZEUS/TXT` | Assembler + docs | ZEUS assembler with German on-disk help. |
