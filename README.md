@@ -70,6 +70,7 @@ Quick links:
 - **[Expert system reference](TRS80_Expertsystem/EXPERTSYSTEM_REFERENCE.md)** —
   a German rule-based expert system (Dr. H.-J. Soll, 1987) ported to the Model I
   in 1989.
+- **[Changelog](CHANGELOG.md)** — notable repository changes, newest first.
 
 ## Reading and extracting disks (trsextract)
 
@@ -118,4 +119,4 @@ treat any included one as a starting point and edit it to match your own paths.
 
 ## Author
 
-Egbert Schröer
+Egbert Schroeer
