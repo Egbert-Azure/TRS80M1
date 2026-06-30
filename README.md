@@ -18,30 +18,24 @@ The system as it ran:
   SYS-extension scheme
 - **G-DOS**, likewise modified, on some disks
 
-## Contents
+## Documentation
 
-- **Disk images** — archived floppies in DMK and DSK format, spanning
-  NEWDOS/80 and G-DOS volumes (35-, 40-, and 80-track; FM single-density and
-  MFM double-density), plus hard-disk volumes.
-- **Disk inventory** — a catalog with per-disk volume labels, dates,
-  geometries, density, OS identification, and file listings.
-- **NEWDOS/80 variants** — per-build documentation of the modified NEWDOS/80
-  disks (Weikamp 02.03.87 and others), verified from their SYS overlays.
-  See [NEWDOS/80 variants](diskimages/NewDos/dos-versions/README.md).
-- **Expert system** — a German rule-based expert system (originally by
-  Dr. H.-J. Soll, 1987) ported to the TRS-80 Model I in 1989. BASIC source
-  included.
-- **Tooling** — Python utilities for parsing DMK images, decoding NEWDOS/80
-  and G-DOS directories, identifying the OS via boot-sector signatures, and
-  extracting files byte-for-byte. See **[trsextract](diskimages/NewDos/trsextract.md)**,
-  a native, dependency-free directory lister and file extractor.
-- **Emulation** — run the disks under SDLTRS on macOS. See
-  [Running on macOS](#running-on-macos-sdltrs) below; the maintained launcher
-  now lives in its own repository.
+Start at the **[disk images & documentation index](diskimages/README.md)** —
+the curated front door, organized by subject (DOS editions, software, original
+work, notable disks) and pointing to the disk inventory.
 
-## Disk images
+Quick links:
 
-[Disk images (DMK) — NEWDOS](diskimages/diskimages.md)
+- **[Disk catalog](diskimages/Disk_Catalog.md)** — auto-generated index of every
+  disk image (geometry, file counts, distinctive files).
+- **[Annotated walkthrough](diskimages/diskimages.md)** — screenshot-by-screenshot
+  tour of the disks.
+- **[NEWDOS/80 variants](diskimages/NewDos/dos-versions/README.md)** — per-build
+  documentation of modified NEWDOS/80 disks (Weikamp 02.03.87 and others),
+  verified from their SYS overlays.
+- **[Expert system reference](TRS80_Expertsystem/EXPERTSYSTEM_REFERENCE.md)** —
+  a German rule-based expert system (Dr. H.-J. Soll, 1987) ported to the Model I
+  in 1989.
 
 ## Reading and extracting disks (trsextract)
 
@@ -56,18 +50,6 @@ single-density G-DOS and double-sided double-density NEWDOS disks.
 python3 trsextract.py DISK.dmk                 # list the directory
 python3 trsextract.py DISK.dmk -o OUTDIR/      # extract all files
 ```
-
-See the **[trsextract documentation](diskimages/NewDos/trsextract.md)** for
-full usage, supported geometries, and notes.
-
-## NEWDOS/80 variants
-
-These disks descend from NEWDOS/80 V2.0 (Apparat Inc.) but were extended by
-different authors. Each build is documented from its own SYS overlays —
-author signatures, LIB command tables, embedded strings — with release notes
-used as corroboration.
-
-[NEWDOS/80 variants](diskimages/NewDos/dos-versions/README.md)
 
 ## Running on macOS (SDLTRS)
 
@@ -99,15 +81,6 @@ treat any included one as a starting point and edit it to match your own paths.
 > **Drive numbering:** SDLTRS 1.1 and newer number disk drives from 0 (earlier
 > versions started at 1). Older config files and `-disk` / `-hard` options
 > need adjusting for this change.
-
-## Expert system
-
-A German rule-based expert system, originally written by Dr. H.-J. Soll
-(1987) and ported to the TRS-80 Model I in 1989. The reference document
-covers its structure, the BASIC modules that make it up, and notes from the
-extraction and porting work.
-
-[Expert system reference](EXPERTSYSTEM_REFERENCE.md)
 
 ## Author
 
