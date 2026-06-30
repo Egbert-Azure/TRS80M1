@@ -1,4 +1,4 @@
-<!-- readme.md main -->
+<!-- /README.md — repository root: overview, layout, how to read and run the disks -->
 <!-- (c) E. Schroeer -->
 # TRS80M1
 
@@ -12,30 +12,30 @@ used to read them.
 
 ```
 TRS80M1/
-├── README.md                      ← you are here
-├── diskimages/                    the disk images, plus every document about them
-│   ├── README.md                  documentation index (start here)
-│   ├── Disk_Catalog.md            auto-generated catalog of every disk image
-│   ├── diskimages.md              annotated, screenshot-by-screenshot walkthrough
-│   ├── esnd-20a.md                notable disk: repaired esnd-20 (HRG/ACCEL3)
-│   ├── images/                    screenshots used by diskimages.md
+├── README.md                      this file
+├── LICENSE                        GPL-3.0
+├── diskimages/                    disk images and their documentation
+│   ├── README.md                  documentation index — start here
+│   ├── Disk_Catalog.md            auto-generated catalog of all disk images
+│   ├── diskimages.md              annotated walkthrough with screenshots
+│   ├── esnd-20a.md                notable disk: repaired esnd-20
+│   ├── images/                    screenshots for diskimages.md
 │   └── NewDos/
 │       ├── trsextract.md          trsextract tool documentation
 │       └── dos-versions/          per-build NEWDOS/80 edition docs
 │           ├── README.md          variants index
 │           ├── newdos80-weikamp-020387.md
-│           └── DMK/               disk image + boot screenshot per edition
+│           └── DMK/               disk images and boot screenshots
 │               ├── weikamp.dmk
 │               └── weikamp-boot.png
-├── TRS80_Expertsystem/            German rule-based expert system (1989 port)
+├── TRS80_Expertsystem/            rule-based expert system (1989 port)
 │   └── EXPERTSYSTEM_REFERENCE.md
-├── rom/                           ROM images for the emulator
-│   ├── LEVEL2.ROM
-│   └── MODEL1.ROM
-└── LICENSE
+└── rom/                           ROM images for the emulator
+    ├── LEVEL2.ROM
+    └── MODEL1.ROM
 ```
 
-> The maintained macOS launcher lives now in its own repository:
+> The maintained macOS launcher lives in its own repository:
 > **[SDLTRS-Wrapper](https://github.com/Egbert-Azure/SDLTRS-Wrapper)**.
 
 ## Hardware
