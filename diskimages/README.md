@@ -16,17 +16,16 @@ rather than re-listing the disk.
 
 ## Inventory — what disks exist
 
-- **[Disk catalog](Disk_Catalog.md)** — auto-generated index of every disk image
-  (geometry, file counts, distinctive files). Machine truth; do not hand-edit.
-- **[Disk inventory](Disk_Inventory.md)** — curated companion: provenance, German
-  annotations, damaged-disk and duplicate notes.
-- **[Annotated walkthrough](diskimages.md)** — narrative, screenshot-by-screenshot tour.
+- **[Disk catalog](/diskimages/Disk_Catalog.md)** — auto-generated index of every disk
+  image (geometry, file counts, distinctive files). Machine truth; do not hand-edit.
+- **[Annotated walkthrough](/diskimages/diskimages.md)** — narrative,
+  screenshot-by-screenshot tour.
 
 ## DOS editions
 Modified NEWDOS/80 and G-DOS builds, each verified from its own SYS overlays.
 
-- **[NEWDOS/80 variants](NewDos/dos-versions/README.md)** — index of per-edition
-  documents (Weikamp 02.03.87, and others as verified).
+- **[NEWDOS/80 variants](/diskimages/NewDos/dos-versions/README.md)** — index of
+  per-edition documents (Weikamp 02.03.87, and others as verified).
 - *(G-DOS editions — planned)*
 
 ## Software & subsystems
@@ -38,7 +37,7 @@ Individual programs and drivers, documented where they span disks or warrant det
 ## Original work
 Software written or ported by the collection's author.
 
-- **[Educational expert system](../TRS80%20_Expertsystem/EXPERTSYSTEM_REFERENCE.md)** —
+- **[Educational expert system](/TRS80_Expertsystem/EXPERTSYSTEM_REFERENCE.md)** —
   rule-based backward-chaining inference engine, ported and extended for the Model I
   (1989–1990).
 
@@ -49,8 +48,8 @@ reconstructions, unusual payloads.
 - *(esnd-20a — repaired esnd-20; HRG/CMD + ACCEL3 payload — planned)*
 
 ## Tooling
-- **[trsextract](NewDos/trsextract.md)** — native Python 3 directory lister and
-  byte-exact file extractor for NEWDOS/80 and G-DOS images.
+- **[trsextract](/diskimages/NewDos/trsextract.md)** — native Python 3 directory lister
+  and byte-exact file extractor for NEWDOS/80 and G-DOS images.
 - **SDLTRS-Wrapper** — macOS launcher, in its own repo:
   <https://github.com/Egbert-Azure/SDLTRS-Wrapper>
 
