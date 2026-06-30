@@ -1,0 +1,333 @@
+00001;		SIDEKICK für TRS80-Kompatible mit Helmuts Banker
+00002;		im Dez. 1986 von Gerald Schröder
+00003;		nach einer Idee von Arnulf Sopp
+00004
+00005
+00006		ORG	3300h		;Stack ab hier abwärts!
+00007
+00008 start	LD	(spbuf),SP	;SP retten
+00009
+00010		LD	HL,retpro	;Rückkehr-Adresse (bei 1.
+00011		USH	HL		;Aufruf Comp. 1-3)
+00012		LD	B,4		;Stack vorbereiten
+00013 loop1	PUSH	AF
+00014		DJNZ	loop1
+00015		LD	(rettsp),SP	;retten für Comp. 1-3
+00016
+00017		LD	A,1		;Bank
+00018		DI
+00019		OUT	(0ech),A	;einschalten
+00020		LD	HL,schalt	;Umschalt-Routine
+00021		LD	DE,schalt-diff	;in Bank 1
+00022		LD	BC,ende-schalt
+00023		LDIR
+00024		XOR	A
+00025		OUT	(0ehc),A	;wieder Bank 0
+00026
+00027		LD	HL,umleit	;Umleitung in Interrupt-
+00028		LD	DE,umleit-diff1	;Routine anlegen
+00029		LD	BC,ende1-umleit
+00030		LDIR
+00031
+00032		LD	HL,zurück	;Rücksprung
+00033		LD	DE,zurück-diff2	;in SYS0 anlegen
+00034		LD	BC,ende2-zurück
+00034		LDIR
+00036
+00037		LD	SP,start	;SP neu setzen
+00038
+00039		LD	B,3		;drei Computer
+00040 loop2	CALL	copy		;in die Banks
+00041		DJNZ	loop2
+00042
+00043		EI
+00044		LD	SP,0000		;SP zurück
+00045 sobuf	EQU	$-2
+00046
+00047 retpro	RET			;ab
+00048
+00049
+00050;		kopiert oberen und unteren Teil in Banks
+00051
+00052		PUSH	BC		;Zähler retten
+00053		LD	A,B		;als Bank-Nr.
+00054		OUT	(0ech),A	;für unteren Teil
+00055		LD	DE,8000h+3000h	;Ziel = 0b000h
+00056		LD	D,50h		;Länge = 5000h
+00057		LD	C,E
+00058		LD	H,30h		;Anfang 3000h
+00059		LD	L,E
+00060		LDIR			;(3000-7fff)=>(b000-ffff)
+00061
+00062		ADD	A,3		;für oberen Teil
+00063		EX	AF,AF'		;retten
+00064		LD	D,60h		;Buffer: 6000h-6100h
+00065
+00066 loop3	INC	B		;ein Sektor
+00067		XOR	A		;Bank 0
+00068		OUT	(0ech,A		;ein
+00069		LDIR			;Sektor aus 0 in Buffer
+00070		DEC	D		;Sektor-Zeiger auf 6000h
+00071		LD	A,H		;Quelle- als Zielzeiger
+00072		LD	H,D
+00073		LD	D,A
+00074		DEC	D
+00075		INC	B
+00076		EX	AF,AF'		;Bank-Nr. zurück
+00077		OUT	(0ech),A	;anwählen
+00078		EX	AF,AF'		;wieder rettten
+00079		LDIR			;Aus Buffer in Bank
+00080		DEC	H		;Buffer auf 6000h
+00081		LD	A,D		;und wieder tauschen
+00082		LD	D,H
+00083		LD	H,A
+00084		OR	L		;schon über ffffh hinaus?
+00085		JR	NZ,loop3	;nein
+00086		OUT	(0ech),A	;ja, Bank 0 ein
+00087		POP	BC		;Zähler zurück
+00088		RET
+00089
+00090
+00091
+00092 ;		Umleitung in der Interrupt-Routine
+00093
+00094 diff1	EQU	$-45f6h
+00095 umleit	LD	A,1		;Bank 1
+00096		OUT	(0ech),A	;ein
+00097		JP	schalt-diff	;und springen
+00098 ende1	EQU	$
+00099
+00100 ;		Rückkehr-Routine
+00101
+00102 diff2	EQU	$-4053h
+00103
+00104 zurück	OUT	(0ech),A	;Bank x für oben an
+00105		JP	45fdh		;weiter
+00106 ende2	EQU	$
+00107
+00108
+00109
+00110 ;		Schaltroutine in Bank 1
+00111 ;		Ansprung von Interrupt-Routine aus
+00112
+00113 diff	EQU	$-3600h
+00114 schalt	LD	HL,3880h	;Tast.-Zeile
+00115		BIT	0,(HL)		;SHIFT?
+00116		JR	Z,goon3		;nein, ab
+00117		SRL	L
+00118		BIT	4,(HL)		;Down-Arrow?
+00119		JR	Z,goon3		;nein, ab
+00120		SRL	L
+00121		SRL	L		;Tast.-zeile 3810h
+00122		LD	A,(HL)
+00123		AND	0fh		;Taste 0 bis 32
+00124		JR	Z,goon3		;nein, ab
+00125		LD	L,A		;retten
+00126		XOR	A		;Zähler 0
+00127 goon1	INC	A		;+1
+00128		SRL	L		;solange
+00129		JR	NC,goon1	;bis Taste erreicht
+00130		DEC	A		;Zähler korrigieren
+00131
+00132		LD	(rettsp)	;SP retten
+00133
+00134		LD	DE,goon4-diff	;Rückkehradresse
+00135		JZ	spsuch		;neuen SP berechnen
+00136
+00137 goon4	PUSH	IX		;Register dieses COMP.
+00138		PUSH	IY		;retten
+00139		EX	AF,AF'
+00140		EXX
+00141		PUSH	AF
+00142		PUSH	BC
+00143		PUSH	DE
+00144		PUSH	HL
+00145		LD	SP,ende-diff+150 ;zeitweilig neu
+00146
+00147		EX	AF,AF'		;Comp.-Nr. zurück
+00148		CP	0		;schon eingeschaltet?
+00149 momba	EQU	$-1
+00150		JR	Z,abgang	;ja
+00151		LD	(banku-diff),A	;dort unterer Teil
+00152		OR	A		;Comp. 0?
+00153		JR	Z,goon2		;ja, oben = Bank 0
+00154		ADD	A,3		;sonst oben = u +3
+00155 goon2	LD	(banko-diff),A	;Bank oberer Teil
+00156		LD	A,(momba-diff)	;Comp. 0 eingeschaltet?
+00157		OR	A
+00158		CALL	NZ,tausch-diff	;nein, Comp. 0 holen
+00159		LD	A,0		;Bank unterer Teil
+00160 banku	EQU	$-1
+00161		LD	(momba-diff),A	;sichern: mom. Comp.
+00162		OR	A		;falls nicht 0
+00163		CALL	NZ,tausch-diff	;Computer holen
+00164
+00165 abgang	LD	DE,goon5-diff
+00166		JR	spsuch
+00167 goon5	LD	B,12		;SP korrigieren
+00168 ab1	DEC	SP
+00169		DJNZ	ab1
+00170 					;Register des
+00171		POP	HL		;Computers zurück
+00172		POP	DE
+00173		POP	BC
+00174		POP	AF
+00175		EXX
+00176		EX	AF,AF'
+00177		POP	IY
+00178		POP	IX
+00179		LD	SP,(rettsp)	;SP restaurieren
+00180
+00181 goon3	LA	A,(37ech)	;urspr, Int.-rout.
+00182		LD	A,(37e0h)
+00183		RLCA
+00184		LD	A,0		;Bank-Nr. für oberen Teil
+00185 banko	EQU	$-1
+00186		JP	zurück-diff2	;nach SYS0 für Abgang
+00187
+00188
+00189 ;		Unterprogramm: Stack-Pos. für geg. Comp A
+00190 ;		berechnen
+00191
+00192 spsuch	LD	L,A		;Nr. nach L
+00193		LD	H,0
+00194		LD	SP,ende.diff+20	;Stack-Offset
+00195		LD	B,5		;+32*Comp.-Nr.
+00196 sps1	SLA	L
+00197		DJNZ	sps1
+00198		ADD	HL,SP
+00199		LD	SP,HL		;SP in Bank 1 setzen
+00200		EX	DE,HL		;Rückspr.adr. nach HL
+00201		JP	(HL)		;und ab
+00202
+00203
+00204
+00205 ;		Unterprogramm Tausch:
+00206 ;		vertauscht unteren Teil von Computer 0 mit dem
+00207 ;		eines der drei anderen Computer
+00208
+00209 tausch	LD	(bankx1-diff),A	;gew. Bank-Nr. sichern
+00210		LD	(bankx2-diff),A
+00211		LD	(bankx3-diff),A
+00212
+00213		LD	HL,anf-diff3	;Bereich Tausch-Rout
+00214		PUSH	HL		;retten
+00215		LD	DE,0a000	;Buffer für Original
+00216		LD	BC,0200h
+00217		LDIR			;Orig.-Code retten
+00218
+00219		POP	DE		;7e00h
+00220		PUSH	DE
+00221		LD	HL,anf-diff	;Routinen zum Tauschen
+00222		LD	BC,ende-anf
+00223		LDIR			;in die untere Hälfte
+00224					;bei 7e00h
+00225		LD	(stack-d;if),SP	SP retten
+00226		LD	SP,7f00h	;auch nach unten
+00227		LD	HL,0fe00h	;7e00h aus Bank x
+00228		LD	DE,7f00h	;Buffer
+00229		LD	BC,9f00h	;MSB (Buffer in Bank)
+00230		CAL	anf-diff3	;Aufruf Tausch-Rout.
+00231		LD	SP,0000		;SP zurück
+00232 stack	EQU	$-2
+00233		POP	DE		;Fe00 zurück
+00234		LD	H,9fh		;von 9f00 aus
+00235		INC	B		;BC = 0200h
+00236		LDIR			;7300-7fff neu füllen
+00237		RET
+00238
+00239
+00240 diff3	EQU	$-7e00h
+00241 anf	PUSH	BC		;9f00 (x-1) auf Stack
+00242		PUSH	DE		;7e00 (z)    "    "
+00243		LD	B,1
+00244		LD	A,2		;2 Durchläufe
+00245
+00246 ;7e00-7fff tauschen
+00247 loopp	EX	AF,AF'		;Zähler retten
+00248		LD	A,0
+00249 bankx1	EQU	$-1
+00250		OUT	(0ech),A
+00251		POP	DE		;retten
+00252		POP	AF		;(x-1) zurück
+00253		PUSH	HL		;Y retten
+00254		PUSH	AF		;(x-1) retten
+00255		PUSH	DE		;z retten
+00256		LDIR
+00257		INC	B
+00258		LD	A,1
+00259		OUT	(0ech),A
+00260		POP	HL		;z zurück
+00261		POP	DE		;(x-1) zurück
+00262		PUSH	HL		;z retten
+00263		LDIR			;y -> z, Bank 1 -> Buffer
+00264		INC	B
+00265		LD	A,1
+00266		OUT	(0ech),A
+00267		POP	HL		;z zurück
+00268		POP	DE		;(x-1) zurück
+00269		LDIR			;y -> z, Bank 1 -> Buffer
+00270		INC	B		;(Original-Code)
+00271		LD	A,0
+00272 bankx2	EQU	$-1
+00273		OUT	(0ech),A
+00274		POP	HL		;z zurück
+00275		POP	AF		;x zurück
+00276		POP	DE		;y zurück
+00277		PUSH	AF		;x retten
+00378		PUSH	HL		;z retten
+00279		LDIR			;z -> y, Buffer -> Bankx
+00280		INC	B		; (Orig in Bank x)
+00281		LD	H,D		;(y+1)
+00282		EX	AF,AF'
+00283		DEC	A
+00284		JR	NZ,loopp
+00285
+00286 ;Stack: (x+1),z
+00287
+00288		POP	DE		;Buffer z
+00289		POP	AF		;(x+1) weg
+00290		LD	H,30h		;Anfang mit unten (3000h)
+00291		LD	A,0
+00292 bankx3	EQU	$-1
+00293		OUT	(0ech),A	;Bank x ein
+00294
+00295	loop	PUSH	DE		;"Buffer z" retten
+00296		PUSH	HL		;"von y" retten
+00297		LDIR			;1. Sektor in Buffer
+00298
+00299		POP	DE		;"nach y" zurück
+00300		LD	H,D		;"von z" (aus Bank)
+00301		SET	7,H		;deshalb immer >= 8000h
+00302		PUSH	HL		;retten
+00303		INC	B		;ein Sektor
+00304		LDIR			;2. aus Bank nach unten
+00305
+00306		POP	DE		;"nach x" (Bank)
+00307		POP	HL		;"vonZ" (Buffer)
+00308		INC	B		;ein Sektor
+00309		LDIR			;aus Buffer in Bank
+00310
+00311		INC	B		;ein Sektor
+00312		DEC	H		;Buffer bleibt
+00313		LD	A,D		;"von y"
+00314		AND	7fh		;immer unter 8000h
+00315		LD	D,H		;Buffer in de
+00316		LD	H,A		;"von y" in HL
+00317		CP	37h		;I/O-Bereich?
+00318		JR	NZ,lop		;nein, weiter
+00319		INC	H		;ja, überspringen
+00320 lop	CP	7eh		;=fertig?
+00321		JR	NZ,loop		;weiter wenn <> 7e00
+00322
+00323		LD	A,1		;Bank1
+00324		OUT	(0ech),A	;wieder ein
+00325		RET			;fertig
+00326 ende	EQU	$-1
+00327
+00328
+00329
+00330 rettsp	EQU	4058h
+00331
+00332
+00333		END	start
