@@ -1,39 +1,66 @@
-# NEWDOS/80 variants
+# TRS-80 Model I — Disk Images & Documentation
 
-Documentation of the individual NEWDOS/80 V2.0 builds in this collection.
+This folder holds the disk images and everything written about them. It is the front
+door for two different questions:
 
-These disks all descend from **NEWDOS/80 V2.0 (Apparat Inc.)** but were modified
-by different authors, who extended the LIB command set and the SYS-overlay
-scheme in their own ways. Each document below is built primarily from the
-**binary SYS overlays** of the disk in question (author signatures, command
-tables, embedded strings), with the author's own release notes used as
-corroboration rather than as the sole source.
+- **"What disks exist?"** → the inventory (every `esnd-NN`, listed once).
+- **"What is worth understanding?"** → the subjects (DOS editions, programs, original
+  work), each of which may span several disks or share one.
 
-## Documented builds
+A disk is not a subject. A disk lands in the inventory automatically; it only earns a
+subject page if it introduces something worth documenting — a new edition, a program, or
+a notable disk-level story. Subject pages cite the `esnd-NN` inventory id they come from
+rather than re-listing the disk.
 
-| Build | Author | Date | Source disk | Document |
-|-------|--------|------|-------------|----------|
-| NEWDOS/80 V2.0 + erw. LIB | Horst Weikamp (DL9YAP) | 02.03.87 | `NEWDOS80-80Track.DSK` / esnd-23 | [newdos80-weikamp-020387.md](newdos80-weikamp-020387.md) |
+---
 
-<!-- Add rows as further variants are verified, e.g.:
-| NEWDOS/80 V2.0 Systemdiskette | H. Schuller | — | esnd-03 (image-3) | newdos80-schuller.md |
-| NEWDOS/80 +10 Version 2.5 | (author tbd) | — | esnd-08 / esnd-09 | newdos80-25.md |
--->
+## Inventory — what disks exist
 
-## Method
+- **[Disk catalog](Disk_Catalog.md)** — auto-generated index of every disk image
+  (geometry, file counts, distinctive files). Machine truth; do not hand-edit.
+- **[Annotated walkthrough](diskimages.md)** — narrative, screenshot-by-screenshot tour.
 
-For each build, authorship and feature claims are verified against the disk
-itself before being recorded:
+## DOS editions
+Modified NEWDOS/80 and G-DOS builds, each verified from its own SYS overlays.
 
-- **Author** is confirmed from in-binary signatures (e.g. `DL9YAP FEB. 1987`
-  in SYS25, `DL9YAPDOS` installed by the SYS26 SYSGEN) rather than from prose
-  alone.
-- **Commands** are confirmed from the LIB name table (SYS15) and from the
-  routines and strings present in the individual SYS overlays.
-- **File presence** (e.g. whether a SYS29 exists) is taken from a directory
-  parse of the disk image, not from the release notes.
+- **[NEWDOS/80 variants](NewDos/dos-versions/README.md)** — index of per-edition
+  documents (Weikamp 02.03.87, and others as verified).
+- *(G-DOS editions — planned)*
 
-Caveat: the SYS overlays are read at the string/structure level, not fully
-disassembled. Command *presence* and embedded text are certain; exact internal
-mechanics quoted from an author's notes are flagged as such where they are not
-independently verified from the Z80 code.
+## Software & subsystems
+Individual programs and drivers, documented where they span disks or warrant detail.
+
+- *(HRG-1B / HRG/CMD graphics driver — planned; source disks incl. esnd-20a)*
+- *(ACCEL3 toolchain & editors — planned)*
+
+## Original work
+Software written or ported by the collection's author.
+
+- **[Educational expert system](../TRS80_Expertsystem/EXPERTSYSTEM_REFERENCE.md)** —
+  rule-based backward-chaining inference engine, ported and extended for the Model I
+  (1989–1990).
+
+## Notable disks
+Disks whose individual story is worth a page beyond the inventory row — repairs,
+reconstructions, unusual payloads.
+
+- *(esnd-20a — repaired esnd-20; HRG/CMD + ACCEL3 payload — planned)*
+
+## Tooling
+- **[trsextract](NewDos/trsextract.md)** — native Python 3 directory lister and
+  byte-exact file extractor for NEWDOS/80 and G-DOS images.
+- **SDLTRS-Wrapper** — macOS launcher, in its own repo:
+  <https://github.com/Egbert-Azure/SDLTRS-Wrapper>
+
+---
+
+## How these fit together
+
+- **Inventory** answers *"what disks do I have?"* — every `esnd-NN`, once.
+- **Subjects** (DOS editions / Software / Original work / Notable disks) answer
+  *"what is worth understanding?"* Each links *down* to the inventory rows it came from.
+- **Tooling** is how the disks are read and run.
+
+When a new disk arrives it appears in the catalog automatically. It earns a page in one
+of the subject sections above only if it introduces a new edition, a program worth
+documenting, or a notable disk-level story.
