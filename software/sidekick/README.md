@@ -16,12 +16,6 @@ in BHV-03 (1986), pp. 5–10; the disk directory under SDLTRS; and the JV1 byte
 image. Statements about authorship and mechanism are read from these primary
 sources, not inferred.*
 
-> **Note on extraction:** early trsextract runs returned zero-filled copies of
-> `CHAINTST/JCL` and `NWD80V2/XLF` on this disk — the disk carries both live
-> (attr `0x10`) and superseded (attr `0x00`) directory slots for those names,
-> and the dead slots were being read. This is a trsextract directory-liveness
-> issue, tracked separately; the disk itself is intact.
-
 ---
 
 ## 1. What SideKick is
