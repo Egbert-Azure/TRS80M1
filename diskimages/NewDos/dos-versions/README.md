@@ -1,4 +1,4 @@
-<!-- readme.md DMK-->
+<!-- /diskimages/NewDos/dos-versions/README.md — NEWDOS/80 variants index: one row per documented edition -->
 <!-- (c) E. Schroeer -->
 # NEWDOS/80 variants
 
