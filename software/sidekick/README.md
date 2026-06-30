@@ -8,9 +8,9 @@
 **Status:** Good. The on-disk SideKick assembler source is complete and clean.
 
 **Files here:** [`SIDEKICK.JV1`](SIDEKICK.JV1) (disk image) ·
-[`SIDEKICK.SRC`](SIDEKICK.Z80) (Z80 source, reference copy extracted from the disk)
+[`SIDEKICK.Z80`](SIDEKICK.Z80) (Z80 source, reference copy extracted from the disk)
 
-*Sources: the `SIDEKICK/SRC` Z80 source; Gerald Schröder's original article and
+*Sources: the `SIDEKICK/Z80` Z80 source; Gerald Schröder's original article and
 listing in Club80 Nr. 17 (1986), pp. 8–15; Helmut Bernhardt's banker hardware
 in BHV-03 (1986), pp. 5–10; the disk directory under SDLTRS; and the JV1 byte
 image. Statements about authorship and mechanism are read from these primary
@@ -128,7 +128,7 @@ RAM-disk on **drive :4** — rather than as four parallel computers. So:
 
 | File | Type | Contents |
 |------|------|----------|
-| [`SIDEKICK/SRC`](SIDEKICK.SRC) | Z80 source | Multi-computer banker, commented (German); 11,146 bytes. Header credits Sopp / Bernhardt / G. Schröder 1986 / Günther 2024. |
+| [`SIDEKICK/Z80`](SIDEKICK.Z80) | Z80 source | Multi-computer banker, commented (German); 11,146 bytes. Header credits Sopp / Bernhardt / G. Schröder 1986 / Günther 2024. Extracted host copy: `SIDEKICK.Z80`. |
 | `SIDEKICK/CMD` | Program | Assembled SideKick. |
 | `EDTASM/CMD` | Assembler | Editor/assembler. |
 | `ZEUS/CMD`, `ZEUS/TXT` | Assembler + docs | ZEUS assembler with German on-disk help. |
@@ -139,6 +139,14 @@ RAM-disk on **drive :4** — rather than as four parallel computers. So:
 | `ASPOOL/MAS` | Print spooler | Background printing. |
 | `CHAINTST/JCL` | JCL/test | Chain-loader test (binary load block followed by English operating notes; not related to SideKick). |
 | `CHAINBLD/BAS` | BASIC | Builds chain files. |
+
+---
+
+## Provenance
+
+*I obtained the banker from Helmut Bernhardt and fitted it to my TRS-80 Model I —
+that was quite a journey to get working. In the end I didn't use it much: I
+later had a Genie IIIs, which already carried bank-switched 256K of its own.*
 
 ---
 
