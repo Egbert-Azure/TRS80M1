@@ -20,6 +20,11 @@ Categories: **Added**, **Changed**, **Fixed**, **Removed**, **Documented**.
   memory to the hardware list in the root `README.md`.
 
 ### Changed
+- Moved the expert-system documentation and program files from the repository root
+  into `software/expertsystem/` (`README.md`, `expertsystem_overview.png`,
+  `recursion_stack_trace.png`, `TRS80_vs_Prolog.md`, plus the BASIC sources and
+  compiled binaries: `wc.bas`/`WC/CMD`, `wbedit.bas`, `maskgen.bas`, `testen`, etc.);
+  linked from the root `README.md`.
 - `diskimages/NewDos/dos-versions/README.md` reduced to a NEWDOS/80 variants index
   (one row per documented edition), removing a duplicated copy of the top-level
   documentation index.
@@ -39,8 +44,8 @@ Categories: **Added**, **Changed**, **Fixed**, **Removed**, **Documented**.
 
 ## Earlier
 
-- `TRS80_Expertsystem/` — structure and content of the ported German rule-based
-  expert system documented in `EXPERTSYSTEM_REFERENCE.md`.
+- Expert system — structure and content of the ported German rule-based expert
+  system documented (now at `software/expertsystem/`).
 - `newdos80-weikamp-020387.md` — NEWDOS/80 Weikamp (DL9YAP) build documented from
   its SYS overlays.
 - `diskimages/Disk_Catalog.md` — auto-generated disk catalog established.

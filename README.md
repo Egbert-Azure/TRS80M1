@@ -14,6 +14,7 @@ used to read them.
 TRS80M1/
 ├── README.md                      this file
 ├── LICENSE                        GPL-3.0
+├── CHANGELOG.md                   notable repository changes, newest first
 ├── diskimages/                    disk images and their documentation
 │   ├── README.md                  documentation index — start here
 │   ├── Disk_Catalog.md            auto-generated catalog of all disk images
@@ -28,8 +29,11 @@ TRS80M1/
 │           └── DMK/               disk images and boot screenshots
 │               ├── weikamp.dmk
 │               └── weikamp-boot.png
-├── TRS80_Expertsystem/            rule-based expert system (1989 port)
-│   └── EXPERTSYSTEM_REFERENCE.md
+├── software/                      programs and original work
+│   └── expertsystem/              rule-based expert system (1989 port)
+│       ├── README.md              reference + theory
+│       ├── TRS80_vs_Prolog.md     inference model vs. Prolog
+│       └── wc.bas, wbedit.bas …   BASIC sources and compiled binaries
 └── rom/                           ROM images for the emulator
     ├── LEVEL2.ROM
     └── MODEL1.ROM
@@ -67,9 +71,9 @@ Quick links:
 - **[NEWDOS/80 variants](diskimages/NewDos/dos-versions/README.md)** — per-build
   documentation of modified NEWDOS/80 disks (Weikamp 02.03.87 and others),
   verified from their SYS overlays.
-- **[Expert system reference](TRS80_Expertsystem/EXPERTSYSTEM_REFERENCE.md)** —
-  a German rule-based expert system (Dr. H.-J. Soll, 1987) ported to the Model I
-  in 1989.
+- **[Expert system](software/expertsystem/README.md)** — a German rule-based
+  expert system (Dr. H.-J. Soll, 1987) ported to the Model I in 1989;
+  recursive-BASIC inference engine (disk esnd-23).
 - **[Changelog](CHANGELOG.md)** — notable repository changes, newest first.
 
 ## Reading and extracting disks (trsextract)
