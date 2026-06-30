@@ -1,3 +1,5 @@
+<!-- readme.md diskimages -->
+<!-- (c) E. Schroeer -->
 # TRS-80 Model I — Disk Images & Documentation
 
 This folder holds the disk images and everything written about them. It is the front
