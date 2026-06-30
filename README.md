@@ -42,7 +42,9 @@ TRS80M1/
 
 The system as it ran:
 
-- **TRS-80 Model I** with a double-density floppy controller upgrade
+- **TRS-80 Model I** with the **Expansion Interface**
+- **Double-density floppy controller** upgrade
+- **256K bank-switched memory** expansion
 - **RB Electronic (Rolf Best) HRG-1B** high-resolution graphics card
   (RB Electronic GmbH, Eitorf)
 - **Four floppy drives** — two 80-track, two 40-track
