@@ -1,4 +1,4 @@
-<!-- readme.md diskimages -->
+<!-- /diskimages/README.md — documentation index: routes to inventory, DOS editions, software, original work, notable disks -->
 <!-- (c) E. Schroeer -->
 # TRS-80 Model I — Disk Images & Documentation
 
