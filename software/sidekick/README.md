@@ -145,6 +145,6 @@ RAM-disk on **drive :4** — rather than as four parallel computers. So:
 ## Sources
 
 - [Gerald Schröder, *Wie Phönix aus der Asche — Vier Computer in einem
-  Schrotthaufen*, Club80 Nr. 17 (1986), pp. 8–15.] (https://oldcomputers-ddns.org/public/pub/rechner/eaca/common/user-clubs/club-80/hardwarespezial%28html%29/1986-club80-17%20wie%20phoenix%20aus%20der%20asche.htm)
+  Schrotthaufen*, Club80 Nr. 17 (1986), pp. 8–15](https://oldcomputers-ddns.org/public/pub/rechner/eaca/common/user-clubs/club-80/hardwarespezial%28html%29/1986-club80-17%20wie%20phoenix%20aus%20der%20asche.htm)
 - Helmut Bernhardt, *256K RAM für Z80-Systeme*, BHV-03 (1986), pp. 5–10
   (correction: BHV 1987-2 p. 16 / 1987-3 p. 7).
