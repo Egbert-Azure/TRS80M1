@@ -30,10 +30,14 @@ TRS80M1/
 │               ├── weikamp.dmk
 │               └── weikamp-boot.png
 ├── software/                      programs and original work
-│   └── expertsystem/              rule-based expert system (1989 port)
-│       ├── README.md              reference + theory
-│       ├── TRS80_vs_Prolog.md     inference model vs. Prolog
-│       └── wc.bas, wbedit.bas …   BASIC sources and compiled binaries
+│   ├── expertsystem/              rule-based expert system (1989 port)
+│   │   ├── README.md              reference + theory
+│   │   ├── TRS80_vs_Prolog.md     inference model vs. Prolog
+│   │   └── wc.bas, wbedit.bas …   BASIC sources and compiled binaries
+│   └── sidekick/                  four-computer banker (Schröder 1986)
+│       ├── README.md              disk doc, usage, hardware model
+│       ├── SIDEKICK.JV1           80-track NEWDOS/80 disk image
+│       └── SIDEKICK.SRC           Z80 source (reference copy)
 └── rom/                           ROM images for the emulator
     ├── LEVEL2.ROM
     └── MODEL1.ROM
@@ -74,6 +78,9 @@ Quick links:
 - **[Expert system](software/expertsystem/README.md)** — a German rule-based
   expert system (Dr. H.-J. Soll, 1987) ported to the Model I in 1989;
   recursive-BASIC inference engine (disk esnd-23).
+- **[SideKick](software/sidekick/README.md)** — four-computer memory banker for
+  the Model I (Gerald Schröder / Helmut Bernhardt 1986; SuperMem port by Jens
+  Günther 2024), on an apparent Apparat NEWDOS/80 V2.0 baseline.
 - **[Changelog](CHANGELOG.md)** — notable repository changes, newest first.
 
 ## Reading and extracting disks (trsextract)
