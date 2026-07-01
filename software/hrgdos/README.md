@@ -50,38 +50,6 @@ by a vowel converts the pair into the matching umlaut; if no vowel follows,
 
 ---
 
-## Aufbau / Build
-
-Der Quelltext ist für einen Z80-Assembler mit Standard-Mnemonik geschrieben
-(getestet gegen `pasmo`-Syntax). Ladeadresse und HIMEM werden per `ORG` /
-`DEFW` im Quelltext gesetzt. /
-
-The source uses standard Z80 mnemonics (tested against `pasmo` syntax). Load
-address and HIMEM are set via `ORG` / `DEFW` in the source.
-
-```sh
-pasmo kbdhrg.z80 kbdhrg.cmd
-```
-
-**Wichtig / Important:** Der Entry Point `DA84H` ist auf den HRG-Supertreiber
-V1.1 abgestimmt. Wird der Treiber ohne HRG oder an anderer Stelle benutzt,
-müssen `ORG` und der `JP 0EB36H` angepasst werden. /
-The entry point `DA84H` is tuned to HRG super-driver V1.1. To use the driver
-without the HRG or at a different address, adjust the `ORG` and the
-`JP 0EB36H`.
-
-Ein Detail, das beim Assemblieren auffällt: `DRIVER: CALL 0000H` ist ein
-**absichtlicher Platzhalter**. Der Aufruf-Operand wird zur Ladezeit von
-`LD (DRIVER+1),HL` mit dem originalen Tastatur-Vektor aus `4016H`
-überschrieben (Selbstmodifikation). Im gedruckten Artikel steht dafür
-`CALL $-$`. /
-One detail worth noting: `DRIVER: CALL 0000H` is a **deliberate placeholder**.
-Its operand is overwritten at load time by `LD (DRIVER+1),HL` with the
-original keyboard vector from `4016H` (self-modifying code). The printed
-article writes this as `CALL $-$`.
-
----
-
 ## Dateien / Files
 
 | Datei / File | Beschreibung / Description |
