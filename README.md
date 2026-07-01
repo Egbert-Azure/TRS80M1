@@ -34,10 +34,13 @@ TRS80M1/
 │   │   ├── README.md              reference + theory
 │   │   ├── TRS80_vs_Prolog.md     inference model vs. Prolog
 │   │   └── wc.bas, wbedit.bas …   BASIC sources and compiled binaries
+│   ├── hrgdos/                    umlaut keyboard driver + HRGDOS (1989)
+│   │   ├── README.md              software doc + Club-80 Heft 29 article (DE/EN)
+│   │   └── kbdhrg.z80             binary-verified Z80 source
 │   └── sidekick/                  four-computer banker (Schröder 1986)
 │       ├── README.md              disk doc, usage, hardware model
 │       ├── SIDEKICK.JV1           80-track NEWDOS/80 disk image
-│       └── SIDEKICK.SRC           Z80 source (reference copy)
+│       └── SIDEKICK.Z80           Z80 source (reference copy)
 └── rom/                           ROM images for the emulator
     ├── LEVEL2.ROM
     └── MODEL1.ROM
@@ -78,6 +81,10 @@ Quick links:
 - **[Expert system](software/expertsystem/README.md)** — a German rule-based
   expert system (Dr. H.-J. Soll, 1987) ported to the Model I in 1989;
   recursive-BASIC inference engine (disk esnd-23).
+- **[HRGDOS / KBDHRG](software/hrgdos/README.md)** — a 128-byte umlaut-capable
+  keyboard driver for the HRG-1B (Egbert Schröer, 1989), paired with the patched
+  RB Electronic HRG super-driver (`HRGDOS/CMD`); Z80 source verified
+  byte-for-byte against the published Listing 1 (Club-80 Heft 29).
 - **[SideKick](software/sidekick/README.md)** — four-computer memory banker for
   the Model I (Gerald Schröder / Helmut Bernhardt 1986; SuperMem port by Jens
   Günther 2024), on an apparent Apparat NEWDOS/80 V2.0 baseline.

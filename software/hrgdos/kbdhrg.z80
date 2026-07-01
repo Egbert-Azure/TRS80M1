@@ -1,0 +1,182 @@
+;*************************************************************
+;*           Keyboard Driver für HRGDOS                       *
+;*************************************************************
+;*           Copyright by Egbert Schröer                      *
+;*                Version 1.1                                 *
+;*                October  1989                                *
+;*************************************************************
+;
+; RECONSTRUCTED FROM PRINTED SOURCE and verfied against the binary KBDHRG.CMD.
+; BINARY-VERIFIED SOURCE (decoded directly from KBDHRG.CMD (128-byte load block @ DA84H)
+; and reconciled against the printed Listing 1 in the 1989 article.
+; Every instruction below matches the binary byte-for-byte; see the
+; "VERIFICATION" block at the end for the address/opcode ledger.
+;
+;
+        ORG     4049H           ;setzt HIMEM neu
+        DEFW    KBDNEU-1
+;
+        ORG     0DA84H          ;Entry Point auf HRG Supertreiber V1.1 abgestimmt
+;
+KBDNEU: LD      HL,(4016H)      ;Adresse KBDNEU in 4016H sichern
+        LD      (DRIVER+1),HL   ;-> Aufrufziel von DRIVER (Selbstmodifikation)
+        LD      HL,DRIVER
+        LD      (4016H),HL      ;eigenen Treiber einhängen
+        JP      0EB36H          ;umschalten auf HRG
+;
+DRIVER: CALL    0000H           ;$-$ : zur Ladezeit auf orig. KBD-Vektor gepatcht
+        OR      A               ;Tastaturcode gedrückt?
+        RET     Z
+        LD      (AKKU),A        ;Tastaturcode sichern
+;
+;Wenn ß gedrückt, dann warte auf nächste Taste. Ist
+;es kein Vokal, wird ß ausgegeben. Folgt ein
+;Vokal, wird dieser in seinen entsprechenden
+;Umlaut umgewandelt.
+;
+        LD      A,(3801H)       ;Abfrage Tastaturzeile
+        BIT     0,A             ;BIT 0 gesetzt ?
+        JR      Z,BACK          ;Nein -> BACK
+        CALL    0049H           ;Abfrage nächste Taste und warten
+        LD      A,(3880H)       ;<SHIFT> ?
+        CP      1               ;dann Großbuchstabe
+        JR      Z,GROSS
+        LD      A,(3801H)
+        CP      2
+        JR      Z,UMF1
+        LD      A,(3802H)
+        CP      128
+        JR      Z,UMF2
+        LD      A,(3804H)
+        CP      32
+        JR      Z,UMF3
+        LD      A,(3820H)
+        CP      4
+        JR      Z,UMF4
+KEINV:  LD      A,40H           ;kein Vokal -> ALPHA
+        JR      ENDE
+GROSS:  LD      A,(3801H)
+        CP      2
+        JR      Z,GUMF1
+        LD      A,(3802H)
+        CP      128
+        JR      Z,GUMF2
+        LD      A,(3804H)
+        CP      32
+        JR      Z,GUMF3
+        JR      KEINV           ;kein Vokal
+;
+BACK:   LD      A,(AKKU)        ;kein ß -> zurück mit Zeichen in AKKU
+        RET
+ENDE:   RET
+;*************************************************************
+;*                  UNTERROUTINEN                              *
+;*************************************************************
+;
+UMF1:   LD      A,7BH           ;ä
+        JR      ENDE
+UMF2:   LD      A,7CH           ;ö
+        JR      ENDE
+UMF3:   LD      A,7DH           ;ü
+        JR      ENDE
+UMF4:   LD      A,7EH           ;ß
+        JR      ENDE
+;
+GUMF1:  LD      A,5BH           ;Ä
+        JR      ENDE
+GUMF2:  LD      A,5CH           ;Ö
+        JR      ENDE
+GUMF3:  LD      A,5DH           ;Ü
+        JR      ENDE
+;
+AKKU    DEFS    1               ;liegt bei DB04H (LD (AKKU),A -> 3204DB)
+        END     KBDNEU
+
+;*************************************************************
+;* VERIFICATION — binary vs. this source                      *
+;*************************************************************
+;
+; Source binary:  KBDHRG.CMD  (from disks esnd-01 / NEWDOS80)
+; Load block:     128 bytes, load address DA84H..DB03H
+; Transfer addr:  DA84H (= KBDNEU entry)
+; AKKU cell:      DB04H (one byte past the loaded code)
+;
+; Opcode ledger (address: bytes = mnemonic):
+;   DA84: 2A 16 40      LD   HL,(4016H)
+;   DA87: 22 94 DA      LD   (DA94H),HL      ; DA94 = DRIVER+1
+;   DA8A: 21 93 DA      LD   HL,DA93H        ; DA93 = DRIVER
+;   DA8D: 22 16 40      LD   (4016H),HL
+;   DA90: C3 36 EB      JP   0EB36H
+;   DA93: CD 00 00      CALL 0000H           ; DRIVER (self-patched target)
+;   DA96: B7            OR   A
+;   DA97: C8            RET  Z
+;   DA98: 32 04 DB      LD   (DB04H),A       ; AKKU
+;   DA9B: 3A 01 38      LD   A,(3801H)
+;   DA9E: CB 47         BIT  0,A
+;   DAA0: 28 41         JR   Z,DAE3H         ; BACK
+;   DAA2: CD 49 00      CALL 0049H
+;   DAA5: 3A 80 38      LD   A,(3880H)
+;   DAA8: FE 01         CP   1
+;   DAAA: 28 20         JR   Z,DACCH         ; GROSS
+;   DAAC: 3A 01 38      LD   A,(3801H)
+;   DAAF: FE 02         CP   2
+;   DAB1: 28 35         JR   Z,DAE8H         ; UMF1
+;   DAB3: 3A 02 38      LD   A,(3802H)
+;   DAB6: FE 80         CP   80H (128)
+;   DAB8: 28 32         JR   Z,DAECH         ; UMF2
+;   DABA: 3A 04 38      LD   A,(3804H)
+;   DABD: FE 20         CP   20H (32)
+;   DABF: 28 2F         JR   Z,DAF0H         ; UMF3
+;   DAC1: 3A 20 38      LD   A,(3820H)
+;   DAC4: FE 04         CP   4
+;   DAC6: 28 2C         JR   Z,DAF4H         ; UMF4
+;   DAC8: 3E 40         LD   A,40H           ; KEINV
+;   DACA: 18 1B         JR   DAE7H           ; ENDE
+;   DACC: 3A 01 38      LD   A,(3801H)       ; GROSS
+;   DACF: FE 02         CP   2
+;   DAD1: 28 25         JR   Z,DAF8H         ; GUMF1
+;   DAD3: 3A 02 38      LD   A,(3802H)
+;   DAD6: FE 80         CP   80H (128)
+;   DAD8: 28 22         JR   Z,DAFCH         ; GUMF2
+;   DADA: 3A 04 38      LD   A,(3804H)
+;   DADD: FE 20         CP   20H (32)
+;   DADF: 28 1F         JR   Z,DB00H         ; GUMF3
+;   DAE1: 18 E5         JR   DAC8H           ; KEINV
+;   DAE3: 3A 04 DB      LD   A,(DB04H)       ; BACK  (AKKU)
+;   DAE6: C9            RET
+;   DAE7: C9            RET                  ; ENDE
+;   DAE8: 3E 7B         LD   A,7BH           ; UMF1  ä
+;   DAEA: 18 FB         JR   DAE7H           ; ENDE
+;   DAEC: 3E 7C         LD   A,7CH           ; UMF2  ö
+;   DAEE: 18 F7         JR   DAE7H
+;   DAF0: 3E 7D         LD   A,7DH           ; UMF3  ü
+;   DAF2: 18 F3         JR   DAE7H
+;   DAF4: 3E 7E         LD   A,7EH           ; UMF4  ß
+;   DAF6: 18 EF         JR   DAE7H
+;   DAF8: 3E 5B         LD   A,5BH           ; GUMF1 Ä
+;   DAFA: 18 EB         JR   DAE7H
+;   DAFC: 3E 5C         LD   A,5CH           ; GUMF2 Ö
+;   DAFE: 18 E7         JR   DAE7H
+;   DB00: 3E 5D         LD   A,5DH           ; GUMF3 Ü
+;   DB02: 18 E3         JR   DAE7H
+;   DB04: (AKKU, 1 byte, uninitialised)
+;
+; BINARY vs. PRINTED LISTING 1: no discrepancies found.
+; Every assembled byte matches the 1989 printed source. Notes:
+;   - DA96 B7 = OR A, as printed.
+;   - Umlaut codes 7B/7C/7D/7E (ä/ö/ü/ß) and 5B/5C/5D (Ä/Ö/Ü) as printed.
+;   - "CALL $-$" in the printed source assembles to CD 00 00; the operand
+;     is written at load time by "LD (DRIVER+1),HL" at DA87H. Deliberate
+;     self-modification, not an OCR artifact.
+;
+; Verification limit: only the assembled byte stream can be checked
+; against the binary. Source-level text (label names, comments, the
+; exact "$-$" spelling, ORG/DEFW directives) is not recoverable from
+; the binary and is reproduced here from the printed article.
+;
+; NOTE on GUMF3/ß handling: there is no G-charset upper-case "ß", so the
+; GROSS path has only three Umlaut targets (GUMF1..3) and falls through
+; to KEINV otherwise — consistent with the binary.
+;
+; Supersedes the earlier article-only reconstruction
+; (kbdneu-kbdhrg-reconstructed.z80).
