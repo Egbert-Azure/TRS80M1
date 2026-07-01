@@ -1,106 +1,78 @@
 <!-- /software/hrgdos/README.md — umlaut keyboard driver (KBDHRG) for NewDos80, paired with the patched HRG super-driver (HRGDOS) -->
 <!-- (c) E. Schroeer -->
-# KBDHRG — Umlaut-fähiger Tastaturtreiber für NewDos80
 # KBDHRG — Umlaut-capable keyboard driver for NewDos80
 
-**Autor / Author:** Egbert Schroeer
-**Original © / Original copyright:** 1989 Egbert Schröer *(Schreibweise der Quelle / spelling as in the source)*
+**Author:** Egbert Schroeer
+**Original copyright:** © 1989 Egbert Schröer (spelling as in the source)
 **Version:** 1.1 — October 1989
-**Ziel / Target:** TRS-80 Model I · NEWDOS/80 v2.0 · RB-Electronic HRG-1B
-**Lizenz / License:** GPLv3 — siehe LICENSE im Repository-Wurzelverzeichnis / see the LICENSE file at the repository root
+**Target:** TRS-80 Model I · NEWDOS/80 v2.0 · RB-Electronic HRG-1B
+**License:** GPLv3 — see the LICENSE file at the repository root
 
 ---
 
-## Was ist das? (DE)
+## What is this?
 
-`KBDHRG` ist ein 128 Byte großer Tastaturtreiber für den TRS-80 Model I, der
-zusammen mit dem gepatchten HRG-Supertreiber von RB-Electronic die direkte
-Eingabe der deutschen Umlaute (ä ö ü ß / Ä Ö Ü) ermöglicht — jederzeit und
-ohne erneutes Definieren des G-Zeichensatzes.
+`KBDHRG` is a 128-byte keyboard driver for the TRS-80 Model I running
+NEWDOS/80. It lets you type the German umlauts (ä ö ü ß / Ä Ö Ü) directly, at
+any time, without redefining the G character set.
 
-Funktionsweise: Der Treiber klinkt sich in den Tastaturvektor bei `4016H`
-ein und schaltet über `JP 0EB36H` auf die HRG-Karte (High Resolution
-Graphics) um. Wird `ß` gefolgt von einem Vokal getippt, wandelt der Treiber
-die Kombination in den entsprechenden Umlaut um; folgt kein Vokal, wird `ß`
-ausgegeben. `<SHIFT>` erzeugt die Großbuchstaben-Umlaute.
-
-`KBDHRG` gehört zu einem Paar:
-- **`KBDHRG/CMD`** — dieser Tastaturtreiber (128 Byte, Ladeadresse `DA84H`).
-- **`HRGDOS/CMD`** — der HRG-Supertreiber `HRG/CMD` von RB-Electronic,
-  von Egbert Schröer gepatcht und umbenannt. Der Patch ergänzt u. a. den
-  Rücksprung ins DOS ohne die Tastenkombination 1,2,3 (`#PRINT(2)`-Pfad).
-
-## What is this? (EN)
-
-`KBDHRG` is a 128-byte keyboard driver for the TRS-80 Model I that, together
-with the patched RB-Electronic HRG super-driver, enables direct entry of the
-German umlauts (ä ö ü ß / Ä Ö Ü) — at any time, without redefining the G
-character set.
-
-How it works: the driver hooks the keyboard vector at `4016H` and switches to
-the HRG (High Resolution Graphics) card via `JP 0EB36H`. Typing `ß` followed
-by a vowel converts the pair into the matching umlaut; if no vowel follows,
-`ß` is emitted. `<SHIFT>` produces the upper-case umlauts.
+It works by hooking the DOS keyboard vector at `4016H`. Type `ß` followed by a
+vowel and the driver converts the pair into the matching umlaut; if no vowel
+follows, `ß` is emitted. `<SHIFT>` produces the upper-case umlauts. The driver
+can be relocated in memory and used on its own; on the disks here it is tuned
+(entry point `DA84H`, `JP 0EB36H`) to hand off to HRGDOS on load.
 
 `KBDHRG` is one of a pair:
+
 - **`KBDHRG/CMD`** — this keyboard driver (128 bytes, load address `DA84H`).
-- **`HRGDOS/CMD`** — RB-Electronic's `HRG/CMD` super-driver, patched by
-  Egbert Schröer and renamed. The patch adds, among other things, return to
-  DOS without the 1,2,3 key combination (the `#PRINT(2)` path).
+- **`HRGDOS/CMD`** — RB-Electronic's `HRG/CMD` high-resolution-graphics
+  super-driver, patched by Egbert Schröer and renamed. The patch adds, among
+  other things, return to DOS without the 1,2,3 key combination (via the
+  `#PRINT(2)` path).
+
+The two work hand in hand, but the OS is NEWDOS/80 and that is what the
+keyboard driver is for.
 
 ---
 
-## Dateien / Files
+## Files
 
-| Datei / File | Beschreibung / Description |
+| File | Description |
 |---|---|
-| [`kbdhrg.z80`](./kbdhrg.z80) | Binär-verifizierter Z80-Quelltext / binary-verified Z80 source |
-| `KBDHRG/CMD` | Original-Binär (auf Diskette) / original binary (on disk) |
-| `HRGDOS/CMD` | gepatchter RB-Electronic HRG-Supertreiber / patched HRG super-driver |
+| [`kbdhrg.z80`](./kbdhrg.z80) | Binary-verified Z80 source |
+| `KBDHRG/CMD` | Original binary (on disk) |
+| `HRGDOS/CMD` | Patched RB-Electronic HRG super-driver |
 
-Eine DMK-Diskette mit dem Z80-Quelltext ist geplant. /
 A DMK disk image carrying the Z80 source is planned.
 
 ---
 
-## Herkunft & Verifikation / Provenance & verification
+## Provenance & verification
 
-Der Treiber wurde 1989 von Egbert Schröer geschrieben und im Januar 1990 in
-Club-80, Heft 29 (S. 12–17) veröffentlicht. Der vollständige Artikeltext (deutsch und
-englisch) steht weiter unten. /
+The driver was written by Egbert Schröer in 1989 and published in January 1990
+in Club-80, Heft 29 (pp. 12–17). The full article appears below in the German
+original, followed by an English translation.
 
-The driver was written by Egbert Schröer in 1989 and published in January
-1990 in Club-80, Heft 29 (pp. 12–17). The full article (German and English) appears
-below.
+**Where the binary was found:** `KBDHRG/CMD` is present on disks **esnd-01**
+and **NEWDOS80**. Both show identical directory listings (same 45 files, same
+order, same geometry) and are very likely the same disk imaged twice.
 
-**Fundort des Binärs / where the binary was found:** `KBDHRG/CMD` liegt auf
-den Disketten **esnd-01** und **NEWDOS80**. Beide zeigen identische
-Verzeichnislisten (gleiche 45 Dateien, gleiche Reihenfolge, gleiche
-Geometrie) und sind mit hoher Wahrscheinlichkeit dieselbe Diskette, zweimal
-abgebildet. /
-`KBDHRG/CMD` is present on disks **esnd-01** and **NEWDOS80**. Both show
-identical directory listings (same 45 files, same order, same geometry) and
-are very likely the same disk imaged twice.
-
-**Verifikation / verification:** [`kbdhrg.z80`](./kbdhrg.z80) wurde Byte für
-Byte aus `KBDHRG.CMD` dekodiert (Ladeblock 128 Byte, `DA84H`–`DB03H`,
-Transfer-Adresse `DA84H`, AKKU-Zelle `DB04H`) und gegen Listing 1 des
-Artikels abgeglichen. **Der assemblierte Bytestrom stimmt vollständig
-überein — keine Abweichungen.** Nur der Bytestrom ist prüfbar; Label-Namen,
-Kommentare und Direktiven stammen aus dem gedruckten Quelltext. /
-[`kbdhrg.z80`](./kbdhrg.z80) was decoded byte-for-byte from `KBDHRG.CMD` and
-cross-checked against Listing 1 of the article. **The assembled byte stream
-matches completely — no discrepancies.** Only the byte stream is verifiable;
-label names, comments and directives come from the printed source.
+**Verification:** [`kbdhrg.z80`](./kbdhrg.z80) was decoded byte-for-byte from
+`KBDHRG.CMD` (128-byte load block, `DA84H`–`DB03H`) and cross-checked against
+Listing 1 of the article. The assembled byte stream matches completely, with
+no discrepancies. Only the byte stream is verifiable; the label names,
+comments, and directives in the source come from the printed listing.
 
 ---
 
-## Der Artikel — Club-80, Heft 29 (1990), deutsche Originalfassung
+## The article — Club-80, Heft 29 (1990)
+
+### German original
 
 > Quelle: Club-80, Heft 29, Januar 1990, S. 12–17. Transkribiert aus dem Original-Scan.
 
-### Modifikation des HRG Treibers von RB-Elektronik
-#### Umlaute mit NewDos/80 Vers. 2.0; neuer Tastaturtreiber
+#### Modifikation des HRG Treibers von RB-Elektronik
+##### Umlaute mit NewDos/80 Vers. 2.0; neuer Tastaturtreiber
 
 Der hier beschriebene Patch des Supertreibers ermöglicht die Eingabe von
 Umlauten, die Rückkehr vom BASIC zum DOS ohne die Tastenkombination 1,2,3.
@@ -160,15 +132,12 @@ dankbar.
 
 **(c) 1989 Egbert Schröer**
 
----
+### English translation
 
-## The article — Club-80, Heft 29 (1990), English translation
+> Source: Club-80, Heft 29, January 1990, pp. 12–17. Translated from the German original above, which is authoritative.
 
-> Source: Club-80, Heft 29, January 1990, pp. 12–17. Translated from the original German.
-> Translation provided for accessibility; the German text above is authoritative.
-
-### Modifying the RB-Elektronik HRG driver
-#### Umlauts with NewDos/80 v2.0; a new keyboard driver
+#### Modifying the RB-Elektronik HRG driver
+##### Umlauts with NewDos/80 v2.0; a new keyboard driver
 
 The super-driver patch described here enables entering umlauts and returning
 from BASIC to DOS without the 1,2,3 key combination. It also removes the need
@@ -226,19 +195,13 @@ possibilities.
 
 ---
 
-## Listings 2 & 3 (HRG-Supertreiber / HRG super-driver)
-
-Listing 1 (der Tastaturtreiber) liegt binär-verifiziert als
-[`kbdhrg.z80`](./kbdhrg.z80) vor. Die folgenden Listings 2 und 3 dokumentieren
-den HRG-Supertreiber und die Patches; sie stammen aus dem gedruckten Artikel
-und sind **noch nicht** gegen `HRGDOS/CMD` abgeglichen. Einige Hex-Operanden
-im Scan sind unsicher. /
+## Listings 2 & 3 (HRG super-driver)
 
 Listing 1 (the keyboard driver) is provided binary-verified as
 [`kbdhrg.z80`](./kbdhrg.z80). Listings 2 and 3 below document the HRG
-super-driver and the patches; they come from the printed article and are
-**not yet** verified against `HRGDOS/CMD`. Some hex operands in the scan are
-uncertain.
+super-driver and the patches applied to it. They are transcribed from the
+printed article and are **not yet** verified against `HRGDOS/CMD`; some hex
+operands in the scan are uncertain.
 
 ### Listing 2: HRG-Supertreiber V1.1 (from print — unverified)
 
