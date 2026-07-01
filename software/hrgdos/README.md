@@ -197,6 +197,14 @@ possibilities.
 
 ## Listings 2 & 3 (HRG super-driver)
 
+> **Editor's note — what TASMON was.** The article mentions TASMON as the tool
+> for its "detective work." TASMON was a machine-language monitor/debugger for
+> the TRS-80: it disassembled binaries, displayed and edited memory, and
+> single-stepped code. It is what made this patch possible — the RB-Electronic
+> super-driver shipped only as a binary, so it had to be disassembled and read
+> before it could be modified. That process produced Listing 2 (the
+> disassembled super-driver) and Listing 3 (the located patch points).
+
 Listing 1 (the keyboard driver) is provided binary-verified as
 [`kbdhrg.z80`](./kbdhrg.z80). Listings 2 and 3 below document the HRG
 super-driver and the patches applied to it. They are transcribed from the
