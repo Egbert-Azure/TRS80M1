@@ -2,7 +2,7 @@
 
 > **Auto-generated — do not edit by hand.** This is a machine file index produced by `catalog-logs.py` from per-disk extraction logs. For curated context (provenance, German annotations, damaged-disk notes, duplicate findings), see **`Disk_Inventory.md`**, which is the hand-maintained companion to this file.
 
-> _Refresh:_ from the `trsextract` folder, `./generate-logs.sh <image-dir> ./logs` then `python3 catalog-logs.py ./logs > Disk_Catalog.md`.
+> _Refresh:_ from the `trsextract` folder, `./generate-logs.sh <image-dir> ./logs <this-repo>` — renders this file and `catalog.json` in one run.
 
 _Generated from 78 extraction log(s)._
 
