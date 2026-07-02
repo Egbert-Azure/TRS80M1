@@ -21,6 +21,12 @@ TRS80M1/
 │   ├── diskimages.md              annotated walkthrough with screenshots
 │   ├── esnd-20a.md                notable disk: repaired esnd-20
 │   ├── images/                    screenshots for diskimages.md
+│   ├── GDos/
+│   │   ├── README.md              G-DOS editions index
+│   │   ├── hdos.md                H-DOS 2.3c (Arnulf Sopp / The HACKTORY, 1984)
+│   │   └── DMK/                   disk image and boot screenshot
+│   │       ├── HDOS23c.dmk
+│   │       └── hdos23c-boot.png
 │   └── NewDos/
 │       ├── trsextract.md          trsextract tool documentation
 │       └── dos-versions/          per-build NEWDOS/80 edition docs
@@ -85,6 +91,10 @@ Quick links:
 - **[NEWDOS/80 variants](diskimages/NewDos/dos-versions/README.md)** — per-build
   documentation of modified NEWDOS/80 disks (Weikamp 02.03.87 and others),
   verified from their SYS overlays.
+- **[G-DOS editions](diskimages/GDos/README.md)** — the German NEWDOS lineage
+  (TCS Trommeschläger Computer GmbH); first documented edition:
+  **H-DOS 2.3c**, Arnulf Sopp's 1984 zap-modification of G-DOS 2.1b
+  (The HACKTORY), disk imaged by Fritz Chwolka.
 - **[Expert system](software/expertsystem/README.md)** — a German rule-based
   expert system (Dr. H.-J. Soll, 1987) ported to the Model I in 1989;
   recursive-BASIC inference engine (disk esnd-23).
