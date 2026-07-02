@@ -1,6 +1,6 @@
 <!-- /hardware/model1-tuneup-1992.md — digitized primary source -->
 <!-- Repository file (c) Egbert Schroeer, 2026 -->
-<!-- Article authorship: Helmut Bernhardt, Egbert Schröder, Claus Ruschinski, 1992 -->
+<!-- Article authorship: Helmut Bernhardt, Egbert Schröer, Claus Ruschinski, 1992 -->
 
 # TRS-80 Model I Tuneup .. Hardware (Club 80 INFO 38, Dezember 1992)
 
@@ -136,6 +136,13 @@ The Tuneup thus consists of 4 parts:
 2) Connecting a new address decoder
 3) Installing a 256K (or larger) banker
 4) Speed-up (from 1.7 to 5.3 MHz)
+
+> **Editorial note (2026, Egbert Schroeer):** The 1992 article above records the
+> conversion as unfinished — single density working, double density not yet
+> possible. That is the state as originally published and is left unchanged.
+> The story continued: the build was later completed, and the new WD2793
+> double-density controller ran — a striking result in practice. This note is a
+> later addition; the transcription is preserved as first published.
 
 ---
 
@@ -677,7 +684,7 @@ Egbert Schröer, November 1992
 
 ## Sources
 
-- Helmut Bernhardt, Egbert Schröder, Claus Ruschinski, *TRS80 Model I Tuneup ..
+- Helmut Bernhardt, Egbert Schröer, Claus Ruschinski, *TRS80 Model I Tuneup ..
   Hardware*, Club 80 INFO Nr. 38, December 1992, pp. 21–27.
 - Referenced within: Helmut Bernhardt, *Selbstbau Doubler für EXP1* (earlier Club
   Info); *Eleganter Adreßdecoder für GENIE I*, Club Info Nr. 28, p. 74 ff;
