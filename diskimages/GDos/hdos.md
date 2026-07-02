@@ -28,6 +28,8 @@ around 1981/82). The active German TRS-80 user clubs
 pushed for DOS improvements, and a programmer working under the name
 *Hacktory* took on G-DOS — the result was H-DOS, passed on to interested
 users and discussed in the club magazines of the time.
+H-DOS 2.3 remains compatible with all versions of G-DOS 2.x and
+NEWDOS/80 2.x
 
 ## Feature overview (from the on-disk manual `ANLEIT/TXT`)
 
