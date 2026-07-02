@@ -8,6 +8,43 @@ entries are dated rather than versioned. Newest first.
 The format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 Categories: **Added**, **Changed**, **Fixed**, **Removed**, **Documented**.
 
+## 2026-07-01
+
+### Added
+- New top-level `hardware/` section with an index (`hardware/README.md`) for the
+  physical TRS-80 Model I build documentation, following the repository's
+  subject-index convention.
+- `hardware/model1-tuneup-1992.md` — digitized primary source: *TRS-80 Model I
+  Tuneup .. Hardware* (Bernhardt / Schröder / Ruschinski, Club 80 INFO 38, Dez.
+  1992). Full German transcription with English translation, covering the WD2793
+  double-density board, the 256K address decoder + banker (incl. A15-inversion
+  banking for NewDos vs CP/M), the 5.3 MHz speed-up, and the CP/M 3.0 boot-disk
+  geometry. Cross-linked from `software/sidekick/README.md`; section 6
+  corroborates the HRG-1B → RB (Rolf Best) Electronic attribution.
+
+### Fixed
+- `software/sidekick/README.md` — corrected the banker memory-map description.
+  The earlier text had it backwards ("upper half fixed, lower half banked"). On
+  the TRS-80 the low ROM/I/O/video region (0000h–3FFFh) is the unbankable common
+  area; Bernhardt's banker switches the **upper 32K (8000h–FFFFh)** via A15
+  inversion. Correction from Jens Günther, corroborated by the Club-80 *256K RAM
+  für Z80-Systeme* note.
+
+### Documented
+- `software/sidekick/README.md` — described what the SuperMem source actually
+  does, read from `SIDEKICK.Z80`: `copy` stages 3000h–7FFFh into the high bank
+  window B000h–FFFFh; the live switch `tausch` rotates only a 512-byte window
+  (7E00h–7FFFh) between banks through a buffer at A000h, rather than bulk-swapping
+  a 32K half.
+- `software/sidekick/README.md` — SDLTRS operating notes (from Jens Günther):
+  switch keys: real TRS-80 = **SHIFT + Down-Arrow** + digit (per the `schalt`
+  matrix scan); on SDLTRS the Down-Arrow position maps to **End** (PC) or
+  **Fn + Right-Arrow** (macOS) + digit. Also: reduce **Keystretch** (Alt-O,
+  ~100) if a digit prints instead of switching, and set **SuperMem to 256 KB**
+  (Alt-E) before starting SIDEKICK.
+  Switching verified on macOS; added two SDLTRS screenshots showing the active
+  computer number (`3c3fh`) top-right.
+
 ## 2026-06-30
 
 ### Added
