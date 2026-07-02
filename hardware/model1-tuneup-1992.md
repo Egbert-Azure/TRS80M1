@@ -4,7 +4,7 @@
 
 # TRS-80 Model I Tuneup .. Hardware (Club 80 INFO 38, Dezember 1992)
 
-**Article authors:** Helmut Bernhardt, Egbert Schröder, Claus Ruschinski
+**Article authors:** Helmut Bernhardt, Egbert Schröer, Claus Ruschinski
 **Published:** *Club 80 INFO* Nr. 38, December 1992, pp. 21–27
 **Subject:** Hardware modification of a TRS-80 Model I — double-density floppy
 controller (WD2793), 256K bank-switch board, and a manual 5.3 MHz speed-up —
