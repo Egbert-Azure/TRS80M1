@@ -41,6 +41,9 @@ TRS80M1/
 │       ├── README.md              disk doc, usage, hardware model
 │       ├── SIDEKICK.JV1           80-track NEWDOS/80 disk image
 │       └── SIDEKICK.Z80           Z80 source (reference copy)
+├── hardware/                      physical machine: build notes and boards
+│   ├── README.md                  hardware documentation index
+│   └── model1-tuneup-1992.md      DD controller, 256K banker, speed-up (Club 80, 1992)
 └── rom/                           ROM images for the emulator
     ├── LEVEL2.ROM
     └── MODEL1.ROM
@@ -55,13 +58,17 @@ The system as it ran:
 
 - **TRS-80 Model I** with the **Expansion Interface**
 - **Double-density floppy controller** upgrade
-- **256K bank-switched memory** expansion
+- **256K bank-switched memory** expansion (Helmut Bernhardt's banker)
 - **RB Electronic (Rolf Best) HRG-1B** high-resolution graphics card
   (RB Electronic GmbH, Eitorf)
 - **Four floppy drives** — two 80-track, two 40-track
 - **NEWDOS/80 v2.0** (Apparat Inc.), heavily modified, including a custom
   SYS-extension scheme
 - **G-DOS**, likewise modified, on some disks
+
+The physical build — the double-density controller, the 256K banker, and the
+5.3 MHz speed-up — is documented in the **[hardware section](hardware/README.md)**,
+including a digitized 1992 Club 80 build article.
 
 ## Documentation
 
@@ -88,6 +95,10 @@ Quick links:
 - **[SideKick](software/sidekick/README.md)** — four-computer memory banker for
   the Model I (Gerald Schröder / Helmut Bernhardt 1986; SuperMem port by Jens
   Günther 2024), on an apparent Apparat NEWDOS/80 V2.0 baseline.
+- **[Hardware](hardware/README.md)** — the physical Model I build: double-density
+  controller, 256K bank-switch board, and 5.3 MHz speed-up, with a digitized
+  1992 Club 80 build article (German + English) and the RB-Elektronik / HRG-1B
+  attribution.
 - **[Changelog](CHANGELOG.md)** — notable repository changes, newest first.
 
 ## Reading and extracting disks (trsextract)
