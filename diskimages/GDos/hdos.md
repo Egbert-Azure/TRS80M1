@@ -5,7 +5,7 @@
 Back to the [G-DOS editions index](README.md).
 
 ![H-DOS 2.3c booting under SDLTRS](DMK/hdos23c-boot.png)
-
+![alt text](image.png)
 *Boot screen: "H-DOS 2.3c — G-DOS 2.1b \* modif. 1984 durch Arnulf Sopp".
 The DOS prompt reads "Komm laß knacken :".*
 
@@ -55,6 +55,10 @@ users and discussed in the club magazines of the time.
 All extensions live in zapped or previously unused SYS files (loading at
 4D00–51FFh) and claim no user memory above 5200h and no extra disk space.
 H-DOS runs unchanged without the MBA — its absence is detected automatically.
+
+## DOS propmt
+
+Arnulf Sopp (The HACKTORY) has a special sense of humor which resonates to his DOS propmt *Komm laß knacken :* It is — roughly "come on, let's get cracking," with the obvious wink that knacken is also what you do to copy protection. Perfectly on brand for someone calling himself "The HACKTORY" and shipping a DOS built entirely from zaps.
 
 ## Hardware context
 
