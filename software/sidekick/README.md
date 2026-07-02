@@ -97,14 +97,19 @@ read in full.)
 2. Run `SIDEKICK/CMD` once from DOS Ready. It installs itself into the
    **GDOS/NEWDOS SYS0 interrupt routine**, copies the computer halves into the
    banks, and returns to DOS Ready.
-3. Switch between the four computers by holding the switch key (the routine
-   scans the TRS-80 Down-Arrow matrix position) and briefly tapping a digit
-   0–3. The host key depends on your keyboard:
+3. Switch between the four computers by holding a key combination and briefly
+   tapping a digit 0–3. The routine scans the TRS-80 keyboard matrix directly
+   (SHIFT at 3880h, Down-Arrow at 3840h, the digit at 3810h), so the physical
+   keys depend on the machine:
 
-   - **PC / SDLTRS:** **End** + digit
-   - **macOS / SDLTRS:** **Fn + Right-Arrow** + digit (Fn + Right-Arrow sends
-     End on a Mac) — confirmed working
+   - **Real TRS-80:** hold **SHIFT + Down-Arrow**, tap **0**–**3**.
+   - **SDLTRS on PC:** the Down-Arrow position maps to **End** — hold
+     **End**, tap **0**–**3**.
+   - **SDLTRS on macOS:** hold **Fn + Right-Arrow** (which sends End), tap
+     **0**–**3**. (Confirmed working.)
 
+   So the combination + **0** → computer 0, + **1** → computer 1, and so on.
+   Each computer can run its own program.
    So:
    - switch key + **0** → computer 0
    - switch key + **1** → computer 1
