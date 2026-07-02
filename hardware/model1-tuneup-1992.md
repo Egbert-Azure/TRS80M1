@@ -4,7 +4,7 @@
 
 # TRS-80 Model I Tuneup .. Hardware (Club 80 INFO 38, Dezember 1992)
 
-**Article authors:** Helmut Bernhardt, Egbert Schröer, Claus Ruschinski
+**Article authors:** Helmut Bernhardt, Egbert Schröder, Claus Ruschinski
 **Published:** *Club 80 INFO* Nr. 38, December 1992, pp. 21–27
 **Subject:** Hardware modification of a TRS-80 Model I — double-density floppy
 controller (WD2793), 256K bank-switch board, and a manual 5.3 MHz speed-up —
@@ -405,6 +405,25 @@ cut pins 8 and 9 of Z37 74LS02 from GND — this may disconnect other ICs from G
 which must then be re-grounded; this varies between production series; pins 8/9
 of Z37 74LS02 are connected to /ROM from the adapter board — there, 27128 pin
 20).*
+
+**Abb. 1 — ROM-read patch (scan):**
+
+![Abb. 1 — ROM-read patch: Z53 74LS132 gate to /BUSRQ, Z37 74LS02 gate with GND inputs, /ROM from 27128 pin 20](images/abb-1-rom-patch.png)
+
+Reading of the hand-drawn schematic (the typed prose above is authoritative
+where the two differ; pin-level readings marked `[?]` are uncertain in the
+scan):
+
+- Upper gate **Z53, 74LS132**: inputs around pins 4/5 labelled `/RD Z80` (P25)
+  and `Z80` (P11)`[?]`, feeding through `R58`/`R38`[?] and `TEST BUS, Pin 23`;
+  output at pin 6 → **/BUSRQ**.
+- Lower gate **Z37, 74LS02**: two **GND** inputs at pins 8 and 9; these GND
+  connections are cut (`// = trennen`). Output side at pin 10.
+- **/ROM** from **27128 pin 20 on the adapter** is wired in per the prose.
+- Legend on the drawing: `// = trennen` (cut), `‖ = verbinden` (connect).
+
+The scan (`images/abb-1-rom-patch.png`) is the authoritative form of this
+diagram; the transcription above is a reading aid, not a substitute.
 
 To use 4164 or 41256 chips on the CPU board, the following changes are required
 (because of the adapter's design):
