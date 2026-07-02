@@ -479,6 +479,31 @@ function for refreshing, A7´ of the 256K banker is used instead. *(See Abb. 2 �
 refresh multiplexer wiring; the signals A7´, A15´, A16´, A17´ come from the 256K
 banker.)*
 
+**Abb. 2 — refresh-address multiplexer wiring (scan):**
+
+![Abb. 2 — refresh multiplexer: Z35 and Z51 74LS157 producing MA0–MA7 to the RAMs, piggyback Z35' for MA8, with A15' and A7' from the 256K banker](images/abb-2-refresh-mux.png)
+
+Reading of the hand-drawn schematic (structure is clear; individual input-pin
+assignments marked `[?]` are uncertain in the scan):
+
+- **Z35, 74LS157** (upper multiplexer): address inputs A0/A8, A1/A9, A2/A10,
+  A3/A11`[?]` map to outputs **MA0–MA3** ("an Pins der RAMs"). A14 arrives from
+  Z38 pin 11.
+- **Z51, 74LS157** (lower multiplexer): inputs A4/A12, A5/A13`[?]`, A6/…, and
+  the banker's **A7´** map to outputs **MA4–MA7** ("an Pins 9 der RAMs legen").
+  **A15´ from the 256K banker** is also fed here; pins 13/14 are marked `nc`
+  (not connected) / to GND`[?]`.
+- **Z35´** — a piggyback 74LS157 soldered onto Z35 via pins 1, 8, 15, 16 — takes
+  **A16´** and **A17´** (pins 2 and 3) from the banker and produces **MA8** (pin
+  4), routed "an Pins 1 der RAMs."
+- The `´`-marked signals (A7´, A15´, A16´, A17´) all originate at the 256K
+  banker, substituting for the Z80 lines that have no refresh role.
+
+The scan (`images/abb-2-refresh-mux.png`) is the authoritative form of this
+diagram; the transcription above is a reading aid, not a substitute. The
+per-pin input pairing should be verified against the scan (and the "256K RAM
+für Z80-System" Info article) before rebuilding.
+
 At the end of this build section I must again point out that when cutting traces
 a signal may be disconnected not only at the desired place but also from other
 ICs. Sometimes it is not obvious (e.g. when traces run under an IC) that more is
