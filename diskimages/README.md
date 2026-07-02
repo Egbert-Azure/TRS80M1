@@ -1,4 +1,4 @@
-<!-- /diskimages/README.md — documentation index: routes to inventory, DOS editions, software, original work, notable disks -->
+<!-- /diskimages/README.md — documentation index: routes to inventory, DOS editions, software, original work -->
 <!-- (c) E. Schroeer -->
 # TRS-80 Model I — Disk Images & Documentation
 
@@ -26,7 +26,8 @@ rather than re-listing the disk.
 Modified NEWDOS/80 and G-DOS builds, each verified from its own SYS overlays.
 
 - **[NEWDOS/80 variants](NewDos/dos-versions/README.md)** — index of per-edition
-  documents (Weikamp 02.03.87, and others as verified).
+  documents: Weikamp 02.03.87 and [HS-DOS](NewDos/dos-versions/esnd-20a.md)
+  (NEWDOS/80 +10 v2.5, 31.12.85, via the repaired esnd-20a).
 - **[G-DOS editions](GDos/README.md)** — the German NEWDOS lineage (TCS); first
   documented edition: [H-DOS 2.3c](GDos/hdos.md), Arnulf Sopp's 1984
   zap-modification of G-DOS 2.1b (The HACKTORY), disk imaged by Fritz Chwolka.
@@ -48,13 +49,6 @@ Software written or ported by the collection's author.
   driver for the HRG-1B (1989), paired with the patched RB Electronic HRG
   super-driver; Z80 source binary-verified against Club-80 Heft 29, Listing 1.
 
-## Notable disks
-Disks whose individual story is worth a page beyond the inventory row — repairs,
-reconstructions, unusual payloads.
-
-- **[esnd-20a](esnd-20a.md)** — repaired esnd-20: NEWDOS/80 +10 v2.5 carrying the
-  HRG-1B driver (`HRG/CMD`) and the ACCEL3 toolchain.
-
 ## Tooling
 - **[trsextract](NewDos/trsextract.md)** — native Python 3 directory lister and
   byte-exact file extractor for NEWDOS/80 and G-DOS images.
@@ -66,7 +60,7 @@ reconstructions, unusual payloads.
 ## How these fit together
 
 - **Inventory** answers *"what disks do I have?"* — every `esnd-NN`, once.
-- **Subjects** (DOS editions / Software / Original work / Notable disks) answer
+- **Subjects** (DOS editions / Software / Original work) answer
   *"what is worth understanding?"* Each links *down* to the inventory rows it came from.
 - **Tooling** is how the disks are read and run.
 
