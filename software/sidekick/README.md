@@ -48,21 +48,45 @@ SideKick depends on a memory banker, not on any standard bus card. Bernhardt's
 design replaces the machine's 4164/4116 RAMs with pin-compatible 41256 chips
 plus a small banking logic, giving 256K (optionally 512K/1024K).
 
-The geometry that shapes SideKick:
+The geometry that shapes SideKick. On a BASIC-in-ROM machine like the TRS-80
+the split is dictated by what *can* be banked:
 
-- The 64K address space splits into two 32K halves. The **upper half
-  (8000h–FFFFh) is fixed and always visible — the Common area.** Interrupt
-  routines, the stack, and anything that must always be reachable live here.
-- The **lower half (0000h–7FFFh) is banked** — several parallel 32K blocks,
-  selected by writing a bank number to the latch port.
+- The **lower region (0000h–3FFFh)** is ROM (0000h–2FFFh) plus memory-mapped
+  I/O and video RAM (3000h–3FFFh). None of it is bankable — there is no RAM
+  there to swap — so it is always visible. This is the true Common area:
+  interrupt routines reachable through ROM/SYS0, and the fixed I/O and screen.
+- Bernhardt's banker therefore switches the **upper 32K (8000h–FFFFh)**. As the
+  Club-80 hardware note puts it, "Banking der oberen 32K ist nur dann sinnvoll,
+  wenn es sich um einen BASIC-im-ROM-Computer … handelt," and it is done by
+  inverting A15 (e.g. a 74LS04) so the latch selects among parallel 32K blocks
+  in the high half.
 - RESET forces bank 0, so initialization always starts from a known state.
-- Bank 1 would overlap the Common block, so the logic redirects it to the
-  highest bank; the top bank (7 at 256K, 15 at 512K, 31 at 1024K) is therefore
-  unusable.
+- Bank 1 would overlap the block that must stay put, so the logic redirects it
+  to the highest bank; the top bank (7 at 256K, 15 at 512K, 31 at 1024K) is
+  therefore unusable.
 
-This is why SideKick can only **swap the lower halves** of the computers
-physically, while the **upper halves are merely bank-switched** — the Common
-must stay put.
+So the earlier description here — "upper half fixed, lower half banked" — was
+backwards, and the correction is due to Jens Günther (corroborated by the
+Club-80 *256K RAM für Z80-Systeme* note). On the TRS-80 it is the **upper 32K
+that is bank-switched** and the **low ROM/I/O/video region that is common**.
+
+What the SuperMem source actually does. The on-disk `SIDEKICK/Z80` is the 2024
+SuperMem port, which has no A15-inversion hardware and banks in software via
+`OUT (043h),A`. Read from the bytes rather than the hardware note, two routines
+matter:
+
+- **`copy`** (initial fill) block-copies **3000h–7FFFh into the high bank
+  window B000h–FFFFh** (`LD DE,8000h+3000h` / `LD H,30h` / `LDIR` →
+  "(3000-7FFF)=>(B000-FFFF)"); its comment "kopiert oberen und unteren Teil in
+  Banks" confirms it stages both halves.
+- **`tausch`** (the live switch) does **not** bulk-swap a 32K half. It relocates
+  the swap code to 7E00h and rotates only the **512-byte window 7E00h–7FFFh**
+  between bank 0, the target bank, and bank 1 through a buffer at A000h. The
+  bulk movement is already done by `copy`; `tausch` performs the small, careful
+  exchange of processor-visible state at switch time.
+
+(Verified against `SIDEKICK.SRC`, 11,146 bytes, `copy` and `tausch` routines
+read in full.)
 
 ---
 
@@ -73,17 +97,43 @@ must stay put.
 2. Run `SIDEKICK/CMD` once from DOS Ready. It installs itself into the
    **GDOS/NEWDOS SYS0 interrupt routine**, copies the computer halves into the
    banks, and returns to DOS Ready.
-3. Switch between the four computers by holding **SHIFT + Down-Arrow + a digit**
-   together:
-   - SHIFT + Down-Arrow + **0** → computer 0
-   - SHIFT + Down-Arrow + **1** → computer 1
-   - SHIFT + Down-Arrow + **2** → computer 2
-   - SHIFT + Down-Arrow + **3** → computer 3
+3. Switch between the four computers by holding the switch key (the routine
+   scans the TRS-80 Down-Arrow matrix position) and briefly tapping a digit
+   0–3. The host key depends on your keyboard:
+
+   - **PC / SDLTRS:** **End** + digit
+   - **macOS / SDLTRS:** **Fn + Right-Arrow** + digit (Fn + Right-Arrow sends
+     End on a Mac) — confirmed working
+
+   So:
+   - switch key + **0** → computer 0
+   - switch key + **1** → computer 1
+   - switch key + **2** → computer 2
+   - switch key + **3** → computer 3
 
    Each computer can run its own program.
 
 In the 2024 version the active computer's number is shown in the top-right
-corner of the screen (`LD (3c3fh),A`).
+corner of the screen (`LD (3c3fh),A`) — e.g. a **1** while computer 1 is
+active, a **3** while computer 3 is active.
+
+### Running SideKick under SDLTRS
+
+The switch combination is a held multi-key press scanned directly from the
+TRS-80 keyboard matrix, so on an emulator the host mapping and timing matter.
+Notes from Jens Günther for SDLTRS:
+
+- **Hold the switch key, then tap the digit.** The key differs by platform:
+  - **PC:** **End**
+  - **macOS:** **Fn + Right-Arrow** (sends End) — tested and working
+  Hold it down and press **0–3** briefly. The active computer's number then
+  appears top-right (e.g. pressing switch-key + 1 shows a **1**).
+- **If the digit prints on screen instead of switching**, the keystroke is
+  being stretched/repeated. Reduce the **Keystretch Value** (via **Alt-O**),
+  e.g. to **100**.
+- **Set SuperMem to 256 KB before starting SIDEKICK.** In **Emulator Settings**
+  (**Alt-E**), enable/size **SuperMem** to **256 KB**; without it the banking
+  cannot work.
 
 **Two rules for any program running inside a computer (stated by Schröder):**
 
