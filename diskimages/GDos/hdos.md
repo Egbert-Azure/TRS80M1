@@ -5,7 +5,6 @@
 Back to the [G-DOS editions index](README.md).
 
 ![H-DOS 2.3c booting under SDLTRS](DMK/hdos23c-boot.png)
-![alt text](image.png)
 *Boot screen: "H-DOS 2.3c — G-DOS 2.1b \* modif. 1984 durch Arnulf Sopp".
 The DOS prompt reads "Komm laß knacken :".*
 
