@@ -19,7 +19,6 @@ TRS80M1/
 │   ├── README.md                  documentation index — start here
 │   ├── Disk_Catalog.md            auto-generated catalog of all disk images
 │   ├── diskimages.md              annotated walkthrough with screenshots
-│   ├── esnd-20a.md                notable disk: repaired esnd-20
 │   ├── images/                    screenshots for diskimages.md
 │   ├── GDos/
 │   │   ├── README.md              G-DOS editions index
@@ -31,8 +30,10 @@ TRS80M1/
 │       ├── trsextract.md          trsextract tool documentation
 │       └── dos-versions/          per-build NEWDOS/80 edition docs
 │           ├── README.md          variants index
+│           ├── esnd-20a.md        HS-DOS (NEWDOS/80 +10 v2.5, 31.12.85)
 │           ├── newdos80-weikamp-020387.md
 │           └── DMK/               disk images and boot screenshots
+│               ├── esnd-20a.dmk
 │               ├── weikamp.dmk
 │               └── weikamp-boot.png
 ├── software/                      programs and original work
@@ -80,7 +81,7 @@ including a digitized 1992 Club 80 build article.
 
 Start at the **[disk images & documentation index](diskimages/README.md)** —
 the curated front door, organized by subject (DOS editions, software, original
-work, notable disks) and pointing to the disk inventory.
+work) and pointing to the disk inventory.
 
 Quick links:
 
@@ -89,8 +90,9 @@ Quick links:
 - **[Annotated walkthrough](diskimages/diskimages.md)** — screenshot-by-screenshot
   tour of the disks.
 - **[NEWDOS/80 variants](diskimages/NewDos/dos-versions/README.md)** — per-build
-  documentation of modified NEWDOS/80 disks (Weikamp 02.03.87 and others),
-  verified from their SYS overlays.
+  documentation of modified NEWDOS/80 disks (Weikamp 02.03.87; HS-DOS —
+  NEWDOS/80 +10 v2.5, 31.12.85, via the repaired esnd-20a), verified from
+  their SYS overlays.
 - **[G-DOS editions](diskimages/GDos/README.md)** — the German NEWDOS lineage
   (TCS Trommeschläger Computer GmbH); first documented edition:
   **H-DOS 2.3c**, Arnulf Sopp's 1984 zap-modification of G-DOS 2.1b
