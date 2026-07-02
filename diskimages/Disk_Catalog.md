@@ -4,7 +4,7 @@
 
 > _Refresh:_ from the `trsextract` folder, `./generate-logs.sh <image-dir> ./logs` then `python3 catalog-logs.py ./logs > Disk_Catalog.md`.
 
-_Generated from 77 extraction log(s)._
+_Generated from 78 extraction log(s)._
 
 Standard system files (BOOT/SYS, DIR/SYS, SYS0–SYS21, common utilities) are hidden from the **distinctive files** line so the content that identifies each disk stands out. The full file list per disk is below the summary.
 
@@ -66,6 +66,7 @@ Standard system files (BOOT/SYS, DIR/SYS, SYS0–SYS21, common utilities) are hi
 | **GAMES** | — | — | — | — | — | — | ⚠️ ERROR: no directory found by floppy-track scanni |
 | GDOS-PDRAW | DMK | 40 | 1 | 17 | 39 | 12 |  |
 | GDOS | JV1 | 102 | 1 | 53 | 8 | 4 |  |
+| HDOS23c | DMK | 41 | 2 | 21 side 0 | 48 | 13 | over-read? |
 | HDOSNEWDOS80 | DMK | 40 | 1 | 17 | 34 | 1 |  |
 | ND80-HD1 | JV3 | 255 | 2 | 3 side 1 | 2 | 2 |  |
 | nd86gu1 | DMK | 40 | 1 | 9 | 21 | 18 |  |
@@ -997,6 +998,23 @@ GDOS/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · BASIC/CMD · INHALT/SYS · SUP
 
 
 GDOS/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · ASM/CMD · BASIC/CMD · CAT/CMD · CLHS/CMD
+
+</details>
+
+### HDOS23c
+
+`HDOS23c.dmk`
+
+- Format **DMK**, 41 tracks, 2 side(s), directory track 21 side 0  _(track count suggests an imaging over-read)_
+
+- **Distinctive files (13):** `ANLEIT/TXT`, `ARTIKEL/TXT`, `ARTIKEL1/TXT`, `ARTIKEL2/TXT`, `BASIC/CMD`, `BILD/CMD`, `DEFMEM/CMD`, `GRA/CMD`, `HACKTORY/CMD`, `REFCARD/TXT`, `RESJKL/CMD`, `SDIR/CMD`, `SYSHEX/CMD`
+
+- File types: SYS×34, CMD×9, TXT×5
+
+<details><summary>Full file list (48)</summary>
+
+
+HDOS/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · ANLEIT/TXT · ARTIKEL/TXT · ARTIKEL1/TXT · ARTIKEL2/TXT · INHALT/SYS · SYS7/SYS · SYS15/SYS · SYS23/SYS · BASIC/CMD · BILD/CMD · SYS0/SYS · SYS8/SYS · SYS16/SYS · SYS24/SYS · DEFMEM/CMD · GRA/CMD · HACKTORY/CMD · SYS1/SYS · SYS9/SYS · SYS17/SYS · SYS25/SYS · REFCARD/TXT · SYS2/SYS · SYS10/SYS · SYS18/SYS · SYS26/SYS · RESJKL/CMD · SDIR/CMD · SYS3/SYS · SYS11/SYS · SYS19/SYS · SYS27/SYS · SYS22E/SYS · SYS22G/SYS · SYS4/SYS · SYS12/SYS · SYS20/SYS · SYS28/SYS · SYS27/CMD · SYSHEX/CMD · SYS5/SYS · SYS13/SYS · SYS21/SYS · SYS29/SYS
 
 </details>
 
