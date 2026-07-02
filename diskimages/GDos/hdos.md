@@ -59,6 +59,7 @@ H-DOS runs unchanged without the MBA — its absence is detected automatically.
 ## DOS propmt
 
 Arnulf Sopp (The HACKTORY) has a special sense of humor which resonates to his DOS propmt *Komm laß knacken :* It is — roughly "come on, let's get cracking," with the obvious wink that knacken is also what you do to copy protection. Perfectly on brand for someone calling himself "The HACKTORY" and shipping a DOS built entirely from zaps.
+On the disk is *hacktory/cmd* which give an image of Arnul The Hacktory and nothing more & nothing less.
 
 ## Hardware context
 
