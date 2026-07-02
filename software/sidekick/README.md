@@ -120,10 +120,10 @@ active, a **3** while computer 3 is active.
 Switching verified under SDLTRS on macOS (Fn + Right-Arrow + digit). Two of the
 four computers, each holding its own independent machine state:
 
-![Computer 3 active — DISK BASIC READY, "3" shown top-right](images/sidekick-computer-3-diskbasic.png)
+![Computer 3 active — DISK BASIC READY, "3" shown top-right](diskimages/images/sidekick-computer-3-diskbasic.png)
 *Computer 3: NEWDOS/80 DISK BASIC at `READY`, computer number `3` top-right.*
 
-![Computer 1 active — NEWDOS DOS prompt with its own directory, "1" shown top-right](images/sidekick-computer-1-newdos.png)
+![Computer 1 active — NEWDOS DOS prompt with its own directory, "1" shown top-right](diskimages/images/sidekick-computer-1-newdos.png)
 *Computer 1: NEWDOS/80 `DOS` prompt, a separate disk (`DOS0387`/`KBDGER`
 directory) with its own state, computer number `1` top-right.*
 
