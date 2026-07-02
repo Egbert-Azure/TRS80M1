@@ -28,8 +28,6 @@ around 1981/82). The active German TRS-80 user clubs
 pushed for DOS improvements, and a programmer working under the name
 *Hacktory* took on G-DOS — the result was H-DOS, passed on to interested
 users and discussed in the club magazines of the time.
-H-DOS 2.3 remains compatible with all versions of G-DOS 2.x and
-NEWDOS/80 2.x
 
 ## Feature overview (from the on-disk manual `ANLEIT/TXT`)
 
@@ -57,11 +55,6 @@ NEWDOS/80 2.x
 All extensions live in zapped or previously unused SYS files (loading at
 4D00–51FFh) and claim no user memory above 5200h and no extra disk space.
 H-DOS runs unchanged without the MBA — its absence is detected automatically.
-
-## DOS propmt
-
-Arnulf Sopp (The HACKTORY) has a special sense of humor which resonates to his DOS propmt *Komm laß knacken :* It is — roughly "come on, let's get cracking," with the obvious wink that knacken is also what you do to copy protection. Perfectly on brand for someone calling himself "The HACKTORY" and shipping a DOS built entirely from zaps.
-On the disk is *hacktory/cmd* which give an image of Arnul The Hacktory and nothing more & nothing less.
 
 ## Hardware context
 
