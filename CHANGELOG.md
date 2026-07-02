@@ -15,12 +15,17 @@ Categories: **Added**, **Changed**, **Fixed**, **Removed**, **Documented**.
   physical TRS-80 Model I build documentation, following the repository's
   subject-index convention.
 - `hardware/model1-tuneup-1992.md` — digitized primary source: *TRS-80 Model I
-  Tuneup .. Hardware* (Bernhardt / Schröder / Ruschinski, Club 80 INFO 38, Dez.
+  Tuneup .. Hardware* (Bernhardt / Schröer / Ruschinski, Club 80 INFO 38, Dez.
   1992). Full German transcription with English translation, covering the WD2793
   double-density board, the 256K address decoder + banker (incl. A15-inversion
   banking for NewDos vs CP/M), the 5.3 MHz speed-up, and the CP/M 3.0 boot-disk
-  geometry. Cross-linked from `software/sidekick/README.md`; section 6
-  corroborates the HRG-1B → RB (Rolf Best) Electronic attribution.
+  geometry. Includes the two hand-drawn schematics as scans
+  (`hardware/images/abb-1-rom-patch.png`, `abb-2-refresh-mux.png`) with
+  conservative netlist-style transcriptions marked as reading aids, and a dated
+  2026 editorial note recording that the build was later completed and the
+  WD2793 ran. Cross-linked from `software/sidekick/README.md`; section 6
+  corroborates the HRG-1B → RB (Rolf Best) Electronic attribution. (Historical
+  byline uses "Schröer" with umlaut; repo copyright line uses "Schroeer".)
 
 ### Fixed
 - `software/sidekick/README.md` — corrected the banker memory-map description.
@@ -29,6 +34,12 @@ Categories: **Added**, **Changed**, **Fixed**, **Removed**, **Documented**.
   area; Bernhardt's banker switches the **upper 32K (8000h–FFFFh)** via A15
   inversion. Correction from Jens Günther, corroborated by the Club-80 *256K RAM
   für Z80-Systeme* note.
+
+### Changed
+- Root `README.md` — added `hardware/` to the repository-layout tree and a
+  **Hardware** quick-link in the Documentation section; attributed the 256K
+  bank-switched memory to Helmut Bernhardt's banker (previously unattributed),
+  now that the 1992 article establishes it.
 
 ### Documented
 - `software/sidekick/README.md` — described what the SuperMem source actually
