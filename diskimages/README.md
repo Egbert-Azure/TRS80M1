@@ -27,26 +27,33 @@ Modified NEWDOS/80 and G-DOS builds, each verified from its own SYS overlays.
 
 - **[NEWDOS/80 variants](NewDos/dos-versions/README.md)** — index of per-edition
   documents (Weikamp 02.03.87, and others as verified).
-- *(G-DOS editions — planned)*
+- **[G-DOS editions](GDos/README.md)** — the German NEWDOS lineage (TCS); first
+  documented edition: [H-DOS 2.3c](GDos/hdos.md), Arnulf Sopp's 1984
+  zap-modification of G-DOS 2.1b (The HACKTORY), disk imaged by Fritz Chwolka.
 
 ## Software & subsystems
 Individual programs and drivers, documented where they span disks or warrant detail.
 
-- *(HRG-1B / HRG/CMD graphics driver — planned; source disks incl. esnd-20a)*
+- **[SideKick](../software/sidekick/README.md)** — four-computer memory banker
+  (Gerald Schröder / Helmut Bernhardt 1986; SuperMem port by Jens Günther 2024).
 - *(ACCEL3 toolchain & editors — planned)*
 
 ## Original work
 Software written or ported by the collection's author.
 
-- **[Educational expert system](../TRS80_Expertsystem/EXPERTSYSTEM_REFERENCE.md)** —
+- **[Educational expert system](../software/expertsystem/README.md)** —
   rule-based backward-chaining inference engine, ported and extended for the Model I
-  (1989–1990).
+  (1989–1990); disk esnd-23.
+- **[HRGDOS / KBDHRG](../software/hrgdos/README.md)** — umlaut-capable keyboard
+  driver for the HRG-1B (1989), paired with the patched RB Electronic HRG
+  super-driver; Z80 source binary-verified against Club-80 Heft 29, Listing 1.
 
 ## Notable disks
 Disks whose individual story is worth a page beyond the inventory row — repairs,
 reconstructions, unusual payloads.
 
-- *(esnd-20a — repaired esnd-20; HRG/CMD + ACCEL3 payload — planned)*
+- **[esnd-20a](esnd-20a.md)** — repaired esnd-20: NEWDOS/80 +10 v2.5 carrying the
+  HRG-1B driver (`HRG/CMD`) and the ACCEL3 toolchain.
 
 ## Tooling
 - **[trsextract](NewDos/trsextract.md)** — native Python 3 directory lister and
