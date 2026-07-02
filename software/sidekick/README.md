@@ -46,7 +46,9 @@ cheap memory banker.
 
 SideKick depends on a memory banker, not on any standard bus card. Bernhardt's
 design replaces the machine's 4164/4116 RAMs with pin-compatible 41256 chips
-plus a small banking logic, giving 256K (optionally 512K/1024K).
+plus a small banking logic, giving 256K (optionally 512K/1024K). The physical
+build — this banker, the double-density controller, and the speed-up — is
+documented in [`hardware/model1-tuneup-1992.md`](../../hardware/model1-tuneup-1992.md).
 
 The geometry that shapes SideKick. On a BASIC-in-ROM machine like the TRS-80
 the split is dictated by what *can* be banked:
@@ -85,7 +87,7 @@ matter:
   bulk movement is already done by `copy`; `tausch` performs the small, careful
   exchange of processor-visible state at switch time.
 
-(Verified against `SIDEKICK.SRC`, 11,146 bytes, `copy` and `tausch` routines
+(Verified against `SIDEKICK.Z80`, 11,146 bytes, `copy` and `tausch` routines
 read in full.)
 
 ---
@@ -98,25 +100,18 @@ read in full.)
    **GDOS/NEWDOS SYS0 interrupt routine**, copies the computer halves into the
    banks, and returns to DOS Ready.
 3. Switch between the four computers by holding a key combination and briefly
-   tapping a digit 0–3. The routine scans the TRS-80 keyboard matrix directly
-   (SHIFT at 3880h, Down-Arrow at 3840h, the digit at 3810h), so the physical
-   keys depend on the machine:
+   tapping a digit 0–3. The `schalt` routine scans the keyboard matrix directly
+   — SHIFT (row 3880h, bit 0), Down-Arrow (row 3840h, bit 4), then the digit
+   (row 3810h) — so the physical keys depend on the machine:
 
    - **Real TRS-80:** hold **SHIFT + Down-Arrow**, tap **0**–**3**.
-   - **SDLTRS on PC:** the Down-Arrow position maps to **End** — hold
+   - **SDLTRS on PC:** the Down-Arrow matrix position maps to **End** — hold
      **End**, tap **0**–**3**.
    - **SDLTRS on macOS:** hold **Fn + Right-Arrow** (which sends End), tap
      **0**–**3**. (Confirmed working.)
 
-   So the combination + **0** → computer 0, + **1** → computer 1, and so on.
-   Each computer can run its own program.
-   So:
-   - switch key + **0** → computer 0
-   - switch key + **1** → computer 1
-   - switch key + **2** → computer 2
-   - switch key + **3** → computer 3
-
-   Each computer can run its own program.
+   So the combination + **0** → computer 0, + **1** → computer 1, + **2** →
+   computer 2, + **3** → computer 3. Each computer can run its own program.
 
 In the 2024 version the active computer's number is shown in the top-right
 corner of the screen (`LD (3c3fh),A`) — e.g. a **1** while computer 1 is
@@ -125,7 +120,7 @@ active, a **3** while computer 3 is active.
 Switching verified under SDLTRS on macOS (Fn + Right-Arrow + digit). Two of the
 four computers, each holding its own independent machine state:
 
-![Computer 3 active — DISK BASIC READY, "3" shown top-right](../../diskimages/images/sidekick-computer-3-diskbasic.png)
+![Computer 3 active — DISK BASIC READY, "3" shown top-right](../../diskimagesimages/sidekick-computer-3-diskbasic.png)
 *Computer 3: NEWDOS/80 DISK BASIC at `READY`, computer number `3` top-right.*
 
 ![Computer 1 active — NEWDOS DOS prompt with its own directory, "1" shown top-right](../../diskimages/images/sidekick-computer-1-newdos.png)
@@ -138,7 +133,9 @@ The switch combination is a held multi-key press scanned directly from the
 TRS-80 keyboard matrix, so on an emulator the host mapping and timing matter.
 Notes from Jens Günther for SDLTRS:
 
-- **Hold the switch key, then tap the digit.** The key differs by platform:
+- **Hold the switch key(s), then tap the digit.** On the real TRS-80 this is
+  **SHIFT + Down-Arrow**; SDLTRS reaches the Down-Arrow matrix position via a
+  host key that differs by platform:
   - **PC:** **End**
   - **macOS:** **Fn + Right-Arrow** (sends End) — tested and working
   Hold it down and press **0–3** briefly. The active computer's number then
