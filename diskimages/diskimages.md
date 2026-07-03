@@ -154,4 +154,4 @@ Grape (???)
 36.
 
 37. 
-![alt text](image37.png)
+![alt text](/images/image37.png)
