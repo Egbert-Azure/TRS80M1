@@ -18312,6 +18312,4332 @@
       ]
     },
     {
+      "disk": "Utility1",
+      "source": "Utility1.dsk",
+      "error": null,
+      "format": "JV3",
+      "tracks": "41",
+      "sides": "2",
+      "dirtrack": "11 side 0",
+      "note": "over-read?",
+      "files": [
+        {
+          "name": "GDOS",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "ADS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ADSDEMO",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ADSDEMO",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BASFORM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BASIC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BASSTART",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BASSTART",
+          "ext": "SRC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INHALT",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "CFILEGEN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CMDFIL13",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CMDFIL15",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CMDGEN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CMDGEN2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CMDPATCH",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CMDPATCH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CMDPTCH2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CMDPTCH2",
+          "ext": "EDT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CONVERT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CSS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CSS",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CWRITE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DATAGEN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DATAGEND",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DATAMAKE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DATUM",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DATUM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DATUMTXT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DCTYSORT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DDSD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DDSD1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DDSD2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DDSD3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DEVICE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRPRINT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRPRINT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRSORT",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRSORT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIS2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIS2",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISPTXT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOC48",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOC48",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOFILE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DRIVER",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DSET",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DSKDRV",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EBASIC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EBASIC2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EBASIC3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EDASPLUS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EDTASM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "ENHBAS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ENHBAS",
+          "ext": "ILF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ENHBAS18",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ERRCODE",
+          "ext": "ENH",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FILEVERG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FLOWCART",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FORMLIST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FORMLST2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GOREF15",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GOSUBS",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GRBAS",
+          "ext": "CIM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GRBAS",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INDEX",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INFINITE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INFINITE",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INKFE40H",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INKFE40H",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KBAS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KBASIC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KEYEDT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LEVEL3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LINEDEMO",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MACH",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NEATLIST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NEATLST2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PACK48",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PACK48",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PACK482",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PACKER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PACKER",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PACKER",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PASSWORD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PASSWORD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PRINT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PRINT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PUREZZAP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PURGE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RAMDISK",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RAMDISK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RESTOREN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RESTOREN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ROMFIND",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        }
+      ]
+    },
+    {
+      "disk": "Utility2",
+      "source": "Utility2.dsk",
+      "error": null,
+      "format": "JV3",
+      "tracks": "41",
+      "sides": "2",
+      "dirtrack": "11 side 0",
+      "note": "over-read?",
+      "files": [
+        {
+          "name": "GDOS",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "ALARM",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ALARM",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "APD",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "APD",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "APD1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "APD3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ASCFMT",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INHALT",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "ASCFMT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "AUSDATE",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "AUSDATE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BAM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BASICL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BASICND",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BASLIB",
+          "ext": "REL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BLANK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BLANK",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BOOT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BOOTKOPF",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BOSS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CALL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CAT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CAT",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CAT",
+          "ext": "SRC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CHECKER",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CLRDIR",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COMP",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COMP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COMP",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COMPARE",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COMPARE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COMPDIR",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COMPDIR",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CONVBIN",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CONVBIN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CPM2TRS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CREATER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "D",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "D",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DATAGEN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DATESET",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DATESET",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DCTYSORT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DDE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DECIPOK2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DECIPOKE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DEMO",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRMAP2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRSLOT",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRSLOT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRSLOT",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRSORT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRSORT2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIS",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIS",
+          "ext": "SRC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISKCOMP",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISKCOMP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISKCOMP",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISKKILL",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOU",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DR",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DR",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DR",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EXECUTE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EXPRESS",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EXPRESS",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GIANTCAP",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        }
+      ]
+    },
+    {
+      "disk": "Utility3",
+      "source": "Utility3.dsk",
+      "error": null,
+      "format": "JV3",
+      "tracks": "41",
+      "sides": "2",
+      "dirtrack": "11 side 0",
+      "note": "over-read?",
+      "files": [
+        {
+          "name": "GDOS",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "BRUN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CAT2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CPMTRANS",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISASSEM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "DISKCOM2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISKMAP",
+          "ext": "SRC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DTIMER2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INHALT",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "DTIMER2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FASTER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FASTER",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FASTMENU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FED",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FIXGAT",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FIXGAT3",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FIXGAT3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FIXHIT",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FIXHIT3",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FIXHIT3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FLOWGEN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FNDEMO",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FNDEMO",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GAMESMNU",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GRBAS",
+          "ext": "CIM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GRBAS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GRBAS",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HDSTART",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HDSTART",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HDSTART",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HELP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HELP40",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HPRX",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HPRX3",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HX1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HX3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ILFFILE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INTERRPT",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INTERRPT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INTERRPT",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INVERS",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KEYMAC",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KEYMAC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KEYMAC",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LEVEL1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LEVEL3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LOADADDR",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LPRINT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MACH2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MAP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MASKE",
+          "ext": "ANL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MASKE",
+          "ext": "CHN",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MCEINGAB",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MENINSTL",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MENINSTL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MENU",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MENU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MENU",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MERGELN",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MERGELN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MERGELN",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MINISUZP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NAMEIT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NAMEIT2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NEWBLD",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NEWBLD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NEWBLD",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NPD",
+          "ext": "ASS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NPD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "OUT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        }
+      ]
+    },
+    {
+      "disk": "Utility4",
+      "source": "Utility4.dsk",
+      "error": null,
+      "format": "JV3",
+      "tracks": "41",
+      "sides": "2",
+      "dirtrack": "11 side 0",
+      "note": "over-read?",
+      "files": [
+        {
+          "name": "GDOS",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "KEY",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KEYMAC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KOP",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KSM",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MAPDISK",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MELDUNG",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ND",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INHALT",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "ND",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NEWBAS48",
+          "ext": "CIM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NEWBAS48",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PARTEXT",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PDPRINT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PDRIVE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PDSHORT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PDW",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PDW",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PENRAM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PERUSE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "POKE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PROMPT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RD",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RD",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "REPLACER",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "REPLACER",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "REROUTE",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "REROUTE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "REROUTE",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "REVSTR",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "REVSTR",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "REVSTR",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ROMEQU",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCREEN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SD",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SD456",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SD456",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SD456",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SDIR",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SECT1",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SECT2",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SEDIT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SETDATE",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SETDATE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SORTDIR",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SORTDIR",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPACEMAP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "STEP80",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "STEP802",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPASS",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPASS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPASS",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPER2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERLST",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERLST",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYSADR",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYSSET10",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYSSET10",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYSSET11",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYSSET11",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TAPIDENT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TASTCODE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TATUPNI",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TATUPNI",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TATUPNI",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TATUPNI",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TCOPY",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TEXTNPD",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "THREEKEY",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TORUN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRACE",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRACE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRACE",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRACEON",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRCOPY",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRSDIR",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRSDIR",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRSDIR",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "V",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VERFILE",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VERFILE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VERFILE",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WHERE",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WHERE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WHERE",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        }
+      ]
+    },
+    {
+      "disk": "Utility5",
+      "source": "Utility5.dsk",
+      "error": null,
+      "format": "JV3",
+      "tracks": "41",
+      "sides": "2",
+      "dirtrack": "11 side 0",
+      "note": "over-read?",
+      "files": [
+        {
+          "name": "GDOS",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "BASICMAN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COMPROC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CREATOR2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EDT65107",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FILEVER",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INITA",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INHALT",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "KLUCAS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "M3DIR",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MEMO",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MENU80",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MOVE123",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MOVE321",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NEWKEY",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PROVER30",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RESTORE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPEED",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPOOLER",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERCOP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERUT1",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERUT2",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPUTI31",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPUTI32",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TAU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TCOPY2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TDCT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRAKCESS",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRAKCESS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRASHDEM",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRASHMAN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRKCESS",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRKCESS2",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRKCESS2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRKCESS2",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TS",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TSAVEH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TSAVEH2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TSTEP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UDK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ULTRA",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNNUMBER",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNNUMBER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "USE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VORSPAN1",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VORSPAN2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WAHL1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WAHL2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WAHL3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WAHLEDIT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "XFLV2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "XREFD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZIG48",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        }
+      ]
+    },
+    {
+      "disk": "Utility6",
+      "source": "Utility6.dsk",
+      "error": null,
+      "format": "JV3",
+      "tracks": "41",
+      "sides": "2",
+      "dirtrack": "11 side 0",
+      "note": "over-read?",
+      "files": [
+        {
+          "name": "GDOS",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "ALPHAWOR",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ALPHAWR",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ASCISORT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "AUTOTAPE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BASICUTI",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BINHEX",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BINTNIB",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INHALT",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "BOSS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BOSS",
+          "ext": "INS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BOSS",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BUSY",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CLEARDIR",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CMDADDR",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CODE",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CODE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CODE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CODETEST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COMPDIR2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CREATOR",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CROSSREF",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CTRLV",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DATAGEN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DDE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DDT2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DEADFILE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DEVICE2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRDRUCK",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRKILL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DS1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EXPANDER",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EXT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FCB",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FLOPDOC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GSF1",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GSF2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GSF48",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GSF48",
+          "ext": "OBJ",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HELP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ITOH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LIESDIR2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LIESKOM2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "M3BASIC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NPD",
+          "ext": "ASS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NPD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NPD",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PDPRINT2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PDRIVE2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PERUSE2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PRINTER",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PRINTER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RAMDOS80",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RAMTEST",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRSAVER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SETEFX80",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUBROUT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERZAP",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPUT22A",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPUT22B",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYSSET12",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYSSET12",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TAPERGEN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TDCS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TDCT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TITEL1",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TITEL2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRANSMUT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VARIDUMP",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "XFER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        }
+      ]
+    },
+    {
+      "disk": "Utility7",
+      "source": "Utility7.dsk",
+      "error": null,
+      "format": "JV3",
+      "tracks": "41",
+      "sides": "2",
+      "dirtrack": "11 side 0",
+      "note": "over-read?",
+      "files": [
+        {
+          "name": "GDOS",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "ALPHSORT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CREATOR1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DEFINPUT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DEFINPUT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DEFINPUT",
+          "ext": "EDT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRCLEAN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRUTI",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIR",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "DISKDUMP",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOC482",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOSCHECK",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DU",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DU",
+          "ext": "DOK",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FIXGAT1",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FIXGAT1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FIXHIT1",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FIXHIT1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FKEY",
+          "ext": "DOK",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FKEY",
+          "ext": "FLT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FKEY",
+          "ext": "ILF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FKEY",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FLIST",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FORMLIST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FV",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GETDISK",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GETTAPE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GOSTMENU",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GOSTMENU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GOSTMENU",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HEAPSORT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HILF",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INFO",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INPUT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INPUT",
+          "ext": "SRC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KBEEPFIX",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LDO",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LDO",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LOCEDIT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LOCEDIT2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MAZE",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MAZE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MAZE",
+          "ext": "CIM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MAZE",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MAZEGEN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NDAMPRSD",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NDCAT",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NDCAT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NIBTBIN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PDRIVE",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PDW",
+          "ext": "ASS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PDW",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PIXELJKL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PIXELJKL",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PIXELJKL",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PIXELJKL",
+          "ext": "MAC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PROGEN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RAMDOS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RAMDOS",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RAMSCAN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RAMSPOOL",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RAMSPOOL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SD",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SERIAL3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SERIAL4",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SETFKEYS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SHELSORT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SORTS",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPL62729",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPLITBAS",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TABLE",
+          "ext": "MAC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TAPEDISK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TATUPNI2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TOPSEC",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRACE1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRACE2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TYPAHEAD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UDK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UMWANDLG",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNIHELP",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNIHELP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNIHELP",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNMACRO",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNMACRO",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VARLEN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VARLIST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VARLIST",
+          "ext": "CIM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VARLIST",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VFU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VFU",
+          "ext": "DOC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WAHL3EDT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WHAZIT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WINDOW",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZIPZAP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZIPZAP",
+          "ext": "HLP",
+          "attr": "16",
+          "standard": false
+        }
+      ]
+    },
+    {
+      "disk": "Utility8",
+      "source": "Utility8.dsk",
+      "error": null,
+      "format": "JV3",
+      "tracks": "41",
+      "sides": "2",
+      "dirtrack": "11 side 0",
+      "note": "over-read?",
+      "files": [
+        {
+          "name": "GDOS",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "BTEXT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BTEXT",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BUGOUT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "CAT1UPD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CAT1UPD3",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CAT2UPD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CATCLEAR",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INHALT",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "CATPICK",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CHAINBLD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "COLOAD80",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COPY",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COPYCAT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COPYCATD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CREATOR3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DDT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DEUTSCH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISCAT80",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISCAT84",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISCATDD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISK40",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISKDP23",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISNDATA",
+          "ext": "ANL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISNDATA",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOC48",
+          "ext": "ANL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOC48",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOCLIST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EBASIC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EDIT80",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EDTVIDEO",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EXECUTE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EXTBAS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FASTER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FLOPDOC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FORM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FORMLIST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HELP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HELP",
+          "ext": "IDL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INDEXD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ITOH8510",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KHOFFSET",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LEDIT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MEMDOC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MINIZAP",
+          "ext": "ANL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MINIZAP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MON3D48",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PACKER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PACKER",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PRTITEL",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SECTRVGL",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SEDIT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SIMON16",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SIMON32",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SIMON48",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SIS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPEEDZAP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPER",
+          "ext": "ANL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERCAT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERDEM",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERDEM",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYLOCOPY",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TBUG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNICAT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "Z80",
+          "ext": "SYS",
+          "attr": "16",
+          "standard": true
+        }
+      ]
+    },
+    {
+      "disk": "Utility9",
+      "source": "Utility9.dsk",
+      "error": null,
+      "format": "JV3",
+      "tracks": "41",
+      "sides": "2",
+      "dirtrack": "11 side 0",
+      "note": "over-read?",
+      "files": [
+        {
+          "name": "GDOS",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "ADFR",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ALIVE",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ALIVE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ALIVE2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BASUT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BASUTEST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BOOTCOPY",
+          "ext": "SYS",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "INHALT",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "BOX",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BOX",
+          "ext": "SBE",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CMDEDIT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COMPILE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CONTROL",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COPYCAT2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "COPYCATS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CUT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DEMOMASK",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRAEND",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRECTOR",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRKAT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRKATAN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISCATG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISKAS23",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISKTEST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DSAVE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EDAS34",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EDITOR",
+          "ext": "SBS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "F1AE",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "F1AE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FIX",
+          "ext": "SBE",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FMTDUMP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HCINIT",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HCINIT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HEXDEZ",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "IBLOAD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "IBLOAD",
+          "ext": "IDL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "IMPORT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INV",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KEYEDIT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KEYMAC",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LKED",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LOCA",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LOCA16",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LOCA32",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LOCA48",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LUECKEN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MACROS",
+          "ext": "SBE",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MONDEB",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MONI",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MONI",
+          "ext": "MAN",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MREL",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NS1",
+          "ext": "ASS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PROLIS84",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PROLIS84",
+          "ext": "ERK",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RAMBASIC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RELOAD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RELOCATE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SBE",
+          "ext": "CIM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SBE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SBE",
+          "ext": "IDL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SBT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SBT",
+          "ext": "IDL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SREL",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "STEP80",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "STEP80",
+          "ext": "PCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYSMAKR2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TES",
+          "ext": "SBS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TITEL3",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRON",
+          "ext": "CIM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRON",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TTD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UMLAUT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNSPACE",
+          "ext": "SBS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VER",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WINPAD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "XALL",
+          "ext": "SBS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "XLATE",
+          "ext": "SBE",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "XREF",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "XREL",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EDITOR",
+          "ext": "BAS",
+          "attr": "0",
+          "standard": false
+        }
+      ]
+    },
+    {
       "disk": "utility",
       "source": "utility.dsk",
       "error": null,
