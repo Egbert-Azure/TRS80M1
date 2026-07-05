@@ -4,7 +4,7 @@
 
 > _Refresh:_ from the `trsextract` folder, `./generate-logs.sh <image-dir> ./logs <this-repo>` — renders this file and `catalog.json` in one run.
 
-_Generated from 87 extraction log(s)._
+_Generated from 88 extraction log(s)._
 
 Standard system files (BOOT/SYS, DIR/SYS, SYS0–SYS21, common utilities) are hidden from the **distinctive files** line so the content that identifies each disk stands out. The full file list per disk is below the summary.
 
@@ -12,7 +12,7 @@ Standard system files (BOOT/SYS, DIR/SYS, SYS0–SYS21, common utilities) are hi
 
 | Disk | Fmt | Trk | Sides | Dir | Files | Distinctive | Notes |
 |---|---|---|---|---|---|---|---|
-| ASYLUM | JV3 | 255 | 2 | 26 side 0 | 2 | 2 |  |
+| ASYLUM | DMK | 81 | 2 | 15 side 1 | 6 | 6 | over-read? |
 | BASIC-toolkit_80sssd_jv1 | JV1 | 80 | 1 | 17 | 19 | 17 |  |
 | cpmutil | JV3 | 40 | 1 | 31 | 10 | 10 |  |
 | disk124642 | DMK | 40 | 1 | 17 | 34 | 33 |  |
@@ -20,7 +20,7 @@ Standard system files (BOOT/SYS, DIR/SYS, SYS0–SYS21, common utilities) are hi
 | esnd-02 | DMK | 40 | 1 | 17 | 39 | 12 |  |
 | esnd-03 | DMK | 40 | 1 | 17 | 34 | 1 |  |
 | esnd-04 | DMK | 41 | 2 | 5 side 1 | 53 | 21 | over-read? |
-| esnd-05 | DMK | 41 | 2 | 5 side 1 | 56 | 25 | over-read? |
+| esnd-05 | DMK | 41 | 2 | 5 side 1 | 64 | 28 | over-read? |
 | esnd-06 | DMK | 43 | 2 | 5 side 1 | 64 | 34 |  |
 | esnd-07 | DMK | 41 | 2 | 15 side 0 | 80 | 46 | over-read? |
 | esnd-08 | DMK | 41 | 2 | 5 side 1 | 46 | 14 | over-read? |
@@ -65,10 +65,10 @@ Standard system files (BOOT/SYS, DIR/SYS, SYS0–SYS21, common utilities) are hi
 | g3sgdos2 | DMK | 81 | 2 | 41 side 0 | 128 | 91 | over-read? |
 | **GAMES** | — | — | — | — | — | — | ⚠️ ERROR: no directory found by floppy-track scanni |
 | GDOS-PDRAW | DMK | 40 | 1 | 17 | 39 | 12 |  |
-| GDOS | JV1 | 102 | 1 | 53 | 8 | 4 |  |
+| GDOS | DMK | 41 | 1 | 21 | 79 | 44 | over-read? |
 | HDOS23c | DMK | 41 | 2 | 21 side 0 | 48 | 13 | over-read? |
 | HDOSNEWDOS80 | DMK | 40 | 1 | 17 | 34 | 1 |  |
-| ND80-HD1 | JV3 | 255 | 2 | 3 side 1 | 2 | 2 |  |
+| ND80-HD1 | DMK | 35 | 1 | 17 | 36 | 8 |  |
 | nd86gu1 | DMK | 40 | 1 | 9 | 21 | 18 |  |
 | nd86gu2 | DMK | 40 | 1 | 9 | 16 | 14 |  |
 | nd86gu3 | DMK | 40 | 1 | 9 | 25 | 23 |  |
@@ -76,18 +76,19 @@ Standard system files (BOOT/SYS, DIR/SYS, SYS0–SYS21, common utilities) are hi
 | nd86hd1 | DMK | 40 | 1 | 9 | 14 | 12 |  |
 | nd86hd2 | DMK | 40 | 1 | 16 | 4 | 4 |  |
 | nd86whlp | DMK | 40 | 1 | 9 | 55 | 21 |  |
-| NEWDOS80-80Track | JV1 | 405 | 1 | 19 | 3 | 3 |  |
+| NEWDOS80-80Track | DMK | 81 | 2 | 15 side 0 | 72 | 36 | over-read? |
 | NEWDOS80-ext-lib | DMK | 41 | 2 | 5 side 1 | 61 | 25 | over-read? |
 | NEWDOS80 | DMK | 41 | 2 | 5 side 1 | 45 | 15 | over-read? |
 | NEWDOS80PLUS10 | DMK | 41 | 2 | 5 side 1 | 46 | 14 | over-read? |
 | NWP22MST | JV3 | 40 | 1 | 17 | 57 | 38 |  |
 | sargon | DMK | 81 | 2 | 15 side 0 | 4 | 2 | over-read? |
 | Sfinks4 | JV3 | 41 | 2 | 10 side 0 | 29 | 5 | over-read? |
-| Sicherungskopie | JV3 | 255 | 2 | 165 side 1 | 1 | 1 |  |
+| Sicherungskopie | DMK | 81 | 2 | 15 side 0 | 32 | 1 | over-read? |
 | SIDEKICK | JV1 | 80 | 1 | 17 | 47 | 12 |  |
+| System Disk with Sys29 | DMK | 81 | 2 | 15 side 0 | 33 | 1 | over-read? |
 | **test1** | — | — | — | — | — | — | ⚠️ ERROR: no sectors decoded; unrecognised or damag |
-| test2 | JV1 | 405 | 1 | 19 | 3 | 3 |  |
-| test | JV1 | 405 | 1 | 35 | 2 | 2 |  |
+| test2 | DMK | 81 | 2 | 15 side 0 | 72 | 36 | over-read? |
+| test | DMK | 81 | 2 | 15 side 0 | 4 | 2 | over-read? |
 | Utility1 | JV3 | 41 | 2 | 11 side 0 | 102 | 99 | over-read? |
 | Utility2 | JV3 | 41 | 2 | 11 side 0 | 70 | 68 | over-read? |
 | Utility3 | JV3 | 41 | 2 | 11 side 0 | 70 | 67 | over-read? |
@@ -106,16 +107,16 @@ Standard system files (BOOT/SYS, DIR/SYS, SYS0–SYS21, common utilities) are hi
 
 `ASYLUM.DSK`
 
-- Format **JV3**, 255 tracks, 2 side(s), directory track 26 side 0
+- Format **DMK**, 81 tracks, 2 side(s), directory track 15 side 1  _(track count suggests an imaging over-read)_
 
-- **Distinctive files (2):** `PRODUCTI/ONC`, `SYSTEMSA/LL`
+- **Distinctive files (6):** `ASYLUM1E/CMD`, `BASIC/CMD`, `ASYLUM1D/CMD`, `ASYLUM1C/CMD`, `ASYLUM1A/CMD`, `ASYLUM16/CMD`
 
-- File types: ONC×1, LL×1
+- File types: CMD×6
 
-<details><summary>Full file list (2)</summary>
+<details><summary>Full file list (6)</summary>
 
 
-PRODUCTI/ONC · SYSTEMSA/LL
+ASYLUM1E/CMD · BASIC/CMD · ASYLUM1D/CMD · ASYLUM1C/CMD · ASYLUM1A/CMD · ASYLUM16/CMD
 
 </details>
 
@@ -244,14 +245,14 @@ BOOT/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · BASIC/CMD · BASIC80/CMD · DI
 
 - Format **DMK**, 41 tracks, 2 side(s), directory track 5 side 1  _(track count suggests an imaging over-read)_
 
-- **Distinctive files (25):** `BAS3/CMD`, `BASIC/CMD`, `BOOTKOPF/BAS`, `CHAINBLD/CMD`, `CONV/BAS`, `CREATE/HRG`, `DIS/CMD`, `DISKDUP/CMD`, `DOME/JCL`, `DOS0387/TXT`, `DP510/S00`, `DP510/S03`, `DP510/S28`, `HELP/CMD`, `HPRX/DAT`, `HRG/CMD`, `HX1/CMD`, `KBDGER/CMD`, `DOS0387/CMD`, `LINEDEMO/BAS`, `BASIC80/CMD`, `MENUE1/CMD`, `SCRIPSIT/CMD`, `SCRIPSIT/SP`, `SCRIPSIT/TXT`
+- **Distinctive files (28):** `BAS3/CMD`, `BASIC/CMD`, `BOOTKOPF/BAS`, `CHAINBLD/CMD`, `CONV/BAS`, `CREATE/HRG`, `DIS/CMD`, `DISKDUP/CMD`, `DOME/JCL`, `DOS0387/TXT`, `DP510/S00`, `DP510/S03`, `DP510/S28`, `DRUCKT82/CMD`, `FEIGENBA/HRG`, `GBASIC/CMD`, `HELP/CMD`, `HPRX/DAT`, `HRG/CMD`, `HX1/CMD`, `KBDGER/CMD`, `DOS0387/CMD`, `LINEDEMO/BAS`, `BASIC80/CMD`, `MENUE1/CMD`, `SCRIPSIT/CMD`, `SCRIPSIT/SP`, `SCRIPSIT/TXT`
 
-- File types: SYS×27, CMD×16, BAS×4, TXT×2, HRG×1, JCL×1, S00×1, S03×1, S28×1, DAT×1, SP×1
+- File types: SYS×31, CMD×19, BAS×4, HRG×2, TXT×2, JCL×1, S00×1, S03×1, S28×1, DAT×1, SP×1
 
-<details><summary>Full file list (56)</summary>
+<details><summary>Full file list (64)</summary>
 
 
-BOOT/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · BAS3/CMD · BASIC/CMD · BOOTKOPF/BAS · CHAINBLD/BAS · DIR/SYS · SYS7/SYS · SYS15/SYS · SYS23/SYS · CHAINBLD/CMD · CONV/BAS · CREATE/HRG · DIRCHECK/CMD · SYS0/SYS · SYS8/SYS · SYS16/SYS · SYS24/SYS · DIS/CMD · DISASSEM/CMD · DISKDUP/CMD · DOME/JCL · SYS1/SYS · SYS9/SYS · SYS17/SYS · SYS25/SYS · DOS0387/TXT · DP510/S00 · DP510/S03 · DP510/S28 · SYS3/SYS · SYS11/SYS · SYS19/SYS · SYS27/SYS · HELP/CMD · HPRX/DAT · HRG/CMD · HX1/CMD · SYS4/SYS · SYS12/SYS · SYS20/SYS · SYS28/SYS · KBDGER/CMD · DOS0387/CMD · LINEDEMO/BAS · LMOFFSET/CMD · SYS5/SYS · SYS13/SYS · SYS21/SYS · BASIC80/CMD · MENUE1/CMD · SCRIPSIT/CMD · SCRIPSIT/SP · SCRIPSIT/TXT
+BOOT/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · BAS3/CMD · BASIC/CMD · BOOTKOPF/BAS · CHAINBLD/BAS · DIR/SYS · SYS7/SYS · SYS15/SYS · SYS23/SYS · CHAINBLD/CMD · CONV/BAS · CREATE/HRG · DIRCHECK/CMD · SYS0/SYS · SYS8/SYS · SYS16/SYS · SYS24/SYS · DIS/CMD · DISASSEM/CMD · DISKDUP/CMD · DOME/JCL · SYS1/SYS · SYS9/SYS · SYS17/SYS · SYS25/SYS · DOS0387/TXT · DP510/S00 · DP510/S03 · DP510/S28 · SYS2/SYS · SYS10/SYS · SYS18/SYS · SYS26/SYS · DRUCKT82/CMD · EDTASM/CMD · FEIGENBA/HRG · GBASIC/CMD · SYS3/SYS · SYS11/SYS · SYS19/SYS · SYS27/SYS · HELP/CMD · HPRX/DAT · HRG/CMD · HX1/CMD · SYS4/SYS · SYS12/SYS · SYS20/SYS · SYS28/SYS · KBDGER/CMD · DOS0387/CMD · LINEDEMO/BAS · LMOFFSET/CMD · SYS5/SYS · SYS13/SYS · SYS21/SYS · BASIC80/CMD · MENUE1/CMD · SCRIPSIT/CMD · SCRIPSIT/SP · SCRIPSIT/TXT
 
 </details>
 
@@ -997,16 +998,16 @@ GDOS/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · BASIC/CMD · INHALT/SYS · SUP
 
 `GDOS.DSK`
 
-- Format **JV1**, 102 tracks, 1 side(s), directory track 53
+- Format **DMK**, 41 tracks, 1 side(s), directory track 21  _(track count suggests an imaging over-read)_
 
-- **Distinctive files (4):** `ASM/CMD`, `BASIC/CMD`, `CAT/CMD`, `CLHS/CMD`
+- **Distinctive files (44):** `ASM/CMD`, `BASIC/CMD`, `CAT/CMD`, `CLHS/CMD`, `DARL/BAS`, `DEMO/JOB`, `DIRSORT`, `DIRSORT/CMD`, `HEXDEZ/BAS`, `HISCORES/MW`, `SPEED/CMD`, `JOB/CMD`, `LIST64/BAS`, `DDUP/CMD`, `PANZER/BAS`, `PDAUTO/CMD`, `DIRSORT2/BAS`, `NEUNADEL/BAS`, `PFEIL/BAS`, `PROGMOD/BAS`, `RES/BAS`, `NEWREADY/BAS`, `SPOOL/CMD`, `D/DAT`, `SPOOLER2/CMD`, `HISCORES/CLA`, `SPOOLER1/CMD`, `SPOOLT/CMD`, `FDATA/DAT`, `GRDEM/BAS`, `SPOOLV/CMD`, `STAR510/CMD`, `TOCCATA1`, `SPOOLER2/ASM`, `FUNKPLOT/BAS`, `SUPER/CMD`, `EINLGEB2/BAS`, `TASMON/CMD`, `TOKEN/BAS`, `VERSCH/CMD`, `VL/CMD`, `Z/CMD`, `ZXCDM48/CMD`, `ISCADOR1/BAS`
 
-- File types: SYS×4, CMD×4
+- File types: SYS×32, CMD×24, BAS×15, (none)×2, DAT×2, JOB×1, MW×1, CLA×1, ASM×1
 
-<details><summary>Full file list (8)</summary>
+<details><summary>Full file list (79)</summary>
 
 
-GDOS/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · ASM/CMD · BASIC/CMD · CAT/CMD · CLHS/CMD
+GDOS/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · ASM/CMD · BASIC/CMD · CAT/CMD · CLHS/CMD · INHALT/SYS · SYS7/SYS · SYS15/SYS · SYS23/SYS · DARL/BAS · DEMO/JOB · DIRCHECK/CMD · DIRSORT · SYS0/SYS · SYS8/SYS · SYS16/SYS · SYS24/SYS · DIRSORT/CMD · HEXDEZ/BAS · HISCORES/MW · SPEED/CMD · SYS1/SYS · SYS9/SYS · SYS17/SYS · SYS25/SYS · JOB/CMD · LIST64/BAS · LMOFFSET/CMD · DDUP/CMD · SYS2/SYS · SYS10/SYS · SYS18/SYS · SYS26/SYS · PANZER/BAS · PDAUTO/CMD · DIRSORT2/BAS · NEUNADEL/BAS · SYS3/SYS · SYS11/SYS · SYS19/SYS · SYS27/SYS · PFEIL/BAS · PROGMOD/BAS · RES/BAS · NEWREADY/BAS · SYS4/SYS · SYS12/SYS · SYS20/SYS · SYS28/SYS · SPOOL/CMD · D/DAT · SPOOLER2/CMD · HISCORES/CLA · SYS5/SYS · SYS13/SYS · SYS21/SYS · SYS29/SYS · SPOOLER1/CMD · SPOOLT/CMD · FDATA/DAT · GRDEM/BAS · SPOOLV/CMD · STAR510/CMD · TOCCATA1 · SPOOLER2/ASM · FUNKPLOT/BAS · SUPER/CMD · SUPERZAP/CMD · EINLGEB2/BAS · TASMON/CMD · TOKEN/BAS · VERSCH/CMD · VL/CMD · Z/CMD · ZXCDM48/CMD · ISCADOR1/BAS
 
 </details>
 
@@ -1048,16 +1049,16 @@ BOOT/SYS · SYS6/SYS · SYS14/SYS · BASIC/CMD · BUGOUT/CMD · DIR/SYS · SYS7/
 
 `ND80-HD1.DSK`
 
-- Format **JV3**, 255 tracks, 2 side(s), directory track 3 side 1
+- Format **DMK**, 35 tracks, 1 side(s), directory track 17
 
-- **Distinctive files (2):** `SPECIFIC/ATI`, `TIALIZAT/ION`
+- **Distinctive files (8):** `BASIC/CMD`, `EXTPDRIV/BAS`, `HDFMTAPP/CMD`, `NWD80V2/XLF`, `EXTPDAPP/DAT`, `NWD80V2/ILF`, `PARK306/SRC`, `HDBACKUP/CMD`
 
-- File types: ATI×1, ION×1
+- File types: SYS×24, CMD×6, BAS×2, XLF×1, DAT×1, ILF×1, SRC×1
 
-<details><summary>Full file list (2)</summary>
+<details><summary>Full file list (36)</summary>
 
 
-SPECIFIC/ATI · TIALIZAT/ION
+BOOT/SYS · SYS6/SYS · SYS14/SYS · BASIC/CMD · EXTPDRIV/BAS · HDFMTAPP/CMD · DIR/SYS · SYS7/SYS · SYS15/SYS · NWD80V2/XLF · EXTPDAPP/DAT · SYS0/SYS · SYS8/SYS · SYS16/SYS · NWD80V2/ILF · SYS1/SYS · SYS9/SYS · SYS17/SYS · CHAINBLD/BAS · SYS2/SYS · SYS10/SYS · SYS18/SYS · PARK306/SRC · LMOFFSET/CMD · SYS3/SYS · SYS11/SYS · SYS19/SYS · HDBACKUP/CMD · SYS4/SYS · SYS12/SYS · SYS20/SYS · DIRCHECK/CMD · SYS5/SYS · SYS13/SYS · SYS21/SYS · SUPERZAP/CMD
 
 </details>
 
@@ -1184,16 +1185,16 @@ BOOT/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · NEWDATE/CMD · OLDIR/CMD · ZA
 
 `NEWDOS80-80Track.DSK`
 
-- Format **JV1**, 405 tracks, 1 side(s), directory track 19
+- Format **DMK**, 81 tracks, 2 side(s), directory track 15 side 0  _(track count suggests an imaging over-read)_
 
-- **Distinctive files (3):** `UNCTION/TER`, `ISKETTE/FOR`, `RECTORY/SEC`
+- **Distinctive files (36):** `BAS3/CMD`, `BASIC/CMD`, `BASIC80/CMD`, `BOOTKOPF/BAS`, `CHAINBLD/CMD`, `CONV/BAS`, `CREATE/HRG`, `DIS/CMD`, `DISKDUP/CMD`, `DOME/JCL`, `DOMENEW/JCL`, `DOS0387/CMD`, `DOS0387/TXT`, `DP510/S00`, `DP510/S03`, `DP510/S28`, `DRUCKT82/CMD`, `FEIGENBA/HRG`, `GBASIC/CMD`, `HELP/CMD`, `HPRX/DAT`, `HRG/CMD`, `HX1/CMD`, `IDENT/CMD`, `KBDGER/CMD`, `LINEDEMO/BAS`, `MENUE1/CMD`, `SCRIPSIT/CMD`, `SCRIPSIT/SP`, `SCRIPSIT/TXT`, `SETDATE/CMD`, `SUPERUT/CMD`, `SWITCH/CMD`, `T82/CMD`, `UEBERSIC/TXT`, `UNLIST/BAS`
 
-- File types: TER×1, FOR×1, SEC×1
+- File types: SYS×31, CMD×24, BAS×5, TXT×3, HRG×2, JCL×2, S00×1, S03×1, S28×1, DAT×1, SP×1
 
-<details><summary>Full file list (3)</summary>
+<details><summary>Full file list (72)</summary>
 
 
-UNCTION/TER · ISKETTE/FOR · RECTORY/SEC
+BOOT/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · BAS3/CMD · BASIC/CMD · BASIC80/CMD · BOOTKOPF/BAS · DIR/SYS · SYS7/SYS · SYS15/SYS · SYS23/SYS · CHAINBLD/BAS · CHAINBLD/CMD · CONV/BAS · CREATE/HRG · SYS0/SYS · SYS8/SYS · SYS16/SYS · SYS24/SYS · DIRCHECK/CMD · DIS/CMD · DISASSEM/CMD · DISKDUP/CMD · SYS1/SYS · SYS9/SYS · SYS17/SYS · SYS25/SYS · DOME/JCL · DOMENEW/JCL · DOS0387/CMD · DOS0387/TXT · SYS2/SYS · SYS10/SYS · SYS18/SYS · SYS26/SYS · DP510/S00 · DP510/S03 · DP510/S28 · DRUCKT82/CMD · SYS3/SYS · SYS11/SYS · SYS19/SYS · SYS27/SYS · EDTASM/CMD · FEIGENBA/HRG · GBASIC/CMD · HELP/CMD · SYS4/SYS · SYS12/SYS · SYS20/SYS · SYS28/SYS · HPRX/DAT · HRG/CMD · HX1/CMD · IDENT/CMD · SYS5/SYS · SYS13/SYS · SYS21/SYS · KBDGER/CMD · LINEDEMO/BAS · LMOFFSET/CMD · MENUE1/CMD · SCRIPSIT/CMD · SCRIPSIT/SP · SCRIPSIT/TXT · SETDATE/CMD · SUPERUT/CMD · SWITCH/CMD · T82/CMD · UEBERSIC/TXT · UNLIST/BAS
 
 </details>
 
@@ -1303,16 +1304,16 @@ BOOT/SYS · SYS6/SYS · SYS14/SYS · BASIC/CMD · SFINKS/DAT · SFINKS/JCL · SF
 
 `Sicherungskopie.DSK`
 
-- Format **JV3**, 255 tracks, 2 side(s), directory track 165 side 1
+- Format **DMK**, 81 tracks, 2 side(s), directory track 15 side 0  _(track count suggests an imaging over-read)_
 
-- **Distinctive files (1):** `DESTINAT/ION`
+- **Distinctive files (1):** `BASIC80/CMD`
 
-- File types: ION×1
+- File types: SYS×31, CMD×1
 
-<details><summary>Full file list (1)</summary>
+<details><summary>Full file list (32)</summary>
 
 
-DESTINAT/ION
+BOOT/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · DIR/SYS · SYS7/SYS · SYS15/SYS · SYS23/SYS · SYS0/SYS · SYS8/SYS · SYS16/SYS · SYS24/SYS · SYS1/SYS · SYS9/SYS · SYS17/SYS · SYS25/SYS · SYS2/SYS · SYS10/SYS · SYS18/SYS · SYS26/SYS · SYS3/SYS · SYS11/SYS · SYS19/SYS · SYS27/SYS · SYS4/SYS · SYS12/SYS · SYS20/SYS · SYS28/SYS · SYS5/SYS · SYS13/SYS · SYS21/SYS · BASIC80/CMD
 
 </details>
 
@@ -1333,6 +1334,23 @@ BOOT/SYS · SYS6/SYS · SYS14/SYS · READ/CMD · BASIC/CMD · UNKILL/CMD · DIR/
 
 </details>
 
+### System Disk with Sys29
+
+`System Disk with Sys29.DSK`
+
+- Format **DMK**, 81 tracks, 2 side(s), directory track 15 side 0  _(track count suggests an imaging over-read)_
+
+- **Distinctive files (1):** `WP/CMD`
+
+- File types: SYS×32, CMD×1
+
+<details><summary>Full file list (33)</summary>
+
+
+BOOT/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · DIR/SYS · SYS7/SYS · SYS15/SYS · SYS23/SYS · SYS0/SYS · SYS8/SYS · SYS16/SYS · SYS24/SYS · WP/CMD · SYS1/SYS · SYS9/SYS · SYS17/SYS · SYS25/SYS · SYS2/SYS · SYS10/SYS · SYS18/SYS · SYS26/SYS · SYS3/SYS · SYS11/SYS · SYS19/SYS · SYS27/SYS · SYS4/SYS · SYS12/SYS · SYS20/SYS · SYS28/SYS · SYS5/SYS · SYS13/SYS · SYS21/SYS · SYS29/SYS
+
+</details>
+
 ### test1
 
 `test1.DSK`
@@ -1344,16 +1362,16 @@ BOOT/SYS · SYS6/SYS · SYS14/SYS · READ/CMD · BASIC/CMD · UNKILL/CMD · DIR/
 
 `test2.DSK`
 
-- Format **JV1**, 405 tracks, 1 side(s), directory track 19
+- Format **DMK**, 81 tracks, 2 side(s), directory track 15 side 0  _(track count suggests an imaging over-read)_
 
-- **Distinctive files (3):** `UNCTION/TER`, `ISKETTE/FOR`, `RECTORY/SEC`
+- **Distinctive files (36):** `BAS3/CMD`, `BASIC/CMD`, `BASIC80/CMD`, `BOOTKOPF/BAS`, `CHAINBLD/CMD`, `CONV/BAS`, `CREATE/HRG`, `DIS/CMD`, `DISKDUP/CMD`, `DOME/JCL`, `DOMENEW/JCL`, `DOS0387/CMD`, `DOS0387/TXT`, `DP510/S00`, `DP510/S03`, `DP510/S28`, `DRUCKT82/CMD`, `FEIGENBA/HRG`, `GBASIC/CMD`, `HELP/CMD`, `HPRX/DAT`, `HRG/CMD`, `HX1/CMD`, `IDENT/CMD`, `KBDGER/CMD`, `LINEDEMO/BAS`, `MENUE1/CMD`, `SCRIPSIT/CMD`, `SCRIPSIT/SP`, `SCRIPSIT/TXT`, `SETDATE/CMD`, `SUPERUT/CMD`, `SWITCH/CMD`, `T82/CMD`, `UEBERSIC/TXT`, `UNLIST/BAS`
 
-- File types: TER×1, FOR×1, SEC×1
+- File types: SYS×31, CMD×24, BAS×5, TXT×3, HRG×2, JCL×2, S00×1, S03×1, S28×1, DAT×1, SP×1
 
-<details><summary>Full file list (3)</summary>
+<details><summary>Full file list (72)</summary>
 
 
-UNCTION/TER · ISKETTE/FOR · RECTORY/SEC
+BOOT/SYS · SYS6/SYS · SYS14/SYS · SYS22/SYS · BAS3/CMD · BASIC/CMD · BASIC80/CMD · BOOTKOPF/BAS · DIR/SYS · SYS7/SYS · SYS15/SYS · SYS23/SYS · CHAINBLD/BAS · CHAINBLD/CMD · CONV/BAS · CREATE/HRG · SYS0/SYS · SYS8/SYS · SYS16/SYS · SYS24/SYS · DIRCHECK/CMD · DIS/CMD · DISASSEM/CMD · DISKDUP/CMD · SYS1/SYS · SYS9/SYS · SYS17/SYS · SYS25/SYS · DOME/JCL · DOMENEW/JCL · DOS0387/CMD · DOS0387/TXT · SYS2/SYS · SYS10/SYS · SYS18/SYS · SYS26/SYS · DP510/S00 · DP510/S03 · DP510/S28 · DRUCKT82/CMD · SYS3/SYS · SYS11/SYS · SYS19/SYS · SYS27/SYS · EDTASM/CMD · FEIGENBA/HRG · GBASIC/CMD · HELP/CMD · SYS4/SYS · SYS12/SYS · SYS20/SYS · SYS28/SYS · HPRX/DAT · HRG/CMD · HX1/CMD · IDENT/CMD · SYS5/SYS · SYS13/SYS · SYS21/SYS · KBDGER/CMD · LINEDEMO/BAS · LMOFFSET/CMD · MENUE1/CMD · SCRIPSIT/CMD · SCRIPSIT/SP · SCRIPSIT/TXT · SETDATE/CMD · SUPERUT/CMD · SWITCH/CMD · T82/CMD · UEBERSIC/TXT · UNLIST/BAS
 
 </details>
 
@@ -1361,16 +1379,16 @@ UNCTION/TER · ISKETTE/FOR · RECTORY/SEC
 
 `test.DSK`
 
-- Format **JV1**, 405 tracks, 1 side(s), directory track 35
+- Format **DMK**, 81 tracks, 2 side(s), directory track 15 side 0  _(track count suggests an imaging over-read)_
 
-- **Distinctive files (2):** `DF0MPIRF/WIT`, `SBEINOVC/NGL`
+- **Distinctive files (2):** `SARGON0/CMD`, `SARGON1/CMD`
 
-- File types: WIT×1, NGL×1
+- File types: SYS×2, CMD×2
 
-<details><summary>Full file list (2)</summary>
+<details><summary>Full file list (4)</summary>
 
 
-DF0MPIRF/WIT · SBEINOVC/NGL
+BOOT/SYS · DIR/SYS · SARGON0/CMD · SARGON1/CMD
 
 </details>
 

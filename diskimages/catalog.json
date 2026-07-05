@@ -5,22 +5,46 @@
       "disk": "ASYLUM",
       "source": "ASYLUM.DSK",
       "error": null,
-      "format": "JV3",
-      "tracks": "255",
+      "format": "DMK",
+      "tracks": "81",
       "sides": "2",
-      "dirtrack": "26 side 0",
-      "note": "",
+      "dirtrack": "15 side 1",
+      "note": "over-read?",
       "files": [
         {
-          "name": "PRODUCTI",
-          "ext": "ONC",
-          "attr": "78",
+          "name": "ASYLUM1E",
+          "ext": "CMD",
+          "attr": "16",
           "standard": false
         },
         {
-          "name": "SYSTEMSA",
-          "ext": "LL",
-          "attr": "32",
+          "name": "BASIC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ASYLUM1D",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ASYLUM1C",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ASYLUM1A",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ASYLUM16",
+          "ext": "CMD",
+          "attr": "16",
           "standard": false
         }
       ]
@@ -1712,6 +1736,54 @@
         {
           "name": "DP510",
           "ext": "S28",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS2",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS10",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS18",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS26",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DRUCKT82",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EDTASM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "FEIGENBA",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GBASIC",
+          "ext": "CMD",
           "attr": "16",
           "standard": false
         },
@@ -14626,11 +14698,11 @@
       "disk": "GDOS",
       "source": "GDOS.DSK",
       "error": null,
-      "format": "JV1",
-      "tracks": "102",
+      "format": "DMK",
+      "tracks": "41",
       "sides": "1",
-      "dirtrack": "53",
-      "note": "",
+      "dirtrack": "21",
+      "note": "over-read?",
       "files": [
         {
           "name": "GDOS",
@@ -14678,6 +14750,432 @@
           "name": "CLHS",
           "ext": "CMD",
           "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "INHALT",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "SYS7",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS15",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS23",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DARL",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DEMO",
+          "ext": "JOB",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRCHECK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "DIRSORT",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS0",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS8",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS16",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS24",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DIRSORT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HEXDEZ",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HISCORES",
+          "ext": "MW",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPEED",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS1",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS9",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS17",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS25",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "JOB",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LIST64",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LMOFFSET",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "DDUP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS2",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS10",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS18",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS26",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "PANZER",
+          "ext": "BAS",
+          "attr": "0",
+          "standard": false
+        },
+        {
+          "name": "PDAUTO",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRSORT2",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "NEUNADEL",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS3",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS11",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS19",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS27",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "PFEIL",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PROGMOD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RES",
+          "ext": "BAS",
+          "attr": "0",
+          "standard": false
+        },
+        {
+          "name": "NEWREADY",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS4",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS12",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS20",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS28",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SPOOL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "D",
+          "ext": "DAT",
+          "attr": "0",
+          "standard": false
+        },
+        {
+          "name": "SPOOLER2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HISCORES",
+          "ext": "CLA",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS5",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS13",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS21",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS29",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SPOOLER1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPOOLT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FDATA",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GRDEM",
+          "ext": "BAS",
+          "attr": "0",
+          "standard": false
+        },
+        {
+          "name": "SPOOLV",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "STAR510",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TOCCATA1",
+          "ext": "",
+          "attr": "0",
+          "standard": false
+        },
+        {
+          "name": "SPOOLER2",
+          "ext": "ASM",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FUNKPLOT",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERZAP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "EINLGEB2",
+          "ext": "BAS",
+          "attr": "0",
+          "standard": false
+        },
+        {
+          "name": "TASMON",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TOKEN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VERSCH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "Z",
+          "ext": "CMD",
+          "attr": "0",
+          "standard": false
+        },
+        {
+          "name": "ZXCDM48",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ISCADOR1",
+          "ext": "BAS",
+          "attr": "0",
           "standard": false
         }
       ]
@@ -15202,23 +15700,227 @@
       "disk": "ND80-HD1",
       "source": "ND80-HD1.DSK",
       "error": null,
-      "format": "JV3",
-      "tracks": "255",
-      "sides": "2",
-      "dirtrack": "3 side 1",
+      "format": "DMK",
+      "tracks": "35",
+      "sides": "1",
+      "dirtrack": "17",
       "note": "",
       "files": [
         {
-          "name": "SPECIFIC",
-          "ext": "ATI",
-          "attr": "76",
+          "name": "BOOT",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "SYS6",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS14",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "BASIC",
+          "ext": "CMD",
+          "attr": "30",
           "standard": false
         },
         {
-          "name": "TIALIZAT",
-          "ext": "ION",
-          "attr": "67",
+          "name": "EXTPDRIV",
+          "ext": "BAS",
+          "attr": "16",
           "standard": false
+        },
+        {
+          "name": "HDFMTAPP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIR",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "SYS7",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS15",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "NWD80V2",
+          "ext": "XLF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EXTPDAPP",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS0",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS8",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS16",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "NWD80V2",
+          "ext": "ILF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS1",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS9",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS17",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "CHAINBLD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "SYS2",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS10",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS18",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "PARK306",
+          "ext": "SRC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LMOFFSET",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "SYS3",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS11",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS19",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "HDBACKUP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS4",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS12",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS20",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DIRCHECK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "SYS5",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS13",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS21",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SUPERZAP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
         }
       ]
     },
@@ -16384,28 +17086,442 @@
       "disk": "NEWDOS80-80Track",
       "source": "NEWDOS80-80Track.DSK",
       "error": null,
-      "format": "JV1",
-      "tracks": "405",
-      "sides": "1",
-      "dirtrack": "19",
-      "note": "",
+      "format": "DMK",
+      "tracks": "81",
+      "sides": "2",
+      "dirtrack": "15 side 0",
+      "note": "over-read?",
       "files": [
         {
-          "name": "UNCTION",
-          "ext": "TER",
-          "attr": "42",
+          "name": "BOOT",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "SYS6",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS14",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS22",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "BAS3",
+          "ext": "CMD",
+          "attr": "16",
           "standard": false
         },
         {
-          "name": "ISKETTE",
-          "ext": "FOR",
-          "attr": "72",
+          "name": "BASIC",
+          "ext": "CMD",
+          "attr": "16",
           "standard": false
         },
         {
-          "name": "RECTORY",
-          "ext": "SEC",
-          "attr": "78",
+          "name": "BASIC80",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BOOTKOPF",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIR",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "SYS7",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS15",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS23",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "CHAINBLD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "CHAINBLD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CONV",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CREATE",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS0",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS8",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS16",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS24",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DIRCHECK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "DIS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISASSEM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "DISKDUP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS1",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS9",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS17",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS25",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DOME",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOMENEW",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOS0387",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOS0387",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS2",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS10",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS18",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS26",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DP510",
+          "ext": "S00",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP510",
+          "ext": "S03",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP510",
+          "ext": "S28",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DRUCKT82",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS3",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS11",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS19",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS27",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "EDTASM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "FEIGENBA",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GBASIC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HELP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS4",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS12",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS20",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS28",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "HPRX",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HRG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HX1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "IDENT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS5",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS13",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS21",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "KBDGER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LINEDEMO",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LMOFFSET",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "MENUE1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "SP",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SETDATE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERUT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SWITCH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "T82",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UEBERSIC",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNLIST",
+          "ext": "BAS",
+          "attr": "16",
           "standard": false
         }
       ]
@@ -17938,16 +19054,202 @@
       "disk": "Sicherungskopie",
       "source": "Sicherungskopie.DSK",
       "error": null,
-      "format": "JV3",
-      "tracks": "255",
+      "format": "DMK",
+      "tracks": "81",
       "sides": "2",
-      "dirtrack": "165 side 1",
-      "note": "",
+      "dirtrack": "15 side 0",
+      "note": "over-read?",
       "files": [
         {
-          "name": "DESTINAT",
-          "ext": "ION",
-          "attr": "83",
+          "name": "BOOT",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "SYS6",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS14",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS22",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DIR",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "SYS7",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS15",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS23",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS0",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS8",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS16",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS24",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS1",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS9",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS17",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS25",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS2",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS10",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS18",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS26",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS3",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS11",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS19",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS27",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS4",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS12",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS20",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS28",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS5",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS13",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS21",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "BASIC80",
+          "ext": "CMD",
+          "attr": "16",
           "standard": false
         }
       ]
@@ -18247,6 +19549,216 @@
       ]
     },
     {
+      "disk": "System Disk with Sys29",
+      "source": "System Disk with Sys29.DSK",
+      "error": null,
+      "format": "DMK",
+      "tracks": "81",
+      "sides": "2",
+      "dirtrack": "15 side 0",
+      "note": "over-read?",
+      "files": [
+        {
+          "name": "BOOT",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "SYS6",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS14",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS22",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DIR",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "SYS7",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS15",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS23",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS0",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS8",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS16",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS24",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "WP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS1",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS9",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS17",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS25",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS2",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS10",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS18",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS26",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS3",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS11",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS19",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS27",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS4",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS12",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS20",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS28",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS5",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS13",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS21",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS29",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        }
+      ]
+    },
+    {
       "disk": "test1",
       "source": "test1.DSK",
       "error": "ERROR: no sectors decoded; unrecognised or damaged image.",
@@ -18261,28 +19773,442 @@
       "disk": "test2",
       "source": "test2.DSK",
       "error": null,
-      "format": "JV1",
-      "tracks": "405",
-      "sides": "1",
-      "dirtrack": "19",
-      "note": "",
+      "format": "DMK",
+      "tracks": "81",
+      "sides": "2",
+      "dirtrack": "15 side 0",
+      "note": "over-read?",
       "files": [
         {
-          "name": "UNCTION",
-          "ext": "TER",
-          "attr": "42",
+          "name": "BOOT",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "SYS6",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS14",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS22",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "BAS3",
+          "ext": "CMD",
+          "attr": "16",
           "standard": false
         },
         {
-          "name": "ISKETTE",
-          "ext": "FOR",
-          "attr": "72",
+          "name": "BASIC",
+          "ext": "CMD",
+          "attr": "16",
           "standard": false
         },
         {
-          "name": "RECTORY",
-          "ext": "SEC",
-          "attr": "78",
+          "name": "BASIC80",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BOOTKOPF",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIR",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "SYS7",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS15",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS23",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "CHAINBLD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "CHAINBLD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CONV",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CREATE",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS0",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS8",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS16",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS24",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DIRCHECK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "DIS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISASSEM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "DISKDUP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS1",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS9",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS17",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS25",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DOME",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOMENEW",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOS0387",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOS0387",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS2",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS10",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS18",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS26",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DP510",
+          "ext": "S00",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP510",
+          "ext": "S03",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP510",
+          "ext": "S28",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DRUCKT82",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS3",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS11",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS19",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS27",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "EDTASM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "FEIGENBA",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GBASIC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HELP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS4",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS12",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS20",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS28",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "HPRX",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HRG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HX1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "IDENT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS5",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS13",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS21",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "KBDGER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LINEDEMO",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LMOFFSET",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "MENUE1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "SP",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SETDATE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERUT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SWITCH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "T82",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UEBERSIC",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNLIST",
+          "ext": "BAS",
+          "attr": "16",
           "standard": false
         }
       ]
@@ -18291,22 +20217,34 @@
       "disk": "test",
       "source": "test.DSK",
       "error": null,
-      "format": "JV1",
-      "tracks": "405",
-      "sides": "1",
-      "dirtrack": "35",
-      "note": "",
+      "format": "DMK",
+      "tracks": "81",
+      "sides": "2",
+      "dirtrack": "15 side 0",
+      "note": "over-read?",
       "files": [
         {
-          "name": "DF0MPIRF",
-          "ext": "WIT",
-          "attr": "39",
+          "name": "BOOT",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "DIR",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "SARGON0",
+          "ext": "CMD",
+          "attr": "16",
           "standard": false
         },
         {
-          "name": "SBEINOVC",
-          "ext": "NGL",
-          "attr": "79",
+          "name": "SARGON1",
+          "ext": "CMD",
+          "attr": "16",
           "standard": false
         }
       ]
