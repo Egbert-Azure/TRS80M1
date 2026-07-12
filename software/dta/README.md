@@ -40,8 +40,10 @@ measurement settings.
 
 The TRS-80 was coupled to a DTA instrument for the thesis; the printed
 Diplomarbeit is currently lost. The surviving sources below were rescued from
-disk. Note: no relation to the HRG-1B manufacturer — the card is by
-**RB (Rolf Best) Electronic GmbH, Eitorf**.
+disk. The graphics card is the HRG-1B by **RB (Rolf Best) Electronic GmbH,
+Eitorf**; the driver software — both the large `HRG/CMD` and the compact
+Dieter Bolz driver that Gerd dumped and disassembled — was **delivered with
+the card** (owner testimony, E. Schroeer).
 
 **Source disk:** [`esnd-40.dmk`](../../diskimages/NewDos/) — see the disk catalog
 entry for the full file listing.
@@ -127,11 +129,6 @@ only the matrix algebra is hand-rolled.
 | `DTAST/ASS` | Disassembly fragment | Truncated copy of the same disassembly (first ~34 lines). |
 | `CODE/ASS` | Disassembly fragment | Middle section of the same disassembly; contains the comment `;LAUT LISTING: LD B,D` — the disassembly was cross-checked against a **printed listing**, presumably from the Diplomarbeit. |
 | `FORMFILE` | Data, 1024 bytes | **Verbatim dump of the Model I video RAM (3C00H–3FFFH)** used as an editable screen mask — the `SAVE` routine in DTA/ASS writes the screen byte-by-byte (LRECL=1) into this file and reloads it on start. Begins `name` + blanks. |
-
-Also on esnd-40, but **not part of the DTA subject**: `TEST/ASS` (a
-hello-world exercise), `WECKER/ASS` (dead entry; content unrecoverable —
-its granules were reallocated to HRG/DUM, only the name survives),
-`TESTTEXT/CMD` and `BASIC/CMD` (dead, unrelated disk residents).
 
 ## Technical notes
 
@@ -230,6 +227,24 @@ file holds the 8-bit ΔT samples; the second half's purpose is unknown
 (Gaussian peak, height 150 resp. 75, sigma 15, on a drifting baseline of
 ~40) plus 200 padding bytes.
 
+**How the mock-up was built (reproducible):**
+
+1. `AUSWERT/CMD` rebuild: `AUSWERT/ASS` extracted from esnd-40, EDTASM
+   line numbers and high bits stripped (`edtasm-strip.py`), assembled with
+   **zmac** — zero errors; the /CMD matches the source's `ORG 5832H` and
+   `END 402DH` (27 load records, 5832H–73D7H).
+2. `INHALT`: 24 bytes, built to the decoded format —
+   `"PEAK1/DAT:0\r" + "PEAK2/DAT:0\r"`.
+3. `PEAK1/DAT` / `PEAK2/DAT`: 400 bytes each. First 200 bytes = samples
+   `min(255, 40 + i·10/200 + H·exp(−(i−100)²/(2·15²)))` for i = 0…199,
+   with H = 150 (PEAK1) resp. 75 (PEAK2); second 200 bytes = padding
+   (last sample repeated), satisfying the size/2 sample-count rule.
+4. Disk build with **trsextract** (each write to a copy, original
+   untouched): restore FORMFILE, then `--write-file` AUSWERT/CMD, INHALT,
+   PEAK1/DAT, PEAK2/DAT → `dta-work3.dsk`. Every file extracted back and
+   byte-compared against its source.
+5. sdltrs: HRG-1B emulation on, PDRIVE as above, boot NEWDOS/80, `DTA/CMD`.
+
 **Validated at runtime:** menu → FORMFILE found (no init detour) →
 AUSWERT/CMD chained and executed → INHALT parsed, `Dateiname : PEAK1/DAT:0`
 displayed → ENTER → curve loaded, autoscaled, drawn on the HRG via the
@@ -264,26 +279,14 @@ The source's intent is unambiguous; whether the clear worked on the 1984
 hardware cannot be determined from the surviving material.
 
 ## Open items
-
-- Locate `AUFNAHME/CMD` (or source) on remaining un-imaged disks — it contains
-  the instrument/ADC interface, would document the hardware coupling, and
-  would settle the measurement-file second-half format and the true INHALT
-  writer.
 - Locate `PLOT/CMD` and the original `AUSWERT/CMD` binary (a zmac rebuild
   from AUSWERT/ASS now exists and is runtime-validated, but a recovered
   original would allow a byte-diff against the rebuild).
 - Peakfläche coordinate space: run the prepared linearity test on
   `dta-work3.dsk` (PEAK1 vs PEAK2, same boundaries; ratio ≈ 0.5 → raw-value
   integration, ≈ 1.0 → autoscaled coordinates).
-- Identify **Dieter Bolz** and the published form of his 1983 driver. Lead: an
-  HRG-1B cassette driver (`grl2.cas`, loaded via SYSTEM) is documented in a
-  restoration thread on forum.classic-computing.de — obtain and byte-compare
-  against HRG/DUM. Possible channels: the Genie archive at
-  oldcomputers.dyndns.org (hosts HRG-1B documentation), RB Electronic material.
-- Identify the origin/author of `HRG/CMD` (the large 9.2K driver) — now known
-  to be a separate lineage from HRG/DUM.
+- Identify **Dieter Bolz** — per the RB-delivery provenance, likely the
+  author of (part of) the driver software RB Electronic shipped with the
+  HRG-1B. Original RB delivery disks/documentation would confirm.
 - Complete the full-length instruction diff of `HRGDUM/ASS` against `HRG/DUM`
   (opening sequence already verified).
-- Diplomarbeit recovery: 1984 FH Diplomarbeiten were rarely library-cataloged;
-  the responsible Fachbereich (Steinfurt) is the more promising contact than the
-  Hochschulbibliothek.
