@@ -64,14 +64,16 @@ integration.
 
 | Menu item | Program | Status |
 |-----------|---------|--------|
-| 1 — Messwerterfassung | `AUFNAHME/CMD` | **missing** — not on esnd-40, not in catalog |
-| 2 — Messwertauswertung | `AUSWERT/CMD` | binary missing; **full source survives** (`AUSWERT/ASS`) |
-| 3 — Messkurven Plotten | `PLOT/CMD` | **missing** |
+| 1 — Messwerterfassung | `AUFNAHME/CMD` | **original lost** (not on esnd-40, not in catalog); its outputs — INHALT and measurement files — were synthesized for the 2026 runtime reconstruction, the program itself was not |
+| 2 — Messwertauswertung | `AUSWERT/CMD` | original binary lost; **full source survives** (`AUSWERT/ASS`); zmac rebuild **runtime-validated 2026** |
+| 3 — Messkurven Plotten | `PLOT/CMD` | **original lost**, no source, not reconstructed |
 | 4 — Formfile neu initialisieren | (built into DTA/CMD) | present |
 | 5 — Programmsystem verlassen | — | — |
 
-Data files: `FORMFILE` (1024-byte header form), `INHALT` (data index, **missing**),
-measurement files named by the user (`Dateiname : ......../...`).
+Data files: `FORMFILE` (1024-byte header form; restored), `INHALT` (data
+index written by AUFNAHME — original lost, format decoded, synthetic
+replacement on the work disk), measurement files named by the user
+(`Dateiname : ......../...`).
 
 Measurement values are stored as **single bytes** (verified: `LD A,(IX+0)` reads
 per sample in `GRAPH2`/`SUMV1`) — i.e. 8-bit ΔT samples, implying an 8-bit ADC in
@@ -126,8 +128,10 @@ only the matrix algebra is hand-rolled.
 | `CODE/ASS` | Disassembly fragment | Middle section of the same disassembly; contains the comment `;LAUT LISTING: LD B,D` — the disassembly was cross-checked against a **printed listing**, presumably from the Diplomarbeit. |
 | `FORMFILE` | Data, 1024 bytes | **Verbatim dump of the Model I video RAM (3C00H–3FFFH)** used as an editable screen mask — the `SAVE` routine in DTA/ASS writes the screen byte-by-byte (LRECL=1) into this file and reloads it on start. Begins `name` + blanks. |
 
-Also on esnd-40 but not yet pulled into this folder: `TEST/ASS`, `WECKER/ASS`,
-`TESTTEXT/CMD`.
+Also on esnd-40, but **not part of the DTA subject**: `TEST/ASS` (a
+hello-world exercise), `WECKER/ASS` (dead entry; content unrecoverable —
+its granules were reallocated to HRG/DUM, only the name survives),
+`TESTTEXT/CMD` and `BASIC/CMD` (dead, unrelated disk residents).
 
 ## Technical notes
 
@@ -191,17 +195,90 @@ Also on esnd-40 but not yet pulled into this folder: `TEST/ASS`, `WECKER/ASS`,
   [expert system](../expertsystem/) (1991), which draws forms once with
   `maskgen.bas` and reloads them via `CMD"load"`. The DTA system (1984) is the
   earlier of the two occurrences in this archive; here the mask is additionally
-  editable in place via the built-in full-screen editor.
+  editable in place via the built-in full-screen editor. The same idiom
+  appears in its lighter form as the dotted fill-in field
+  `Dateiname : ......../...` (TEXT1, written to video RAM at 3F80H, the
+  filename over-typed in place at 3F8CH) — the fill-in-form UI of the
+  expert system's `wbedit`, five years earlier.
+
+## Runtime reconstruction (2026)
+
+The evaluation pipeline was brought back to execution in sdltrs, 42 years
+after the Diplomarbeit. Work disk: `dta-work3.dsk` (a copy-chain from
+esnd-40.dmk; the original image is untouched). PDRIVE for the disk:
+`TC=40, SPT=10, TSR=0, GPL=2, DDSL=17, DDGA=2`.
+
+**Original components, restored:** `DTA/CMD` (on-disk original), `FORMFILE`
+(restored from its KILLed entry; byte-identical to the independently
+preserved copy), `HRG/DUM` (on-disk original, loaded resident by DTA).
+
+**Modern additions, clearly non-original:** `AUSWERT/CMD` rebuilt from
+`AUSWERT/ASS` with zmac (original binary lost); `INHALT` and `PEAK1/DAT` /
+`PEAK2/DAT` synthesized (see below). These live only on the work disk.
+
+**INHALT format, decoded from the AUSWERT parser (binary-verified):** a
+plain byte stream of measurement-file names, each terminated by 0DH; byte
+03H is skipped as filler; a `:d` drive suffix is displayed but terminated at
+the colon for the FCB. On read past EOF (DOS error 28) the file is rewound
+via 443FH — the down-arrow cycles through the list. INHALT was presumably
+written by the lost AUFNAHME/CMD.
+
+**Measurement-file format:** AUSWERT computes the sample count as
+file-size/2 and reads that many sequential bytes — the first half of the
+file holds the 8-bit ΔT samples; the second half's purpose is unknown
+(AUFNAHME would tell). Synthetic files were built accordingly: 200 samples
+(Gaussian peak, height 150 resp. 75, sigma 15, on a drifting baseline of
+~40) plus 200 padding bytes.
+
+**Validated at runtime:** menu → FORMFILE found (no init detour) →
+AUSWERT/CMD chained and executed → INHALT parsed, `Dateiname : PEAK1/DAT:0`
+displayed → ENTER → curve loaded, autoscaled, drawn on the HRG via the
+resident Bolz driver (LINE at FC04H) → Flaechenberechnung: boundary cursors,
+baseline, piecewise cubic fit, Peakfläche displayed with printer option.
+The file-size/2 sample-count reading is confirmed (complete curve, no
+truncation).
+
+Screenshots (sdltrs, TRS-80 Model I 48K, HRG-1B):
+
+![DTA main menu, 1984 title screen](images/dta-menu.png)
+![Synthetic Gaussian on the HRG with AUSWERT submenu](images/dta-curve.png)
+![Flaechenberechnung result: Peekflaeche display](images/dta-peakflaeche.png)
+
+**Peakfläche observations:** the result is strongly sensitive to boundary
+placement — three runs on identical data gave 3.19314, 0.898252 and
+−1.66937. The mechanism: the baseline is the chord between the curve values
+at the two chosen boundaries; an endpoint on a peak flank inflates FLBAS and
+can push the signed result negative (the code reports the sign honestly).
+This operator-dependence is authentic to 1980s manual-baseline DTA practice.
+OPEN: the absolute scale of the number (which coordinate space FLAECH
+integrates in) is not yet established; a linearity test (PEAK2 = half
+height, expected ratio 0.5 for raw-value integration vs ~1.0 for autoscaled
+coordinates) is prepared on `dta-work3.dsk` and pending.
+
+**Screen-clear observation:** the source clears the HRG before every plot
+(`GRAPH` opens with CLS + HRGCLS; HRGCLS calls the Bolz driver's clear
+routine at 0FBCFH — verified in the dump as a 48×256 = 12,288-write loop,
+exactly the card's video RAM size). In the 2026 runtime environment the
+routine executes but the screen does not wipe, so successive plots overlay.
+The source's intent is unambiguous; whether the clear worked on the 1984
+hardware cannot be determined from the surviving material.
 
 ## Open items
 
 - Locate `AUFNAHME/CMD` (or source) on remaining un-imaged disks — it contains
-  the instrument/ADC interface and would document the hardware coupling.
-- Locate `PLOT/CMD`, `AUSWERT/CMD`, `INHALT`.
+  the instrument/ADC interface, would document the hardware coupling, and
+  would settle the measurement-file second-half format and the true INHALT
+  writer.
+- Locate `PLOT/CMD` and the original `AUSWERT/CMD` binary (a zmac rebuild
+  from AUSWERT/ASS now exists and is runtime-validated, but a recovered
+  original would allow a byte-diff against the rebuild).
+- Peakfläche coordinate space: run the prepared linearity test on
+  `dta-work3.dsk` (PEAK1 vs PEAK2, same boundaries; ratio ≈ 0.5 → raw-value
+  integration, ≈ 1.0 → autoscaled coordinates).
 - Identify **Dieter Bolz** and the published form of his 1983 driver. Lead: an
   HRG-1B cassette driver (`grl2.cas`, loaded via SYSTEM) is documented in a
   restoration thread on forum.classic-computing.de — obtain and byte-compare
-  against HRG/DUM. Possible channels: Jens Günther, the Genie archive at
+  against HRG/DUM. Possible channels: the Genie archive at
   oldcomputers.dyndns.org (hosts HRG-1B documentation), RB Electronic material.
 - Identify the origin/author of `HRG/CMD` (the large 9.2K driver) — now known
   to be a separate lineage from HRG/DUM.
