@@ -15,9 +15,9 @@ sdltrs-version.txt
 sdltrs-src/
 
 # ── Disk images & media — NEVER upload to GitHub ─────────────
-*.dmk
-*.dsk
-*.DMK
+# *.dmk
+# *.dsk
+# *.DMK
 *.DSK
 *.jv1
 *.jv3
