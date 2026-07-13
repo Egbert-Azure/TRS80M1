@@ -18,7 +18,7 @@ sdltrs-src/
 # *.dmk
 # *.dsk
 # *.DMK
-*.DSK
+# *.DSK
 *.jv1
 *.jv3
 *.hdv
