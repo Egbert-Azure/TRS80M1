@@ -37,6 +37,10 @@ TRS80M1/
 │               ├── weikamp.dmk
 │               └── weikamp-boot.png
 ├── software/                      programs and original work
+│   ├── README.md                  software documentation index
+│   ├── dta/                       DTA-Programmsystem (Schmidtke Diplomarbeit, 1984)
+│   │   ├── README.md              forensic reconstruction + algorithm
+│   │   └── DTA/ASS, AUSWERT/ASS … EDTASM sources, disassemblies, HRG/DUM
 │   ├── expertsystem/              rule-based expert system (1989 port)
 │   │   ├── README.md              reference + theory
 │   │   ├── TRS80_vs_Prolog.md     inference model vs. Prolog
@@ -97,16 +101,10 @@ Quick links:
   (TCS Trommeschläger Computer GmbH); first documented edition:
   **H-DOS 2.3c**, Arnulf Sopp's 1984 zap-modification of G-DOS 2.1b
   (The HACKTORY), disk imaged by Fritz Chwolka.
-- **[Expert system](software/expertsystem/README.md)** — a German rule-based
-  expert system (Dr. H.-J. Soll, 1987) ported to the Model I in 1989;
-  recursive-BASIC inference engine (disk esnd-23).
-- **[HRGDOS / KBDHRG](software/hrgdos/README.md)** — a 128-byte umlaut-capable
-  keyboard driver for the HRG-1B (Egbert Schröer, 1989), paired with the patched
-  RB Electronic HRG super-driver (`HRGDOS/CMD`); Z80 source verified
-  byte-for-byte against the published Listing 1 (Club-80 Heft 29).
-- **[SideKick](software/sidekick/README.md)** — four-computer memory banker for
-  the Model I (Gerald Schröder / Helmut Bernhardt 1986; SuperMem port by Jens
-  Günther 2024), on an apparent Apparat NEWDOS/80 V2.0 baseline.
+- **[Software](software/README.md)** — the author's programs, German ports, and
+  reverse-engineered subsystems: the DTA-Programmsystem (1984 Diplomarbeit
+  reconstruction), the rule-based expert system (1989 port), HRGDOS/KBDHRG for
+  the HRG-1B (1989), and Schröder's four-computer SideKick banker (1986).
 - **[Hardware](hardware/README.md)** — the physical Model I build: double-density
   controller, 256K bank-switch board, and 5.3 MHz speed-up, with a digitized
   1992 Club 80 build article (German + English) and the RB-Elektronik / HRG-1B
