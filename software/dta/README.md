@@ -260,6 +260,8 @@ Screenshots (sdltrs, TRS-80 Model I 48K, HRG-1B):
 ![DTA main menu, 1984 title screen](images/dta-menu.png)
 ![Synthetic Gaussian on the HRG with AUSWERT submenu](images/dta-curve.png)
 ![Flaechenberechnung result: Peekflaeche display](images/dta-peakflaeche.png)
+![Define and enlarge a new crop area](images/dta-peakflaeche2.png)
+![Grafik-Ausschnitt result](images/dta-curve2.png)
 
 **Peakfläche observations:** the result is strongly sensitive to boundary
 placement — three runs on identical data gave 3.19314, 0.898252 and
