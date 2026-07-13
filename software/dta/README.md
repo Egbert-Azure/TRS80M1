@@ -47,7 +47,8 @@ the card** (owner testimony, E. Schroeer).
 
 **Source disk:** [`esnd-40.dmk`](../../diskimages/NewDos/) — see the disk catalog
 entry for the full file listing.
-**Full functional DTA working disk:** [dta-work3.dsk](DMK/dta-work3.dsk)
+
+**Fully functional DTA working disk:** [dta-work3.dsk](DMK/dta-work3.dsk)
 
 ## What Differential Thermal Analysis is
 
