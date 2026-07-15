@@ -3,9 +3,9 @@
 
 # SCRIPSIT/SP — User Manual (1988)
 
-*English translation · German transcription: [`scripsit-sp-anleitung.md`](./scripsit-sp-anleitung.md) · Original: [`SCRIPSIT.TXT`](./SCRIPSIT.TXT) · Index: [`README.md`](./README.md)*
+*English translation · German transcription: [`scripsit-sp-anleitung.md`](./scripsit-sp-anleitung.md) · Original: [`src/SCRIPSIT.TXT`](./src/SCRIPSIT.TXT) · Index: [`README.md`](./README.md)*
 
-> **Twice derived.** The canonical artefact is `SCRIPSIT.TXT`, the original Scripsit document
+> **Twice derived.** The canonical artefact is `src/SCRIPSIT.TXT`, the original Scripsit document
 > of October 1988. This is a translation of the transcription of that file. It follows the
 > original closely, including its layout and its silences; where the German is ambiguous or
 > plainly a slip of the pen, there is a note at the foot rather than a silent repair.
@@ -267,7 +267,7 @@ patch routine checks whether a return jump is possible.
 
 ## Notes on this translation
 
-**Printer escapes.** `SCRIPSIT.TXT` contains seventeen 7FH bytes — the hatched square produced
+**Printer escapes.** `src/SCRIPSIT.TXT` contains seventeen 7FH bytes — the hatched square produced
 by `@p` — each followed by two hex digits. Folded back together they are six Epson sequences:
 `ESC x 1` (near-letter-quality on), `ESC 4` / `ESC 5` (italic on/off), `ESC W 1` / `ESC W 0`
 (double width on/off). The manual is set using the escape it documents in the *Printer controls*

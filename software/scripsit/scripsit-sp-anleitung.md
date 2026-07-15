@@ -3,9 +3,9 @@
 
 # SCRIPSIT/SP — Bedienungsanleitung (1988)
 
-*Transkription von [`SCRIPSIT.TXT`](./SCRIPSIT.TXT) · English: [`scripsit-sp-manual-en.md`](./scripsit-sp-manual-en.md) · Artikel: [`scripsit-sp-artikel.md`](./scripsit-sp-artikel.md) (DE) · [`scripsit-sp-article-en.md`](./scripsit-sp-article-en.md) (EN) · Index: [`README.md`](./README.md)*
+*Transkription von [`src/SCRIPSIT.TXT`](./src/SCRIPSIT.TXT) · English: [`scripsit-sp-manual-en.md`](./scripsit-sp-manual-en.md) · Artikel: [`scripsit-sp-artikel.md`](./scripsit-sp-artikel.md) (DE) · [`scripsit-sp-article-en.md`](./scripsit-sp-article-en.md) (EN) · Index: [`README.md`](./README.md)*
 
-> **Abgeleitete Datei.** Der kanonische Bestand ist `SCRIPSIT.TXT`, das originale
+> **Abgeleitete Datei.** Der kanonische Bestand ist `src/SCRIPSIT.TXT`, das originale
 > Scripsit-Dokument vom Oktober 1988, byte-genau. Diese Fassung macht es nur lesbar: die
 > TRS-80-Umlautcodes (`5B 5C 5D 7B 7C 7D 7E`) sind nach UTF-8 abgebildet, Scripsits
 > Absatzmarken zu Zeilenumbrüchen aufgelöst, die `E5`-Sektorfüllung entfernt. Die
@@ -274,7 +274,7 @@ Scripsit Patch Routine überprüft, ob ein Rücksprung möglich ist.
 
 ## Anmerkungen zu dieser Fassung
 
-**Druckersteuerzeichen.** `SCRIPSIT.TXT` enthält **siebzehn 7FH-Bytes** — das schraffierte
+**Druckersteuerzeichen.** `src/SCRIPSIT.TXT` enthält **siebzehn 7FH-Bytes** — das schraffierte
 Quadrat, das `@p` erzeugt. Auf jedes folgen zwei Hexziffern, die der Druckertreiber bei FF6CH
 mittels `RLD` zu einem Byte zusammensetzt. Zurückgefaltet ergeben sie sechs Epson-Sequenzen:
 

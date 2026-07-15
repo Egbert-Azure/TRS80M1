@@ -50,14 +50,15 @@ TRS80M1/
 │   │   └── kbdhrg.z80             binary-verified Z80 source
 │   ├── scripsit/                  SCRIPSIT/SP — German Scripsit modification (1988)
 │   │   ├── README.md              subject index
-│   │   ├── SCRIPSIT.TXT                the 1988 manual (original Scripsit document)
 │   │   ├── scripsit-sp-anleitung.md    manual, transcribed (DE)
 │   │   ├── scripsit-sp-manual-en.md    manual, translated (EN)
 │   │   ├── scripsit-sp-artikel.md      article (DE)
 │   │   ├── scripsit-sp-article-en.md   article (EN)
 │   │   ├── scripsit-provenance.md      what is Lindley's, what is mine
 │   │   ├── scripsit-sp-patch-analysis.md   Layer A: the file patch
-│   │   └── wp-cmd-analysis.md          Layer B: the RAM patcher
+│   │   ├── wp-cmd-analysis.md          Layer B: the RAM patcher
+│   │   └── src/
+│   │       └── SCRIPSIT.TXT        the 1988 manual (original Scripsit document)
 │   └── sidekick/                  four-computer banker (Schröder 1986)
 │       ├── README.md              disk doc, usage, hardware model
 │       ├── SIDEKICK.JV1           80-track NEWDOS/80 disk image
