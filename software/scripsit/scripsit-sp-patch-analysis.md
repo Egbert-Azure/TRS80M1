@@ -2,6 +2,8 @@
 
 # SCRIPSIT/SP — reconstruction from binary evidence
 
+*Narrative account: [`scripsit-sp-article-en.md`](./scripsit-sp-article-en.md) (EN) · [`scripsit-sp-artikel.md`](./scripsit-sp-artikel.md) (DE). Index: [`README.md`](./README.md).*
+
 Derived by structural diff of `SCRIPSIT/CMD` (10752 B) vs `SCRIPSIT/SP` (10920 B).
 All statements below are grounded in bytes, not in the article text.
 

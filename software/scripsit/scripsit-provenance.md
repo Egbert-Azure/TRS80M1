@@ -2,6 +2,8 @@
 
 # SCRIPSIT/SP and WP/CMD — provenance
 
+*Narrative account: [`scripsit-sp-article-en.md`](./scripsit-sp-article-en.md) (EN) · [`scripsit-sp-artikel.md`](./scripsit-sp-artikel.md) (DE). Index: [`README.md`](./README.md).*
+
 Established from: `wpand.scr` (EDTASM source), `wp.cmd` / `wp7.cmd` (Lindley binaries),
 `WP/CMD` (esnd-04), `SCRIPSIT/CMD`, `SCRIPSIT/SP`, and Lindley, *"Inside Scripsit — Part II"*,
 80 Micro, October 1982, p. 276ff.

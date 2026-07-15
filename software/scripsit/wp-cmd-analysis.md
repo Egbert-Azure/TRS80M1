@@ -2,6 +2,8 @@
 
 # WP/CMD — reconstruction from binary evidence
 
+*Narrative account: [`scripsit-sp-article-en.md`](./scripsit-sp-article-en.md) (EN) · [`scripsit-sp-artikel.md`](./scripsit-sp-artikel.md) (DE). Index: [`README.md`](./README.md).*
+
 Recovered from `esnd-04.dmk`, physical track 10 / side 1 / sectors 13–16, 883 bytes.
 Validates as an exact `/CMD`: eight load records, terminal `ENTRY` at file offset 0371h,
 zero residue. Derived by disassembly; provenance noted per claim.

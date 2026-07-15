@@ -48,6 +48,13 @@ TRS80M1/
 │   ├── hrgdos/                    umlaut keyboard driver + HRGDOS (1989)
 │   │   ├── README.md              software doc + Club-80 Heft 29 article (DE/EN)
 │   │   └── kbdhrg.z80             binary-verified Z80 source
+│   ├── scripsit/                  SCRIPSIT/SP — German Scripsit modification (1988)
+│   │   ├── README.md              subject index
+│   │   ├── scripsit-sp-artikel.md      article (DE)
+│   │   ├── scripsit-sp-article-en.md   article (EN)
+│   │   ├── scripsit-provenance.md      what is Lindley's, what is mine
+│   │   ├── scripsit-sp-patch-analysis.md   Layer A: the file patch
+│   │   └── wp-cmd-analysis.md          Layer B: the RAM patcher
 │   └── sidekick/                  four-computer banker (Schröder 1986)
 │       ├── README.md              disk doc, usage, hardware model
 │       ├── SIDEKICK.JV1           80-track NEWDOS/80 disk image

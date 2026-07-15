@@ -4,6 +4,8 @@
 
 **Was von Craig Lindley stammt, was nicht, und warum**
 
+*Englische Fassung: [`scripsit-sp-article-en.md`](./scripsit-sp-article-en.md) · Belege: [`scripsit-provenance.md`](./scripsit-provenance.md) · Index: [`README.md`](./README.md).*
+
 > **Vorbemerkung zur Fassung.** Der Originalartikel (Club-80, SONDERINFO 27.5, 1988) ist
 > verschollen. Dies ist **keine Rekonstruktion jenes Textes**, sondern eine Neufassung von 2026.
 > Der Rückblick in Abschnitt 1 stammt aus meiner Erinnerung und ist als solche zu lesen. Alle
