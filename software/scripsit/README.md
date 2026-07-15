@@ -26,6 +26,13 @@ translator.
 
 ## Index
 
+### Primary artefact
+
+| File | Description |
+|---|---|
+| [`SCRIPSIT.TXT`](./SCRIPSIT.TXT) | **The 1988 manual, byte-exact.** An original Scripsit document — TRS-80 German 7-bit encoding, Scripsit control codes, `E5` sector fill. Will not render on GitHub; that is what it is supposed to look like. The only surviving contemporaneous prose about the modification, and the source cited throughout the findings below. |
+| [`scripsit-sp-anleitung.md`](./scripsit-sp-anleitung.md) | Readable transcription of the above. **Derived** — encoding mapped to UTF-8, control codes rendered, fill stripped; wording untouched. Includes the decode of the seventeen `@p` escapes the manual uses on itself. |
+
 ### Article
 
 | File | Description |
@@ -63,6 +70,10 @@ Two artefacts exist but are not committed here. Both would need a home decision 
   `wp-cmd-analysis.md` §8.
 - `wp.cmd`, `wp7.cmd` — Lindley's binaries, third-party.
 - `wpand.scr` — an EDTASM source file carrying Lindley's Listing One. Origin unresolved.
+- `SCRIPSIT/TXT` — the 1988 manual. **Not on `esnd-04.dmk`**; supplied directly, source disk
+  **not established**. `esnd-05.dmk` is the obvious candidate and is unexamined. Unlike the
+  article, this document survived, and it is what fixes several findings: the `1-255` printer
+  range, the absence of any underlining, and the character-count warning.
 - The **1988 Club-80 article (SONDERINFO 27.5) is lost.** The article in this directory is a
   2026 rewrite, not a recovery of that text. Its opening section is recollection; everything
   technical is byte-derived.

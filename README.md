@@ -50,6 +50,8 @@ TRS80M1/
 │   │   └── kbdhrg.z80             binary-verified Z80 source
 │   ├── scripsit/                  SCRIPSIT/SP — German Scripsit modification (1988)
 │   │   ├── README.md              subject index
+│   │   ├── SCRIPSIT.TXT                the 1988 manual (original Scripsit document)
+│   │   ├── scripsit-sp-anleitung.md    readable transcription of the manual
 │   │   ├── scripsit-sp-artikel.md      article (DE)
 │   │   ├── scripsit-sp-article-en.md   article (EN)
 │   │   ├── scripsit-provenance.md      what is Lindley's, what is mine
