@@ -31,7 +31,8 @@ translator.
 | File | Description |
 |---|---|
 | [`SCRIPSIT.TXT`](./SCRIPSIT.TXT) | **The 1988 manual, byte-exact.** An original Scripsit document — TRS-80 German 7-bit encoding, Scripsit control codes, `E5` sector fill. Will not render on GitHub; that is what it is supposed to look like. The only surviving contemporaneous prose about the modification, and the source cited throughout the findings below. |
-| [`scripsit-sp-anleitung.md`](./scripsit-sp-anleitung.md) | Readable transcription of the above. **Derived** — encoding mapped to UTF-8, control codes rendered, fill stripped; wording untouched. Includes the decode of the seventeen `@p` escapes the manual uses on itself. |
+| [`scripsit-sp-anleitung.md`](./scripsit-sp-anleitung.md) | **Manual (DE)** — readable transcription of the above. **Derived** — encoding mapped to UTF-8, control codes rendered, fill stripped; wording untouched. Includes the decode of the seventeen `@p` escapes the manual uses on itself. |
+| [`scripsit-sp-manual-en.md`](./scripsit-sp-manual-en.md) | **Manual (EN)** — English translation. **Twice derived.** Slips in the 1988 original are noted at the foot rather than silently repaired. |
 
 ### Article
 

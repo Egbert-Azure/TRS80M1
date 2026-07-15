@@ -51,7 +51,8 @@ TRS80M1/
 │   ├── scripsit/                  SCRIPSIT/SP — German Scripsit modification (1988)
 │   │   ├── README.md              subject index
 │   │   ├── SCRIPSIT.TXT                the 1988 manual (original Scripsit document)
-│   │   ├── scripsit-sp-anleitung.md    readable transcription of the manual
+│   │   ├── scripsit-sp-anleitung.md    manual, transcribed (DE)
+│   │   ├── scripsit-sp-manual-en.md    manual, translated (EN)
 │   │   ├── scripsit-sp-artikel.md      article (DE)
 │   │   ├── scripsit-sp-article-en.md   article (EN)
 │   │   ├── scripsit-provenance.md      what is Lindley's, what is mine
