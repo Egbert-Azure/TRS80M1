@@ -276,7 +276,8 @@ Scripsit Patch Routine überprüft, ob ein Rücksprung möglich ist.
 
 **Druckersteuerzeichen.** `src/SCRIPSIT.TXT` enthält **siebzehn 7FH-Bytes** — das schraffierte
 Quadrat, das `@p` erzeugt. Auf jedes folgen zwei Hexziffern, die der Druckertreiber bei FF6CH
-mittels `RLD` zu einem Byte zusammensetzt. Zurückgefaltet ergeben sie sechs Epson-Sequenzen:
+mittels `RLD` zu einem Byte zusammensetzt. Die Bytes stehen fest; sie als Epson-Befehle zu lesen,
+ist eine **Deutung** — abgeglichen mit dem Epson-Befehlssatz, nicht am Drucker geprüft:
 
 | im Dokument | gesendete Bytes | Wirkung |
 |---|---|---|
@@ -306,7 +307,7 @@ Hot-Zone-Absatz *der nächsten Spalte*, wo *Zeile* gemeint ist.
 beginnt und mitten im Satz abbricht, gefolgt von 154 Bytes `E5`-Sektorfüllung. So ist die Datei.
 Nichts davon wurde ergänzt oder geglättet.
 
-**Herkunft.** `SCRIPSIT/TXT` liegt **nicht auf `esnd-04.dmk`**. Von welcher Diskette die Datei
-stammt, ist **nicht geklärt**. `esnd-05.dmk` ist der naheliegende Kandidat und ungeprüft.
+**Herkunft.** Die Datei stammt von **`esnd-05.dmk`**. Auf `esnd-04.dmk` liegt sie nicht. Die
+hier vorliegende Kopie wurde direkt geliefert und nicht aus dem Diskettenabbild neu ausgelesen.
 
 10650 Bytes wie geliefert, davon die letzten 154 `E5`-Füllung.

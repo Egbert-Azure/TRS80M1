@@ -72,10 +72,10 @@ Two artefacts exist but are not committed here. Both would need a home decision 
   `wp-cmd-analysis.md` §8.
 - `wp.cmd`, `wp7.cmd` — Lindley's binaries, third-party.
 - `wpand.scr` — an EDTASM source file carrying Lindley's Listing One. Origin unresolved.
-- `SCRIPSIT/TXT` — the 1988 manual. **Not on `esnd-04.dmk`**; supplied directly, source disk
-  **not established**. `esnd-05.dmk` is the obvious candidate and is unexamined. Unlike the
-  article, this document survived, and it is what fixes several findings: the `1-255` printer
-  range, the absence of any underlining, and the character-count warning.
+- `SCRIPSIT/TXT` — the 1988 manual, from **`esnd-05.dmk`**. Supplied directly, not re-extracted
+  from the image. Unlike the article, this document survived, and it is what fixes several
+  findings: the `1-255` printer range, the absence of any underlining, and the character-count
+  warning.
 - The **1988 Club-80 article (SONDERINFO 27.5) is lost.** The article in this directory is a
   2026 rewrite, not a recovery of that text. Its opening section is recollection; everything
   technical is byte-derived.
@@ -108,9 +108,9 @@ Checked in sdltrs, Model I, German character generator:
 - Started as `WP SCRIPSIT` → `BREAK` `Q0` gives the directory. **The reversed index in the 58F0H
   dispatcher is confirmed on a running machine**: read naively, `Q` would map to `KILL` at 8014H
   and delete a file. It gives `DIR 0`, so the address list is indexed `C = N-1-i`.
-- `SHIFT`-0 produces a glyph **distinct from** the `@p` hatched square, so `UNDERL` at 5FAFH
-  fires and the stored `40` displays as `5F` — rendered as a solid block by the German character
-  generator, not as an underscore.
+- `SHIFT`-0 produces a glyph **distinct from** the `@p` hatched square. *Observed.* That the
+  glyph is `5F` and that `UNDERL` at 5FAFH is what produced it is the obvious reading, but it is
+  an **inference** — the test rules out `7F`, it does not identify what was drawn.
 
 ## Open items
 
@@ -129,8 +129,9 @@ address. I kept the screen half at 5FAFH, so the marker still displays with noth
 at print time. Whether that was a deliberate cut or an oversight is a question about intent in
 1988; no test answers it.
 
-Would close items 1–3: an EDTASM source for the SP patch (`esnd-05.dmk` is unexamined), or
-Lindley Part I if it carries a Scripsit memory map.
+Would close items 1–3: an EDTASM source for the SP patch, if one survives — `SCRIPSIT/TXT` came
+off `esnd-05.dmk`, which has not been searched for one. Or Lindley Part I, if it carries a
+Scripsit memory map.
 
 ## Related
 

@@ -15,10 +15,9 @@ Everything derived from these lives one level up, and says so in its own header.
 
 ## Provenance
 
-`SCRIPSIT/TXT` is **not on `esnd-04.dmk`**. That disk's directory holds 18 live entries —
-`SCRIPSIT/CMD`, `SCRIPSIT/SP`, `WP/CMD`, `GROSS/TXT`, `FISCH/TXT`, `UEBERSIC/TXT`,
-`CENTRAL/TXT` and others — and no manual. Which disk this copy came from is **not established**.
-`esnd-05.dmk` is the obvious candidate and is unexamined.
+`SCRIPSIT/TXT` comes from **`esnd-05.dmk`** (author's statement). It is not on `esnd-04.dmk`,
+whose directory was checked and holds no manual. The copy here was supplied directly and has not
+been re-extracted from `esnd-05.dmk`, so it is byte-verified against nothing but itself.
 
 This is the only surviving contemporaneous document about the modification; the 1988 Club-80
 article (SONDERINFO 27.5) is lost.

@@ -268,7 +268,9 @@ patch routine checks whether a return jump is possible.
 ## Notes on this translation
 
 **Printer escapes.** `src/SCRIPSIT.TXT` contains seventeen 7FH bytes — the hatched square produced
-by `@p` — each followed by two hex digits. Folded back together they are six Epson sequences:
+by `@p` — each followed by two hex digits. The bytes they assemble to are certain; reading them as
+Epson commands is an **interpretation**, matched against the Epson command set and not confirmed
+against the printer:
 `ESC x 1` (near-letter-quality on), `ESC 4` / `ESC 5` (italic on/off), `ESC W 1` / `ESC W 0`
 (double width on/off). The manual is set using the escape it documents in the *Printer controls*
 section above.
@@ -286,5 +288,5 @@ sense is the next **line**, not the next column. Translated for sense, noted her
 off mid-sentence, followed by 154 bytes of E5 sector fill. That is how the file is. Nothing has
 been completed or tidied.
 
-**Provenance.** `SCRIPSIT/TXT` is not on `esnd-04.dmk`. Which disk it came from is not
-established.
+**Provenance.** From **`esnd-05.dmk`**. Not on `esnd-04.dmk`. The copy here was supplied
+directly and has not been re-extracted from the disk image.

@@ -260,6 +260,6 @@ in Lindley — they are mine, in SCRIPSIT/SP.
 
 Three of the four are Scripsit internals, so the two things that would close them:
 
-1. **An EDTASM source for the SP patch.** `wpand.scr` did not come from esnd-04, so sources
-   were kept elsewhere. `esnd-05.dmk` is unexamined.
+1. **An EDTASM source for the SP patch**, if one survives. `SCRIPSIT/TXT` came off `esnd-05.dmk`,
+   so that disk held Scripsit material; it has not been searched for a source.
 2. **Lindley Part I**, if it carries a Scripsit memory map. Part II's prose does not.
