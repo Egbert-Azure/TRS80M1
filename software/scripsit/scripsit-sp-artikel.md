@@ -199,6 +199,24 @@ FFE2H (Quelle) → FFF1H (Ziel), 15 Einträge, ab Werk **identisch abgebildet**.
 mit deutschem Zeichensatz hat, lässt sie in Ruhe. Wer keinen hat, trägt bei FFF1H ein, was sein
 Gerät versteht. Das ist die vorgesehene Stellschraube.
 
+### Woher der Speicher kommt
+
+Scripsit bemisst seinen Textpuffer beim Kaltstart selbst: `LD HL,(4049)` bei 5260 liefert die
+Obergrenze, bei 5276 steht die Untergrenze fest verdrahtet auf 7F62H.
+
+4049H ist der Speicherobergrenzen-Zeiger. Der Ladesatz von `SCRIPSIT/SP` trägt dort **FF6BH**
+ein — ein Byte unter dem Treiber bei FF6CH. Scripsit legt seinen Puffer daraufhin bis FF6B an und
+rührt nichts darüber an. Dafür wird nichts gepatcht; es nutzt Scripsits eigenen Startcode.
+
+**Das ist der Unterschied zu Lindley, und zwar der ganze.** Er lädt sein Programm nach
+7F62H–8342H, also *in* den Puffer, und muss deshalb anschließend dreizehn Zeiger umschreiben, um
+die Untergrenze hochzuschieben — das kostet rund 960 Bytes Dokumentplatz. Sein Artikel sagt das
+auch.
+
+Schicht A verschiebt stattdessen die Obergrenze. Das kostet nichts. Dasselbe Problem, vom anderen
+Ende her — und genau deshalb zählt die Drei-Bytes-gegen-drei-Bytes-Regel: sie erreicht Code bei
+FF6CH, ohne ein einziges Byte von Scripsit zu verschieben.
+
 ### FFCB und das `DI` bei 52C0
 
 `FFCBH` ist nur `LD A,(37E8H) / RET` — ein Durchreicher. Sein Zweck ist, dass **jeder**
@@ -272,18 +290,28 @@ auch nicht.
 
 ---
 
-## 7. Offene Punkte
+## 7. Die drei sonderbaren Änderungen
 
-Drei Änderungen in `SCRIPSIT/SP`, deren Zweck ich nicht mehr rekonstruieren kann. Was geändert
-wurde, steht fest; warum, nicht.
+Ermittelt, indem verfolgt wurde, wofür die Adressen innerhalb von Scripsit verwendet werden.
 
-1. **5DCCH** — die Variable wandert von 7CB6H nach 7CB9H, bei umgestellter Befehlsfolge.
-2. **603AH / 6056H** — beide von 05 auf 04; die Differenz bleibt gleich.
-3. **7A20H / 7A22H** — 3CH und 42H werden 7FH, im 20-Byte-Vorgabeblock, der bei 708BH nach
-   7C64H kopiert wird.
+**5DCCH — ein Fehler in Radio Shacks Scripsit.** Im Originalprogramm wird 7CB6H bei 5DCC
+geschrieben und nirgends gelesen; 7CB9H wird bei 5D47 und 7A6E gelesen und nirgends geschrieben.
+1979 hat jemand die falsche Adresse getippt, und der Leser griff ab, was gerade dort stand. Das
+Schreiben nach 7CB9H verbindet beide. Die Umstellung ergibt sich daraus: das Original verlässt
+sich darauf, dass `OR A` die Flags für `CALL NZ` setzt, speichert also zuerst; der Patch ruft
+zuerst, lädt `LD A,C` neu (5DEF überschreibt A) und speichert dann — bezahlt mit dem `NOP` bei
+5DD2.
 
+**7A20H / 7A22H — die Seitenvorgaben.** Der 20-Byte-Block bei 7A15H wird beim Start nach 7C64H
+kopiert. 7C6FH ist `BM` (Unterer Rand, 60), 7C71H ist `PL` (Seitenlänge, 66) — bestätigt durch die
+Anweisungsroutinen bei 766EH und 7798H. Beide auf 127 gesetzt. 66 Zeilen sind US-Letter bei 6 lpi;
+A4 braucht etwa 72, und die Anleitung beginnt mit `PL=72 BM=66`. Höhere Vorgaben verhindern, dass
+ein Text ohne Angabe am amerikanischen Seitenende umbricht. *(Zuordnung sicher, Begründung
+erschlossen.)*
 
----
+**603AH / 6056H — ohne Wirkung.** Das sind selbstmodifizierende Displacement-Bytes: die
+Ringindizes eines 32-Byte-Tastaturpuffers bei 7E11H. Der Kaltstart nullt beide bei 5254/5257,
+bevor der Puffer benutzt wird — die Änderung erreicht die Laufzeit nie.
 
 ## 8. Nachweis
 
@@ -297,11 +325,11 @@ Alle Aussagen sind gegen die Binärdateien geprüft. Ergänzend:
   Unterstreichungscodes in den Zeilen 550/560 — beides meine Änderungen. Die restlichen zwei
   betreffen das `LOUT`-Ziel, wo `wpand.scr` mit Lindleys eigener Quelle übereinstimmt (4467H);
   nur die Archivfassung seines Binärprogramms trägt 4476H.
-- Zwei Seiten des gedruckten Listings liegen vor. Gegen den Objektcode auf diesen Seiten stimmt
-  `WP.ASM` an 41 von 42 Stichpunkten, `wpand.scr` an 38 — die drei Abweichungen sind genau meine
-  Änderungen. (Der Punkt, den beide verfehlen, geht auf eine Fehllesung des Scans zurück.) Das ist
-  eine Stichprobe, keine vollständige Prüfung: der Rest des Listings liegt nicht vor, alles
-  außerhalb dieser zwei Seiten beruht auf einer Abschrift gegen die andere.
+- Das vollständige Listing 1 liegt vor. Gegen Objektcode-Stichpunkte über das ganze Listing
+  stimmt `WP.ASM` an **68 von 68**, `wpand.scr` an **65 von 68** — die drei Abweichungen sind genau
+  meine Änderungen, sonst nichts. Eine Zeile (5670) liegt in einem Abschnitt, der sich auf dem Scan
+  nicht sicher lesen ließ, und bleibt ungeprüft. Listing 2 ist der Modell-III-Patch und für ein
+  Modell-I-Programm ohne Belang.
 - `WP/CMD` wurde aus `esnd-04.dmk` neu ausgelesen, nachdem eine frühere Extraktion 883 Bytes
   `E5`-Füllung geliefert hatte. Die Plattengeometrie: `Sektor = 36 + Lump·10 + Granule·5`,
   Lump = 10 Sektoren, Granule = 5, GPL = 2, Zylinder 0 ausgenommen, Verzeichnis auf Spur 6.

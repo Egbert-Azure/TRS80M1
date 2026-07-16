@@ -207,20 +207,19 @@ Lumps straddle the side boundary — NEWDOS/80 is addressing the disk as one con
 `ENTRY` record; `SCRIPSIT/CMD` and `SCRIPSIT/SP` come out byte-identical to the known-good
 copies. Note `boot[2] = 11h` claims directory track 17; the directory is at track 6.
 
-## 9. Open items
+## 9. Cross-references
 
-**Resolved since the SCRIPSIT/SP analysis:**
+**Resolved during this analysis:**
 - ~~52C0 `NOP`→`DI`~~ — main-loop head, WP's warm-reentry landing (§3).
 - ~~"fourteen hooks"~~ — thirteen buffer-base stores plus six real hooks (§4, §5).
 
-**Still open:**
-1. **7CB6 → 7CB9 variable move at 5DCC** (SCRIPSIT/SP). WP does not reference either address.
-2. **603A / 6056 `05` → `04`** (SCRIPSIT/SP).
-3. **7A20 / 7A22 `3C`,`42` → `7F`,`7F`** — in the 20-byte defaults block LDIR'd to 7C64.
-4. **4049H — resolved.** SP writes FF6B, exactly one byte below its FF6C driver: a top-of-memory
-   reservation protecting FF6C–FFFF. This was previously listed as contradicted by `KBDGER/CMD`
-   writing FFEF while loading at F000 — but KBDGER is unrelated code (see the SCRIPSIT/SP
-   analysis §8), so its behaviour never constrained SP's. The contradiction was manufactured.
-5. **5FAF hook / 40h → 5Fh on screen.** Mechanism certain, purpose not. Plausibly a German
-   character-generator artefact (DIN 66003 renders 40h as §), but unproven.
-6. **DOS vector names** (4419, 441C, 442C, 4420, 4428, 4430) asserted from context only.
+**4049H and the floor/ceiling split.** Scripsit reads 4049H at 5260 (`LD HL,(4049)`) to set its
+buffer ceiling, then hard-codes the floor at 7F62 (5276). Lindley loads at 7F62–8342 — inside the
+buffer — which is why he must rewrite the thirteen pointer sites in §4 to push the floor up to
+8342, at a cost of ~960 bytes of document space. SCRIPSIT/SP writes FF6B into 4049H instead, one
+byte below its FF6C driver, moving the ceiling and costing nothing. Same problem, opposite end.
+See the SCRIPSIT/SP analysis §9.
+
+**The SCRIPSIT/SP changes** that once appeared here as open items — 5DCC (7CB6→7CB9), 603A/6056,
+7A20/7A22 — are all traced. They are Layer A and belong to that document; see its §10. None of
+them is referenced by `WP/CMD`.

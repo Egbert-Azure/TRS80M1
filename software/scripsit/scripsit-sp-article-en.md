@@ -194,6 +194,23 @@ FFE2H (source) → FFF1H (destination), 15 entries, **identity-mapped as shipped
 printer that already carries the German set leaves it alone. Anyone who hasn't enters at FFF1H
 whatever their device understands. That is the intended adjustment point.
 
+### Where the memory came from
+
+Scripsit sizes its own text buffer at cold start: `LD HL,(4049)` at 5260 gives it a ceiling,
+and 5276 hard-codes the floor at 7F62H.
+
+4049H is the top-of-memory pointer. `SCRIPSIT/SP`'s load record writes **FF6BH** there — one byte
+below the driver at FF6CH. Scripsit then sizes its buffer to end at FF6B and never touches what
+is above it. Nothing is patched to achieve this; it uses Scripsit's own startup code.
+
+**That is the difference from Lindley, and it is the whole of it.** He loads his program at
+7F62H–8342H, which is *inside* the buffer, so he must rewrite thirteen pointers afterwards to
+push the floor up — and it costs the user around 960 bytes of document space. His article says so.
+
+Layer A moves the ceiling instead. It costs nothing. Same problem, opposite end — and it is why
+the three-bytes-for-three-bytes rule matters: it reaches code at FF6CH without moving a byte of
+Scripsit.
+
 ### FFCB and the `DI` at 52C0
 
 `FFCBH` is only `LD A,(37E8H) / RET` — a pass-through. Its purpose is that **every** printer
@@ -266,18 +283,26 @@ intended in 1988. The bytes cannot answer it and neither can a test.
 
 ---
 
-## 7. Open questions
+## 7. The three odd changes
 
-Three changes in `SCRIPSIT/SP` whose purpose I can no longer reconstruct. What changed is
-certain; why is not.
+Traced by following what each address is used for inside Scripsit.
 
-1. **5DCCH** — the variable moves from 7CB6H to 7CB9H, with the instruction order changed.
-2. **603AH / 6056H** — both from 05 to 04; the difference between them stays the same.
-3. **7A20H / 7A22H** — 3CH and 42H become 7FH, inside the 20-byte defaults block copied to
-   7C64H by 708BH.
+**5DCCH — a bug in Radio Shack's Scripsit.** In the stock file, 7CB6H is written at 5DCC and read
+nowhere; 7CB9H is read at 5D47 and 7A6E and written nowhere. Somebody typed the wrong address in
+1979, and the reader picked up whatever happened to be there. Writing 7CB9H connects them. The
+reordering follows: the original leans on `OR A` setting the flags for `CALL NZ`, so it stores
+first; the patch calls first, reloads `LD A,C` because 5DEF clobbers A, then stores — paid for
+with the `NOP` at 5DD2.
 
+**7A20H / 7A22H — the page defaults.** The 20-byte block at 7A15H is copied to 7C64H at startup.
+7C6FH is `BM` (Unterer Rand, 60) and 7C71H is `PL` (Seitenlänge, 66) — confirmed by the directive
+handlers at 766EH and 7798H. Both raised to 127. 66 lines is US Letter at 6 lpi; A4 wants about
+72, and the manual opens with `PL=72 BM=66`. Raising the defaults keeps an unmarked document from
+breaking at the American boundary. *(Identification certain; the reasoning inferred.)*
 
----
+**603AH / 6056H — no effect.** These are self-modifying displacement bytes: the ring indices of a
+32-byte type-ahead buffer at 7E11H. Cold start zeroes both at 5254/5257 before the buffer is
+touched, so the change never reaches runtime.
 
 ## 8. Evidence
 
@@ -289,11 +314,11 @@ All statements are checked against the binaries. In addition:
 - Of those five bytes, one is line 5020 (`CP 20H` → `CP 0FFH`) and two are the underline codes in
   lines 550/560 — both my changes. The remaining two are the `LOUT` target, where `wpand.scr`
   agrees with the magazine's printed equate block (4467H) and only one archive build carries 4476H.
-- Two pages of the printed listing survive. Against the object code on them, `WP.ASM` matches at
-  41 of 42 sample points and `wpand.scr` at 38, the three misses being exactly my changes. (The
-  point both miss is a misreading of the scan.) That is a sample, not a full check: the rest of
-  the listing has not been seen, so anything not on those two pages rests on one transcription
-  against another.
+- The full Listing 1 is available. Against object-byte points read across all of it, `WP.ASM`
+  matches at **68 of 68** and `wpand.scr` at **65 of 68** — the three misses being exactly my
+  changes and nothing else. One line (5670) falls in a stretch that could not be read off the
+  scan with confidence and remains unverified. Listing 2 is the Model III patch and has no
+  bearing on a Model I program.
 - `WP/CMD` was re-extracted from `esnd-04.dmk` after an earlier extraction returned 883 bytes
   of `E5` fill. The disk geometry: `sector = 36 + lump·10 + granule·5`, lump = 10 sectors,
   granule = 5, GPL = 2, cylinder 0 excluded, directory on track 6.

@@ -112,26 +112,26 @@ Checked in sdltrs, Model I, German character generator:
   glyph is `5F` and that `UNDERL` at 5FAFH is what produced it is the obvious reading, but it is
   an **inference** — the test rules out `7F`, it does not identify what was drawn.
 
-## Open items
+## What the changes were
 
-Three changes in `SCRIPSIT/SP` whose **purpose** I can no longer reconstruct. What changed is
-certain; why is not. All are Layer A, so of course none has any counterpart in Lindley — he
-never touches the program file.
+All three of the once-unexplained Layer A changes were traced by following what the addresses are
+used for inside Scripsit — no new material needed. See `scripsit-sp-patch-analysis.md` §9–§10.
 
-1. **5DCCH** — variable moves 7CB6H → 7CB9H, with the instruction order changed.
-2. **603AH / 6056H** — both `05` → `04`; the difference between them is preserved.
-3. **7A20H / 7A22H** — `3C`,`42` → `7F`,`7F`, inside the 20-byte defaults block copied to 7C64H.
+- **4049H** — the top-of-memory pointer. Scripsit reads it at 5260 to size its own text buffer.
+  SP writes FF6BH, one byte below its FF6CH driver, so Scripsit never touches it. **This is the
+  architectural difference from Lindley:** 7F62H is hard-coded at 5276 as the buffer *floor*, so
+  Lindley — who loads into the buffer — must rewrite thirteen pointers and costs the user ~960
+  bytes of document space. Layer A moves the *ceiling* instead and costs **zero**.
+- **5DCCH** — a bug in Radio Shack's Scripsit, fixed. 7CB6 was written and never read; 7CB9 read
+  twice and never written. The patch connects them.
+- **7A20H / 7A22H** — the `BM` and `PL` page defaults (60 and 66), raised to 127. 66 lines is US
+  Letter at 6 lpi; A4 needs ~72.
+- **603AH / 6056H** — self-modifying ring-buffer indices, zeroed at cold start. **The change has
+  no runtime effect.**
 
-
-Not open, recorded for completeness: Lindley's printer underline (`UNDRLN`) is **not installed**
-— WP writes neither 7A9EH nor 7A9FH, because SCRIPSIT/SP's extended 7A00H block covers that
-address. I kept the screen half at 5FAFH, so the marker still displays with nothing acting on it
-at print time. Whether that was a deliberate cut or an oversight is a question about intent in
-1988; no test answers it.
-
-Would close items 1–3: an EDTASM source for the SP patch, if one survives — `SCRIPSIT/TXT` came
-off `esnd-05.dmk`, which has not been searched for one. Or Lindley Part I, if it carries a
-Scripsit memory map.
+Nothing remains open at byte level. What is left are questions about intent in 1988 — why 127
+rather than 72/66, and whether dropping the printer half of the underlining was deliberate.
+Neither is answerable from the bytes or by testing.
 
 ## Related
 

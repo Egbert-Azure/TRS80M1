@@ -20,7 +20,7 @@ banner travels with every copy and so cannot answer either — `SCRIPSIT/SP` car
 
 | file | identification | evidence |
 |---|---|---|
-| `WP.ASM` (16163 B) + `WP.CMD` (1372 B) | **An EDTASM transcription of Lindley's published Listing One, and its assembly.** Who keyed it in is **not established**. **Not Lindley's own source** — the printed listing carries comments on every equate (`;*DISK I/O BUFFER` and the rest of that block) and `WP.ASM` has none of them. A listing is generated *from* a source, so the source had them; a file missing them is a copy. What it does establish: its code **matches the printed object bytes at 41 of 42 sample points** (the one miss is my reading of the scan), and it assembles to `WP.CMD` with zero differing bytes. It also carries the Model III insertion points, which no other copy has. |
+| `WP.ASM` (16163 B) + `WP.CMD` (1372 B) | **An EDTASM transcription of Lindley's published Listing One, and its assembly.** Who keyed it in is **not established**. Its code **matches the printed object bytes at 68 of 68 sample points** across the whole of Listing 1, and it assembles to `WP.CMD` with zero differing bytes. It also carries the Model III insertion points. Two caveats: the equate comments the article prints are absent from it, and it silently corrects typos the article carries (`AERA`→`AREA`) — both consistent with extraction damage, which the file is known to have. Neither bears on the code. |
 | `wp.cmd` (1392 B) | **Lindley's program — a third build of it.** Authorship is not in question here or anywhere below: he wrote it, the article says so, and every copy carries his name. What is unresolved is only *which build this is*: it differs from `WP.ASM`'s output in 43 bytes (the sign-on message, uppercase where `WP.ASM` has it mixed case) and calls 4476H for `LOUT` where the printed equate block and both transcriptions say 4467H — so it is not a clean build of the published listing. Line Printer IV build. | banner at 7F62: `*** SCRIPSIT PATCH PROGRAM *** BY  CRAIG A. LINDLEY`; targets `SCRIPSIT/LC` + `SCRIPSIT/UC`; underline codes at 7AA8/7AA9 = `0E`/`0F`, matching the article's *"0FH to turn underlining on and 0EH to turn it off"* |
 | `wp7.cmd` (1536 B) | same program, **retargeted to an ESC-sequence printer** | 7AA8/7AA9 = `59`/`58` (`'Y'`/`'X'`); `UNDRLN` reworked to busy-wait on bit 7 of 37E8H and emit `1BH` before the code — i.e. `ESC X` / `ESC Y`. Not pursued further; I had a **Seikosha** printer around 1984 *(recollection, not established from the bytes)* |
 | `wpand.scr` | **A TRS-80 EDTASM source file** containing Lindley's Listing One, carrying one of my edits. Origin uncertain — see below | file format is EDTASM, not text: header `D3 'WP    '`, then 820 records of five high-bit digits + text + `0D`, terminated `1A`. The only high-bit bytes in the file are `B0`–`B9` and that `D3`. Its `DEFS`/`DEFB` layout predicts `wp.cmd`'s load-record gaps exactly (7AA5–7AA6 = `DIRPTR DEFS 2`, 7AAA–7AAB = `VDVR DEFS 2`, both absent) |
@@ -66,12 +66,11 @@ points read off those pages:
 
 | | matches printed object bytes |
 |---|---|
-| `WP.ASM` | **41 / 42** |
-| `wpand.scr` | 38 / 42 |
+| `WP.ASM` | **68 / 68** |
+| `wpand.scr` | 65 / 68 |
 
-`wpand.scr` misses at 7AA8, 7AA9 and 8131 — the three edits below, and nothing else. The point
-both miss (8162) is my reading of the scan, not a real difference: `MSG5+31` resolves identically
-in both.
+The full Listing 1 is now available, and the sample runs across all of it. `wpand.scr` misses at
+7AA8, 7AA9 and 8131 — the three edits below, and **nothing else**.
 
 **What that does and does not establish.** Two pages of the listing are available, covering the
 header, the equates, the storage area, both dispatch tables, and roughly lines 4880–5910. Against
@@ -84,9 +83,10 @@ those pages the following are checked **directly against print**:
 | `LOUT` = 4467H | the equate block |
 | printer range 1–31 | Table 1, and the `CP 20H` above |
 
-Everything else — line 5670, the case of `MSG1` at 7F62H, and the roughly 95% of the listing not
-on those two pages — is **not** verified against print. Where a claim rests on `WP.ASM` alone, it
-rests on one transcription against another, and is marked.
+Line 5670 remains unverified: it falls in a stretch whose object bytes could not be read off the
+scan with confidence. It rests on one transcription against another, and is marked. Listing 2 is
+the **Model III** patch — printer output, shift-key polling, tape I/O — and has no bearing on a
+Model I program.
 
 `wpand.scr` was then assembled the same way (0 errors, 820 lines) and diffed against `wp.cmd`:
 
@@ -242,10 +242,10 @@ My original contribution is the German-language layer, which is substantial and 
 9. **`wpand.scr` is not an independent transcription.** Against `WP.ASM` it differs in 150
    lines, of which all but six are comments — the section prose stripped to bare `;`, and
    explanatory comments *added* to the equates that Lindley never wrote. The six code lines are
-   550, 560, 2730/2740 (the sign-on message), 5020 and 5670. It also **corrects** Lindley's own
-   typos (`LOOPUP`→`LOOKUP`, `ADDTION`→`ADDITION`) while **introducing** others
-   (`WRITTEN`→`WRITEN`, `AREA`→`AERA`, `FOR`→`FOB`). OCR does not correct spelling, and it does
-   not annotate. Someone retyped this while reading it closely. Who, is still not established.
+   550, 560, 2730/2740 (the sign-on message), 5020 and 5670. **Correction:** an earlier pass claimed `wpand.scr` introduced typos that were Lindley's own.
+   `;SYSTEM STORAGE AERA` is **printed in the article** — `wpand.scr` preserves it and `WP.ASM`
+   silently corrects it to `AREA`. On that line `wpand.scr` is the faithful copy. The argument
+   built on those typos is withdrawn; who made either file is still not established.
 
 7. **Withdrawn:** an earlier pass claimed `wpand.scr` carries `DEFW 5200H` where the magazine
    shows `5209H`. That `5209H` came from OCR of the scan — the same pass that produced `5661`

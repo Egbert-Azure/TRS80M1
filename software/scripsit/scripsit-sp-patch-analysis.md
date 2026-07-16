@@ -154,15 +154,96 @@ table the reader is meant to patch for their own printer.
 shares **zero** bytes with SCRIPSIT/SP's FF82H block. Different code. Do not conflate them
 in the documentation.
 
-Both happen to touch **4049H**, but that is the only thing they share and it constrains
-nothing: SCRIPSIT/SP's FF6BH sits exactly one byte below its own FF6CH driver, which reads as a
-top-of-memory reservation. Whatever KBDGER does with the same address is a question about
+Both happen to touch **4049H**, but that is the only thing they share, and what SCRIPSIT/SP does
+with it is established in §9. Whatever KBDGER does with the same address is a question about
 KBDGER.
 
-## 9. Open items (not yet grounded in bytes)
+## 9. 4049H — how the driver gets its memory
 
-1. **52C0 `NOP` → `DI`** — no explanation found. Single byte, deliberate.
-2. **603A / 6056 `05` → `04`** — read as data by `LD A,(603A)` at 6049. Purpose unknown.
-3. **7A20 / 7A22 `3C`,`42` → `7F`,`7F`** — inside the 20-byte defaults block LDIR'd to 7C64H.
-4. **7CB6 → 7CB9 variable move at 5DCC** — a genuine logic change, not a hook.
-6. Whether the shipped SCRIPSIT/CMD is stock Radio Shack or already carries someone else's patch.
+Scripsit sizes its own text buffer at cold start:
+
+```
+5260  LD HL,(4049)      ; ceiling
+5263  NOP x 7           ; a deliberate gap in Radio Shack's code, right here
+526A  LD (7C5D),HL      ; end-of-buffer pointers
+526D  LD (7C2D),HL
+5270  LD (7C55),HL
+5276  LD HL,7F62        ; floor - hard-coded
+5279  LD (7C43),HL / (7C53),HL / (7C57),HL / (7C2B),HL
+```
+
+**4049H is the top-of-memory pointer and Scripsit reads it to find its ceiling.** SCRIPSIT/SP's
+load record writes **FF6BH** there — one byte below the FF6CH driver. Scripsit sizes its buffer
+to end at FF6B and never touches what sits above. The reservation is made using Scripsit's own
+startup code; nothing is patched to achieve it.
+
+**This is the architectural difference from Lindley.** 7F62H is hard-coded at 5276 as the buffer
+*floor*. Lindley loads his program at 7F62H–8342H — inside the buffer — and must therefore
+rewrite thirteen pointer sites afterwards to move the floor up to 8342H. That costs the user
+~960 bytes of document space, and his article says so.
+
+Layer A moves the **ceiling** instead. It costs **zero** text buffer. Same problem, opposite end.
+It is also why the 3-byte-for-3-byte substitution matters: it reaches code at FF6CH without
+moving a single byte of Scripsit.
+
+## 10. What the remaining changes turned out to be
+
+Traced by following what each address is used for inside Scripsit. No new material was needed.
+
+### 5DCCH — a bug in Radio Shack's Scripsit, fixed
+
+Every absolute reference into 7CB0–7CC0 in **stock** `SCRIPSIT/CMD`:
+
+```
+7CB6 : written at 5DCC - read NOWHERE
+7CB9 : read at 5D47 and 7A6E - written NOWHERE
+```
+
+One variable written and never consulted, another consulted and never written: an off-by-three
+slip in a hand-assembled 1979 program. The reader at 5D47 was picking up whatever happened to
+sit at 7CB9.
+
+The patch writes 7CB9 instead of 7CB6, connecting the writer to its two readers. The reordering
+follows from that: the original relies on `OR A` at 5DCB setting flags for `CALL NZ,5DEF`, so it
+stores first. The patch calls first, then reloads `LD A,C` (5DEF clobbers A) and stores — same
+flags, correct target, paid for with the `NOP` at 5DD2.
+
+The companion change at 5D47 (`LD A,(7CB9)` → `CALL 7A6E`) routes the read through stock
+Scripsit's 7A6E, which reads 7CB9 *and* applies a `DEC B` correction. Both changes are one repair.
+
+### 603AH / 6056H — no runtime effect
+
+These are **self-modifying displacement bytes**. 6038 is `LD (IY+5),A` with IY=7E11, and the `05`
+*is* that displacement; 603B reads it back as data, increments, masks `AND 1F`, writes it back.
+6056 is the same trick on `LD A,(IY+5)` at 6054. Write index, read index, 32-byte circular
+type-ahead buffer, compared at 6046 to test for empty.
+
+But cold start at 523F does `XOR A` and zeroes both (5254, 5257) before the buffer is used.
+**The file's value is overwritten on every start, so 05→04 changes nothing at runtime.**
+
+### 7A20H / 7A22H — the page defaults
+
+The 20-byte block at 7A15H is LDIR'd to 7C64H at 708BH. It decodes against the manual:
+
+| | value | |
+|---|---|---|
+| 7C65 | 12 | `LM` — Linker Rand (12 voreingestellt) |
+| 7C66 | 72 | `RM` — Rechter Rand (72) |
+| 7C67 | 1 | `LS` — Zeilenabstand (1) |
+| 7C6E | 6 | `TM` — Oberer Rand (6) |
+| 7C6F | 60 → **127** | `BM` — Unterer Rand (60) |
+| 7C71 | 66 → **127** | `PL` — Seitenlänge (66) |
+
+Confirmed by the directive handlers: `766E LD HL,7C6F` is `>BM=`, `7798 LD HL,7C71` is `>PL=`.
+The `Y`/`N` bytes at 7C68–7C6C are the `C`/`FR`/`J` flags.
+
+66 lines is US Letter at 6 lpi; A4 needs about 72. SCRIPSIT.TXT opens with `PL=72 BM=66` and tells
+the reader to set the same. *Inference:* raising both defaults to 127 pushes the page-break logic
+out of the way so an unmarked document does not break at the American boundary. The
+identification is certain; the reason is not.
+
+## 11. Still open
+
+Nothing in the byte-level account. What remains are questions about intent in 1988 — why 127
+rather than 72/66, and whether dropping the printer half of the underlining was deliberate.
+Neither is answerable from the bytes or by testing.
