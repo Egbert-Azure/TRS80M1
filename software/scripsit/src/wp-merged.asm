@@ -2,7 +2,6 @@
 ; Base: WP.ASM, whose code matches the printed object bytes at 68/68 points.
 ; Comments taken from wpand.scr wherever WP.ASM had none.
 ; NOTHING here is transcribed from the magazine — gaps are marked, not filled.
-; Markers:  <<<TODO ...>>>   = needs an eye on the printed page
 ; Original line numbers preserved
 ;
 00100 ;********************************************************;
