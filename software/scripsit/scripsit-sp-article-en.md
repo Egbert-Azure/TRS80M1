@@ -62,6 +62,10 @@ Lindley described, in *"Inside Scripsit"* (80 Micro, Part II: October 1982), a p
 that alters Scripsit in memory after loading. `WP/CMD` is a **port of that program**, not an
 idea taken from it. That should be said plainly.
 
+A second transcription of his listing has since turned up, which settles what was open: it
+matches the object code printed in the magazine. So the printed listing is the reference, and
+what I typed in is measurable against it.
+
 The proof is simple: every hook `WP/CMD` uses sits at Lindley's address. The installer is his,
 line for line:
 
@@ -254,24 +258,24 @@ Lindley's underlining hooks in at **7A9EH**. `SCRIPSIT/SP` extends the 7A00H blo
 165 bytes — to 7AA4H, and therefore **across 7A9EH**. The space was gone. The printer half of
 the underlining was dropped as a result.
 
-The screen half stayed: at 5FAFH, 40H is still displayed as 5FH. The marker is visible but no
-longer does anything when printing. The manual, consistently, does not mention underlining at
-all. Whether that was a deliberate cut or an overlooked remnant cannot be decided from the
-bytes — in an emulator it would be settled in two minutes.
+The screen half stayed: at 5FAFH, 40H is still displayed as 5FH — confirmed at runtime, where
+`SHIFT`-0 produces a glyph distinct from the `@p` hatched square. So the marker is visible but no
+longer does anything when printing, and the manual, consistently, does not mention underlining at
+all. Whether that was a deliberate cut or an overlooked remnant is a question about what I
+intended in 1988. The bytes cannot answer it and neither can a test.
 
 ---
 
 ## 7. Open questions
 
-Four changes in `SCRIPSIT/SP` are still unexplained. None of them appears in Lindley:
+Three changes in `SCRIPSIT/SP` whose purpose I can no longer reconstruct. What changed is
+certain; why is not.
 
 1. **5DCCH** — the variable moves from 7CB6H to 7CB9H, with the instruction order changed.
 2. **603AH / 6056H** — both from 05 to 04; the difference between them stays the same.
 3. **7A20H / 7A22H** — 3CH and 42H become 7FH, inside the 20-byte defaults block copied to
    7C64H by 708BH.
-4. **4049H** — `SCRIPSIT/SP` writes FF6BH there, exactly one byte below the driver at FF6CH.
-   That fits a top-of-memory pointer. But `KBDGER/CMD` writes FFEFH there while loading at
-   F000H, which does not fit.
+
 
 ---
 
@@ -279,11 +283,17 @@ Four changes in `SCRIPSIT/SP` are still unexplained. None of them appears in Lin
 
 All statements are checked against the binaries. In addition:
 
-- Lindley's source (`wpand.scr`, EDTASM format) was assembled with a purpose-written assembler:
+- The transcription I worked from (`wpand.scr`, EDTASM format) was assembled with a purpose-written assembler:
   **1336 bytes, address coverage identical to `wp.cmd`, five differing bytes.** `START` = 7B49H,
   `TXTBUF` = 8342H, `TSTBYT` = 7C21H — in each case exactly what the binary requires.
-- Of those five bytes, one is line 5020 (`CP 20H` → `CP 0FFH`), two are the underline codes in
-  lines 550/560, two a transposed digit in the `LOUT` equate (4467H instead of 4476H).
+- Of those five bytes, one is line 5020 (`CP 20H` → `CP 0FFH`) and two are the underline codes in
+  lines 550/560 — both my changes. The remaining two are the `LOUT` target, where `wpand.scr`
+  agrees with the magazine's printed equate block (4467H) and only one archive build carries 4476H.
+- Two pages of the printed listing survive. Against the object code on them, `WP.ASM` matches at
+  41 of 42 sample points and `wpand.scr` at 38, the three misses being exactly my changes. (The
+  point both miss is a misreading of the scan.) That is a sample, not a full check: the rest of
+  the listing has not been seen, so anything not on those two pages rests on one transcription
+  against another.
 - `WP/CMD` was re-extracted from `esnd-04.dmk` after an earlier extraction returned 883 bytes
   of `E5` fill. The disk geometry: `sector = 36 + lump·10 + granule·5`, lump = 10 sectors,
   granule = 5, GPL = 2, cylinder 0 excluded, directory on track 6.

@@ -19,9 +19,18 @@ Both files are ordinary TRSDOS/NEWDOS `/CMD` load-module files.
 | appended records | — | `01 04 49 40` → **(4049h) = FF6Bh**<br>`01 1A 6C FF` → code FF6Ch–FF83h<br>`01 80 82 FF` → code+tables FF82h–FFFFh |
 
 **Design consequence:** the whole patch lives at **FF6Ch–FFFFh** (top 148 bytes of RAM) plus
-39 bytes appended at **7A7Dh**. Nothing in the body is relocated. This is why the patch is
-independent of `WP/CMD` — Jens is right, renaming to `SP/CMD` works, because everything is
-in the load records themselves.
+39 bytes appended at **7A7Dh**. Nothing in the body is relocated, and everything is in the file's
+own load records — so **everything documented in this file works with `SCRIPSIT/SP` started on
+its own**: umlauts, the `@p` printer escape, the translation table, the relocated marker glyphs.
+`WP/CMD` is not needed for any of that.
+
+**What is not there without `WP/CMD`** is the whole of Layer B — `BREAK Q` (directory), `KILL`,
+`BREAK N`, `BREAK X=`, `SHIFT P` (printer pause), the cursor and window functions, the
+`NEW FILE!` / `FILE UPDATED!` messages, and reentry via `WP SP*`. Those are patched into RAM at
+load time and vanish with the loader. See `wp-cmd-analysis.md`.
+
+Both halves confirmed at runtime: started directly, `@A` gives Ä and `BREAK` `Q0` gives an
+illegal-command error; started as `WP SCRIPSIT`, `Q0` gives the directory.
 
 ## 2. The governing trick
 
@@ -122,7 +131,7 @@ FFC3  CP 41H / JP C,6167H      ; original code, verbatim
       JP 6161H
 ```
 
-This confirms Jens exactly: F5(=@)+a/o/u → umlauts, F5+`:` → ß, F5+p → hashed block.
+Confirmed at runtime: F5(=@)+a/o/u → umlauts, F5+`:` → ß, F5+p → hashed block.
 The `CP 7EH` split exists because 6167H applies `XOR 20H` case folding, which must not
 touch ß or 7FH.
 
@@ -145,8 +154,10 @@ table the reader is meant to patch for their own printer.
 shares **zero** bytes with SCRIPSIT/SP's FF82H block. Different code. Do not conflate them
 in the documentation.
 
-Note however both touch **4049H** — SCRIPSIT/SP writes FF6BH there, KBDGER writes FFEFH.
-*What 4049H is used for here is not yet established from the binary. Open item.*
+Both happen to touch **4049H**, but that is the only thing they share and it constrains
+nothing: SCRIPSIT/SP's FF6BH sits exactly one byte below its own FF6CH driver, which reads as a
+top-of-memory reservation. Whatever KBDGER does with the same address is a question about
+KBDGER.
 
 ## 9. Open items (not yet grounded in bytes)
 
@@ -154,5 +165,4 @@ Note however both touch **4049H** — SCRIPSIT/SP writes FF6BH there, KBDGER wri
 2. **603A / 6056 `05` → `04`** — read as data by `LD A,(603A)` at 6049. Purpose unknown.
 3. **7A20 / 7A22 `3C`,`42` → `7F`,`7F`** — inside the 20-byte defaults block LDIR'd to 7C64H.
 4. **7CB6 → 7CB9 variable move at 5DCC** — a genuine logic change, not a hook.
-5. **4049H semantics.**
 6. Whether the shipped SCRIPSIT/CMD is stock Radio Shack or already carries someone else's patch.

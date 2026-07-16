@@ -60,7 +60,8 @@ Two artefacts exist but are not committed here. Both would need a home decision 
   source**; a byte-faithful reconstruction with modern labels, written before several later
   corrections and not re-audited against them.
 - `edtasm-z80.py` — two-pass Z80 assembler for the EDTASM subset, written to verify `wpand.scr`
-  against Lindley's binary. A tool, so arguably it belongs with `trsextract` rather than here.
+  against the object code printed in the magazine. A tool, so arguably it belongs with
+  `trsextract` rather than here.
 
 ## Provenance of the artefacts
 
@@ -97,21 +98,36 @@ Lumps straddle the side boundary — NEWDOS/80 addresses the disk as one continu
 36-sector-per-cylinder stream. Validated against all 16 files on the disk. Note `boot[2] = 11H`
 claims directory track 17; the directory is on track 6.
 
+## Confirmed at runtime
+
+Checked in sdltrs, Model I, German character generator:
+
+- `SCRIPSIT/SP` started directly → `@A` gives Ä. **Layer A works standalone**, no `WP` needed.
+- Started directly → `BREAK` `Q0` gives an illegal-command error. **Layer B absent**, as expected:
+  Scripsit's own BREAK table has no `Q`, and 6466H still holds Lindley's untouched error exit.
+- Started as `WP SCRIPSIT` → `BREAK` `Q0` gives the directory. **The reversed index in the 58F0H
+  dispatcher is confirmed on a running machine**: read naively, `Q` would map to `KILL` at 8014H
+  and delete a file. It gives `DIR 0`, so the address list is indexed `C = N-1-i`.
+- `SHIFT`-0 produces a glyph **distinct from** the `@p` hatched square, so `UNDERL` at 5FAFH
+  fires and the stored `40` displays as `5F` — rendered as a solid block by the German character
+  generator, not as an underscore.
+
 ## Open items
 
-Four changes in `SCRIPSIT/SP` remain unexplained. None appears anywhere in Lindley — all are
-Layer A:
+Three changes in `SCRIPSIT/SP` whose **purpose** I can no longer reconstruct. What changed is
+certain; why is not. All are Layer A, so of course none has any counterpart in Lindley — he
+never touches the program file.
 
 1. **5DCCH** — variable moves 7CB6H → 7CB9H, with the instruction order changed.
 2. **603AH / 6056H** — both `05` → `04`; the difference between them is preserved.
 3. **7A20H / 7A22H** — `3C`,`42` → `7F`,`7F`, inside the 20-byte defaults block copied to 7C64H.
-4. **4049H** — SP writes FF6BH, one below its FF6CH driver, consistent with a top-of-memory
-   pointer. `KBDGER/CMD` writes FFEFH while loading at F000H, which is not consistent with that.
 
-Also unresolved: Lindley's printer underline (`UNDRLN`) was dropped because SCRIPSIT/SP's
-extended 7A00H block covers its 7A9EH hook — but I kept the screen half at 5FAFH, so the
-underscore marker still displays with nothing acting on it at print time. **Testable in sdltrs
-in two minutes**; not yet tested.
+
+Not open, recorded for completeness: Lindley's printer underline (`UNDRLN`) is **not installed**
+— WP writes neither 7A9EH nor 7A9FH, because SCRIPSIT/SP's extended 7A00H block covers that
+address. I kept the screen half at 5FAFH, so the marker still displays with nothing acting on it
+at print time. Whether that was a deliberate cut or an oversight is a question about intent in
+1988; no test answers it.
 
 Would close items 1–3: an EDTASM source for the SP patch (`esnd-05.dmk` is unexamined), or
 Lindley Part I if it carries a Scripsit memory map.

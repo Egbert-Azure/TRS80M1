@@ -62,6 +62,10 @@ Craig A. Lindley beschrieb in *"Inside Scripsit"* (80 Micro, Teil II: Oktober 19
 Patch-Programm, das Scripsit nach dem Laden im Speicher verändert. `WP/CMD` ist eine
 **Portierung dieses Programms**, keine Anregung daraus. Das gehört offen gesagt.
 
+Inzwischen liegt eine zweite Abschrift seines Listings vor, womit die offene Frage geklärt ist:
+sie stimmt mit dem in der Zeitschrift abgedruckten Objektcode überein. Der Abdruck ist damit die
+Referenz, und was ich abgetippt habe, ist daran messbar.
+
 Der Nachweis ist einfach: jeder Einhängepunkt, den `WP/CMD` benutzt, liegt auf Lindleys
 Adresse. Die Installationsroutine ist seine, Zeile für Zeile:
 
@@ -259,26 +263,25 @@ Lindleys Unterstreichung hängt bei **7A9EH** ein. `SCRIPSIT/SP` verlängert den
 126 auf 165 Bytes — also bis 7AA4H, und damit **über 7A9EH hinweg**. Der Platz war weg. Die
 Druckerhälfte der Unterstreichung entfiel deshalb.
 
-Die Bildschirmhälfte blieb: bei 5FAFH wird 40H weiterhin als 5FH dargestellt. Die Marke ist
-also sichtbar, bewirkt beim Drucken aber nichts mehr. Die Bedienungsanleitung erwähnt
-Unterstreichung folgerichtig gar nicht. Ob das eine bewusste Streichung oder ein übersehener
-Rest ist, lässt sich aus den Bytes nicht entscheiden — im Emulator wäre es in zwei Minuten
-geklärt.
+Die Bildschirmhälfte blieb: bei 5FAFH wird 40H weiterhin als 5FH dargestellt — im Betrieb
+bestätigt, `SHIFT`-0 erzeugt ein anderes Zeichen als das schraffierte Quadrat von `@p`. Die Marke
+ist also sichtbar, bewirkt beim Drucken aber nichts mehr. Die Bedienungsanleitung erwähnt
+Unterstreichung folgerichtig gar nicht. Ob das eine bewusste Streichung oder ein übersehener Rest
+war, ist eine Frage nach meiner Absicht von 1988. Die Bytes beantworten sie nicht, und ein Test
+auch nicht.
 
 ---
 
 ## 7. Offene Punkte
 
-Vier Änderungen in `SCRIPSIT/SP` sind bis heute nicht erklärt. Keine davon kommt bei Lindley
-vor:
+Drei Änderungen in `SCRIPSIT/SP`, deren Zweck ich nicht mehr rekonstruieren kann. Was geändert
+wurde, steht fest; warum, nicht.
 
 1. **5DCCH** — die Variable wandert von 7CB6H nach 7CB9H, bei umgestellter Befehlsfolge.
 2. **603AH / 6056H** — beide von 05 auf 04; die Differenz bleibt gleich.
 3. **7A20H / 7A22H** — 3CH und 42H werden 7FH, im 20-Byte-Vorgabeblock, der bei 708BH nach
    7C64H kopiert wird.
-4. **4049H** — `SCRIPSIT/SP` trägt dort FF6BH ein, genau ein Byte unter dem Treiber bei FF6CH.
-   Das passt zu einem Speicherobergrenzen-Zeiger. `KBDGER/CMD` trägt dort aber FFEFH ein und
-   lädt nach F000H, was nicht dazu passt.
+
 
 ---
 
@@ -286,13 +289,19 @@ vor:
 
 Alle Aussagen sind gegen die Binärdateien geprüft. Ergänzend:
 
-- Lindleys Quelle (`wpand.scr`, EDTASM-Format) wurde mit einem eigens geschriebenen Assembler
+- Die Abschrift, mit der ich gearbeitet habe (`wpand.scr`, EDTASM-Format), wurde mit einem eigens geschriebenen Assembler
   übersetzt: **1336 Bytes, identische Adressabdeckung mit `wp.cmd`, fünf abweichende Bytes.**
   `START` = 7B49H, `TXTBUF` = 8342H, `TSTBYT` = 7C21H — jeweils genau das, was die Binärdatei
   verlangt.
 - Von den fünf Bytes betrifft eines Zeile 5020 (`CP 20H` → `CP 0FFH`), zwei die
-  Unterstreichungscodes in den Zeilen 550/560, zwei eine verdrehte Ziffer in der `LOUT`-Gleichung
-  (4467H statt 4476H).
+  Unterstreichungscodes in den Zeilen 550/560 — beides meine Änderungen. Die restlichen zwei
+  betreffen das `LOUT`-Ziel, wo `wpand.scr` mit Lindleys eigener Quelle übereinstimmt (4467H);
+  nur die Archivfassung seines Binärprogramms trägt 4476H.
+- Zwei Seiten des gedruckten Listings liegen vor. Gegen den Objektcode auf diesen Seiten stimmt
+  `WP.ASM` an 41 von 42 Stichpunkten, `wpand.scr` an 38 — die drei Abweichungen sind genau meine
+  Änderungen. (Der Punkt, den beide verfehlen, geht auf eine Fehllesung des Scans zurück.) Das ist
+  eine Stichprobe, keine vollständige Prüfung: der Rest des Listings liegt nicht vor, alles
+  außerhalb dieser zwei Seiten beruht auf einer Abschrift gegen die andere.
 - `WP/CMD` wurde aus `esnd-04.dmk` neu ausgelesen, nachdem eine frühere Extraktion 883 Bytes
   `E5`-Füllung geliefert hatte. Die Plattengeometrie: `Sektor = 36 + Lump·10 + Granule·5`,
   Lump = 10 Sektoren, Granule = 5, GPL = 2, Zylinder 0 ausgenommen, Verzeichnis auf Spur 6.

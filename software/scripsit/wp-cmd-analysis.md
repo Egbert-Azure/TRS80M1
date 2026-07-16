@@ -217,9 +217,10 @@ copies. Note `boot[2] = 11h` claims directory track 17; the directory is at trac
 1. **7CB6 → 7CB9 variable move at 5DCC** (SCRIPSIT/SP). WP does not reference either address.
 2. **603A / 6056 `05` → `04`** (SCRIPSIT/SP).
 3. **7A20 / 7A22 `3C`,`42` → `7F`,`7F`** — in the 20-byte defaults block LDIR'd to 7C64.
-4. **4049H.** SP writes FF6B, exactly one below its FF6C driver — consistent with 4049H being
-   the DOS top-of-memory pointer, which would make the write a memory reservation. But KBDGER
-   writes FFEF while loading at F000, which does not fit that reading. Unresolved.
+4. **4049H — resolved.** SP writes FF6B, exactly one byte below its FF6C driver: a top-of-memory
+   reservation protecting FF6C–FFFF. This was previously listed as contradicted by `KBDGER/CMD`
+   writing FFEF while loading at F000 — but KBDGER is unrelated code (see the SCRIPSIT/SP
+   analysis §8), so its behaviour never constrained SP's. The contradiction was manufactured.
 5. **5FAF hook / 40h → 5Fh on screen.** Mechanism certain, purpose not. Plausibly a German
    character-generator artefact (DIN 66003 renders 40h as §), but unproven.
 6. **DOS vector names** (4419, 441C, 442C, 4420, 4428, 4430) asserted from context only.
