@@ -1392,6 +1392,54 @@
           "standard": true
         },
         {
+          "name": "SYS2",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS10",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS18",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS26",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DISKDUP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOS0387",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOS0387",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP510",
+          "ext": "S00",
+          "attr": "16",
+          "standard": false
+        },
+        {
           "name": "SYS3",
           "ext": "SYS",
           "attr": "95",
@@ -1534,6 +1582,96 @@
           "ext": "CMD",
           "attr": "16",
           "standard": true
+        },
+        {
+          "name": "MENU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "SP",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPRX",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERUT3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SWITCH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SXCFG0",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SXCFG1",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UEBERSIC",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNLIST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CENTRAL",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WECKER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPDUP",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPNAMES",
+          "ext": "ILF",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -1928,6 +2066,72 @@
         {
           "name": "SCRIPSIT",
           "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SETDATE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERUT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SWITCH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "T82",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UEBERSIC",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNLIST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WECKER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WORDCHEK",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPDUP",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPNAMES",
+          "ext": "ILF",
           "attr": "16",
           "standard": false
         }
@@ -2818,6 +3022,42 @@
           "ext": "REL",
           "attr": "0",
           "standard": false
+        },
+        {
+          "name": "SXCFG0",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TELEV40",
+          "ext": "PDR",
+          "attr": "24",
+          "standard": false
+        },
+        {
+          "name": "TELEV80",
+          "ext": "PDR",
+          "attr": "24",
+          "standard": false
+        },
+        {
+          "name": "TRSCPM14",
+          "ext": "PDR",
+          "attr": "24",
+          "standard": false
+        },
+        {
+          "name": "CHAINBLD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "XEROX820",
+          "ext": "PDR",
+          "attr": "24",
+          "standard": false
         }
       ]
     },
@@ -3104,6 +3344,66 @@
         {
           "name": "BASCOM",
           "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RUNTIME",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET2",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET3",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET4",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET1",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WELT",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LOADHRG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ACCRUN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZEDIT",
+          "ext": "ACC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZEDIT",
+          "ext": "JCL",
           "attr": "16",
           "standard": false
         }
@@ -3595,6 +3895,168 @@
         },
         {
           "name": "U",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "IMAGE4",
+          "ext": "DAT",
+          "attr": "24",
+          "standard": false
+        },
+        {
+          "name": "IMAGE5",
+          "ext": "DAT",
+          "attr": "24",
+          "standard": false
+        },
+        {
+          "name": "IMAGE6",
+          "ext": "DAT",
+          "attr": "24",
+          "standard": false
+        },
+        {
+          "name": "IMAGE7",
+          "ext": "DAT",
+          "attr": "24",
+          "standard": false
+        },
+        {
+          "name": "IMAGE8",
+          "ext": "DAT",
+          "attr": "24",
+          "standard": false
+        },
+        {
+          "name": "IMAGE9",
+          "ext": "DAT",
+          "attr": "24",
+          "standard": false
+        },
+        {
+          "name": "ITHO",
+          "ext": "JKL",
+          "attr": "24",
+          "standard": false
+        },
+        {
+          "name": "UDK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KEY",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "L2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "W",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "Z",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZXC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LA",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LXC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HRG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "IDENT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "M",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RX",
           "ext": "CMD",
           "attr": "16",
           "standard": false
@@ -4660,6 +5122,12 @@
           "ext": "CMD",
           "attr": "0",
           "standard": false
+        },
+        {
+          "name": "SPACE",
+          "ext": "BLD",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -4814,6 +5282,84 @@
         {
           "name": "PMODULG",
           "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULMA",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GEGRAS",
+          "ext": "ILF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULBE",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GEVISI",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULSE",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MKOPIE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CAD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULBR",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GEGRAS",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MASTER",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULBB",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TITEL1",
+          "ext": "GRF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPEICHER",
+          "ext": "GRF",
           "attr": "16",
           "standard": false
         }
@@ -4972,6 +5518,84 @@
           "ext": "",
           "attr": "16",
           "standard": false
+        },
+        {
+          "name": "PMODULMA",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GEGRAS",
+          "ext": "ILF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULBE",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GEVISI",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULSE",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MKOPIE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CAD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULBR",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GEGRAS",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MASTER",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULBB",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TITEL1",
+          "ext": "GRF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPEICHER",
+          "ext": "GRF",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -5126,6 +5750,84 @@
         {
           "name": "PMODULG",
           "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULMA",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GEGRAS",
+          "ext": "ILF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULBE",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GEVISI",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULSE",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MKOPIE",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CAD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULBR",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GEGRAS",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MASTER",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULBB",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TITEL1",
+          "ext": "GRF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPEICHER",
+          "ext": "GRF",
           "attr": "16",
           "standard": false
         }
@@ -5618,6 +6320,102 @@
         {
           "name": "CLH",
           "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET1",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET2",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET3",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET4",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LOADHRG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULTH",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PMODULU",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPACE",
+          "ext": "BLD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "RUNTIME",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ACCEL",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TITEL",
+          "ext": "GRF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNTEN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TITEL1",
+          "ext": "GRF",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZOOM",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ACCEL3",
+          "ext": "HEX",
           "attr": "16",
           "standard": false
         }
@@ -7150,6 +7948,48 @@
           "ext": "HRG",
           "attr": "16",
           "standard": false
+        },
+        {
+          "name": "HRGGRA",
+          "ext": "SRC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GRAFLIX",
+          "ext": "MOD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GRAFLIX",
+          "ext": "ORI",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TEMP",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GRAFLI1",
+          "ext": "SRC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "APFELMAN",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HRGDOS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -7448,6 +8288,30 @@
         {
           "name": "H",
           "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HRG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WELT",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LOADHRG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PENDEL",
+          "ext": "BAS",
           "attr": "16",
           "standard": false
         }
@@ -7808,6 +8672,42 @@
         {
           "name": "PLANT",
           "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MASKGEN",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "KBDGER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WBEDIT",
+          "ext": "ASC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WBEDIT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WBEDIT",
+          "ext": "LST",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WC",
+          "ext": "CMD",
           "attr": "16",
           "standard": false
         }
@@ -12298,6 +13198,102 @@
           "ext": "APC",
           "attr": "16",
           "standard": false
+        },
+        {
+          "name": "ALCORHRG",
+          "ext": "REL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MICKY",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ORBIT",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "PIRAT",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SARGON",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SATELLIT",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SESAM",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPEICHER",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "STROLCHI",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SWASH1",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SWASH2",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SWASH3",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "T5",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TIGER",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VOLLADD",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WIZARDRY",
+          "ext": "APC",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -12874,6 +13870,474 @@
           "ext": "SYS",
           "attr": "95",
           "standard": true
+        },
+        {
+          "name": "WERBK90",
+          "ext": "VC",
+          "attr": "16",
+          "standard": false
+        }
+      ]
+    },
+    {
+      "disk": "esnd-051",
+      "source": "esnd-051.dmk",
+      "error": null,
+      "format": "DMK",
+      "tracks": "41",
+      "sides": "2",
+      "dirtrack": "5 side 1",
+      "note": "over-read?",
+      "files": [
+        {
+          "name": "BOOT",
+          "ext": "SYS",
+          "attr": "94",
+          "standard": true
+        },
+        {
+          "name": "SYS6",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS14",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS22",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "BAS3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BASIC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "BOOTKOPF",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CHAINBLD",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "DIR",
+          "ext": "SYS",
+          "attr": "93",
+          "standard": true
+        },
+        {
+          "name": "SYS7",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS15",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS23",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "CHAINBLD",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CONV",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CREATE",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DIRCHECK",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "SYS0",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS8",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS16",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS24",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DIS",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DISASSEM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "DISKDUP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOME",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS1",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS9",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS17",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS25",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DOS0387",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP510",
+          "ext": "S00",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP510",
+          "ext": "S03",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DP510",
+          "ext": "S28",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS2",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS10",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS18",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS26",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "DRUCKT82",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "EDTASM",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "FEIGENBA",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "GBASIC",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS3",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS11",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS19",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS27",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "HELP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HPRX",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HRG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "HX1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SYS4",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS12",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS20",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS28",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "KBDGER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "DOS0387",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LINEDEMO",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LMOFFSET",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": true
+        },
+        {
+          "name": "SYS5",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS13",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "SYS21",
+          "ext": "SYS",
+          "attr": "95",
+          "standard": true
+        },
+        {
+          "name": "BASIC80",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "MENUE1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "SP",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SETDATE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERUT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SWITCH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "T82",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UEBERSIC",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNLIST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WECKER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WORDCHEK",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPDUP",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPNAMES",
+          "ext": "ILF",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -13654,6 +15118,84 @@
           "ext": "CMD",
           "attr": "16",
           "standard": false
+        },
+        {
+          "name": "SUPERU32",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUTAPE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TASMON",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TASMON2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TATUPNI",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TATUPNI",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRACE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TYPEAH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNIDAT80",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNIHELP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VFU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WAHL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZETBUG48",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -14431,6 +15973,84 @@
         },
         {
           "name": "SUPERU30",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERU32",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUTAPE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TASMON",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TASMON2",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TATUPNI",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TATUPNI",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TRACE",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "TYPEAH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNIDAT80",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNIHELP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VFU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WAHL",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZETBUG48",
           "ext": "CMD",
           "attr": "16",
           "standard": false
@@ -17079,6 +18699,48 @@
           "ext": "CMD",
           "attr": "16",
           "standard": false
+        },
+        {
+          "name": "FCP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "FILTER",
+          "ext": "CMD",
+          "attr": "48",
+          "standard": false
+        },
+        {
+          "name": "UNKILL",
+          "ext": "CMD",
+          "attr": "48",
+          "standard": false
+        },
+        {
+          "name": "LOCATE",
+          "ext": "CMD",
+          "attr": "56",
+          "standard": false
+        },
+        {
+          "name": "LOGON",
+          "ext": "CMD",
+          "attr": "48",
+          "standard": false
+        },
+        {
+          "name": "UTILITY",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "VID",
+          "ext": "CMD",
+          "attr": "48",
+          "standard": false
         }
       ]
     },
@@ -17523,6 +19185,36 @@
           "ext": "BAS",
           "attr": "16",
           "standard": false
+        },
+        {
+          "name": "WECKER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WORDCHEK",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPDUP",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPNAMES",
+          "ext": "ILF",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -17901,6 +19593,96 @@
           "ext": "CMD",
           "attr": "16",
           "standard": true
+        },
+        {
+          "name": "MENU",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "SP",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SPRX",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SUPERUT3",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SWITCH",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SXCFG0",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SXCFG1",
+          "ext": "DAT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UEBERSIC",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "UNLIST",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CENTRAL",
+          "ext": "TXT",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WECKER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPDUP",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPNAMES",
+          "ext": "ILF",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -18471,6 +20253,66 @@
           "ext": "CMD",
           "attr": "16",
           "standard": false
+        },
+        {
+          "name": "RUNTIME",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET2",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET3",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET4",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LET1",
+          "ext": "CHR",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WELT",
+          "ext": "HRG",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "LOADHRG",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ACCRUN",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZEDIT",
+          "ext": "ACC",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZEDIT",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -18859,6 +20701,12 @@
         {
           "name": "SARGON1",
           "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CHESSRUN",
+          "ext": "",
           "attr": "16",
           "standard": false
         }
@@ -19755,6 +21603,18 @@
           "ext": "SYS",
           "attr": "95",
           "standard": true
+        },
+        {
+          "name": "KBDGER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "SCRIPSIT",
+          "ext": "SP",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -20210,6 +22070,36 @@
           "ext": "BAS",
           "attr": "16",
           "standard": false
+        },
+        {
+          "name": "WECKER",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WORDCHEK",
+          "ext": "BAS",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "WP",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPDUP",
+          "ext": "JCL",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZAPNAMES",
+          "ext": "ILF",
+          "attr": "16",
+          "standard": false
         }
       ]
     },
@@ -20243,6 +22133,24 @@
         },
         {
           "name": "SARGON1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CHESSRUN",
+          "ext": "",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "ZCHESCC1",
+          "ext": "CMD",
+          "attr": "16",
+          "standard": false
+        },
+        {
+          "name": "CHESS",
           "ext": "CMD",
           "attr": "16",
           "standard": false
