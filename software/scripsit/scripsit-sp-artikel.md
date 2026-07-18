@@ -8,10 +8,10 @@
 
 > **Vorbemerkung zur Fassung.** Der Originalartikel (Club-80, SONDERINFO 27.5, 1988) ist
 > verschollen. Dies ist **keine Rekonstruktion jenes Textes**, sondern eine Neufassung von 2026.
-> Der Rückblick in Abschnitt 1 stammt aus meiner Erinnerung und ist als solche zu lesen. Alle
+> Der Rückblick in Abschnitt 1 stammt aus meiner Erinnerung und ist auch so zu lesen. Alle
 > technischen Angaben dagegen sind aus den Binärdateien abgeleitet — `SCRIPSIT/CMD`,
 > `SCRIPSIT/SP`, `WP/CMD` (aus `esnd-04.dmk`), `wp.cmd` (Lindleys Fassung) — und nicht aus dem
-> Gedächtnis. Wo etwas unsicher ist, steht es dabei.
+> Gedächtnis.
 
 ---
 
@@ -29,8 +29,8 @@ Gerade fertig geworden war ich mit zwei Sachen: NEWDOS zu einem HRG-DOS erweiter
 deutschen Tastaturtreiber geschrieben. Umlaute gab es unter NEWDOS nämlich nicht. Nicht
 schlecht gelöst, nicht umständlich zu erreichen — schlicht nicht vorhanden.
 
-Bei Scripsit 1.0 (Radio Shack, 1979) war es dasselbe, nur ärgerlicher, weil es ja ein
-Textsystem ist. Die Codes 5BH, 5CH, 5DH, 7BH, 7CH, 7DH und 7EH, die im deutschen
+Bei Scripsit 1.0 (Radio Shack, 1979) war es dasselbe, nur ärgerlicher — bei einer
+Textverarbeitung fällt so etwas nun einmal auf. Die Codes 5BH, 5CH, 5DH, 7BH, 7CH, 7DH und 7EH, die im deutschen
 7-Bit-Zeichensatz Ä Ö Ü ä ö ü ß tragen, belegt Scripsit selbst — teils als Bildschirm-Marken,
 teils gar nicht. Und dem Drucker ein beliebiges Steuerbyte zu schicken war überhaupt nicht
 vorgesehen.
@@ -60,7 +60,7 @@ Scripsit — nicht gegenüber der Vorlage.
 
 Craig A. Lindley beschrieb in *"Inside Scripsit"* (80 Micro, Teil II: Oktober 1982) ein
 Patch-Programm, das Scripsit nach dem Laden im Speicher verändert. `WP/CMD` ist eine
-**Portierung dieses Programms**, keine Anregung daraus. Das gehört offen gesagt.
+**Portierung dieses Programms**, keine Anregung daraus. Das sollte man offen sagen.
 
 Inzwischen liegt eine zweite Abschrift seines Listings vor, womit die offene Frage geklärt ist:
 sie stimmt mit dem in der Zeitschrift abgedruckten Objektcode überein. Der Abdruck ist damit die
@@ -81,7 +81,7 @@ Adresse. Die Installationsroutine ist seine, Zeile für Zeile:
 | `RETURN` → 6595 | ❌ **entfallen** |
 | Rollroutinen → 79D9 / 79D7 / 79BF | ✅ |
 | `14H` → 79AA (Tabulator umlegen) | ✅ |
-| Kennzeile ins RAM kopieren → 57F7 | ❌ **entfallen** |
+| Startmeldung ins RAM kopieren → 57F7 | ❌ **entfallen** |
 
 Von Lindley stammt auch der eigentliche Kunstgriff: die Erkenntnis, dass Scripsits eigene
 Tabellensuche bei **58F0H** wiederverwendbar ist, und dass die beiden *"unbekanntes
@@ -106,7 +106,7 @@ möglich — so, wie es die Bedienungsanleitung SCRIPSIT/SP beschreibt. Für ein
 mehr als die reinen ASCII-Steuercodes braucht, ist das der Unterschied zwischen brauchbar und
 unbrauchbar.
 
-Alles Übrige, was an Schicht B geändert wurde, war **Weglassen**: die Verzeichnisanzeige wurde
+Alles Übrige, was ich an Schicht B geändert habe, bestand im **Weglassen**: die Verzeichnisanzeige wurde
 von Lindleys ausführlicher Form (freie Granulen, Datum, acht Verzeichnissektoren) auf `DIR 0`
 bis `DIR 2` eingedampft, und der Textpuffer beginnt entsprechend früher — bei 81A1H statt
 8342H.
@@ -120,7 +120,7 @@ ausschließlich im RAM. `SCRIPSIT/SP` ist dagegen eine **veränderte Programmdat
 
 ### Das Bauprinzip
 
-Jeder Eingriff im Programmkörper ist ein **längentreuer Austausch**:
+Jeder Eingriff im Programm ersetzt Bytes durch **genau gleich viele**:
 
 ```
 32 E8 37    LD (37E8H),A   →   CD 6C FF    CALL 0FF6CH
@@ -156,14 +156,14 @@ FFC3  CP 41H / JP C,6167H      ; Originalcode, unverändert
 Der Vergleich mit 7EH ist nötig, weil 6167H ein `XOR 20H` ausführt. Ä/ä sollen davon erfasst
 werden, ß und das Quadrat nicht.
 
-**Der weniger offensichtliche Teil:** 5BH, 5CH und 5DH waren nicht frei. Scripsit zeigte damit
+**Weniger offensichtlich:** 5BH, 5CH und 5DH waren nicht frei. Scripsit zeigte damit
 eigene Marken an. Die Übersetzungstabelle bei 7966H musste geändert werden — die Marken
 erscheinen jetzt als Grafikblöcke 97H, A6H und ADH. Ohne diesen Schritt kollidieren Marken und
 Umlaute auf dem Bildschirm.
 
 ### Druckersteuerung: @p und zwei Hexziffern
 
-Das eigentliche Stück Arbeit. `@p` erzeugt 7FH; die beiden folgenden Zeichen werden als
+Darin besteht die eigentliche Arbeit. `@p` erzeugt 7FH; die beiden folgenden Zeichen werden als
 Hexziffern gelesen und als **ein** Byte an den Drucker gegeben:
 
 ```
@@ -190,7 +190,7 @@ FF9E  SUB 30H
 angewandt setzt es zwei Hexziffern zu einem Byte zusammen — ohne Schiebeschleife, ohne
 Zwischenregister. Der Befehl ist genau dafür gemacht und wird selten so gebraucht.
 
-Der Preis steht in der Anleitung: aus drei Bildschirmzeichen wird ein Druckerbyte, die
+Den Haken nennt die Anleitung selbst: aus drei Bildschirmzeichen wird ein Druckerbyte, die
 Zeichenzählung kann daher durcheinandergeraten.
 
 ### Drucker-Übersetzungstabelle
@@ -208,18 +208,17 @@ Obergrenze, bei 5276 steht die Untergrenze fest verdrahtet auf 7F62H.
 ein — ein Byte unter dem Treiber bei FF6CH. Scripsit legt seinen Puffer daraufhin bis FF6B an und
 rührt nichts darüber an. Dafür wird nichts gepatcht; es nutzt Scripsits eigenen Startcode.
 
-**Das ist der Unterschied zu Lindley, und zwar der ganze.** Er lädt sein Programm nach
+**Darin liegt der wesentliche Unterschied zu Lindley.** Er lädt sein Programm nach
 7F62H–8342H, also *in* den Puffer, und muss deshalb anschließend dreizehn Zeiger umschreiben, um
 die Untergrenze hochzuschieben — das kostet rund 960 Bytes Dokumentplatz. Sein Artikel sagt das
 auch.
 
-Schicht A verschiebt stattdessen die Obergrenze. Das kostet nichts. Dasselbe Problem, vom anderen
-Ende her — und genau deshalb zählt die Drei-Bytes-gegen-drei-Bytes-Regel: sie erreicht Code bei
+Schicht A verschiebt stattdessen die Obergrenze. Das kostet keinen zusätzlichen Speicher. Dasselbe Problem, von der anderen Seite — und genau deshalb zählt die Drei-Bytes-gegen-drei-Bytes-Regel: sie erreicht Code bei
 FF6CH, ohne ein einziges Byte von Scripsit zu verschieben.
 
 ### FFCB und das `DI` bei 52C0
 
-`FFCBH` ist nur `LD A,(37E8H) / RET` — ein Durchreicher. Sein Zweck ist, dass **jeder**
+`FFCBH` ist nur `LD A,(37E8H) / RET` — ein Durchreicher. Das Ziel ist, dass **jeder**
 Druckerzugriff über einen Einhängepunkt läuft. *(Wirkung sicher, Absicht erschlossen.)*
 
 Bei 52C0H, dem Kopf der Hauptschleife, steht statt `NOP` ein `DI`. Damit bleiben die Interrupts
@@ -230,8 +229,8 @@ in der Editorschleife gesperrt — der Treiber liegt bei FF6CH–FFFFH, ganz obe
 
 ## 4. Was von wem stammt
 
-Die Bedienungsanleitung SCRIPSIT/SP führt alles zusammen auf, ohne die Herkunft zu trennen. Das
-sei hier nachgeholt.
+Die Bedienungsanleitung SCRIPSIT/SP erläutert alle Kommandos, ohne den Hintergrund zu benennen,
+und wer was gemacht hat. Das fehlte auch im ursprünglichen Artikel und sei hier nachgeholt
 
 | Funktion | Schicht | Herkunft |
 |---|---|---|
@@ -299,8 +298,8 @@ geschrieben und nirgends gelesen; 7CB9H wird bei 5D47 und 7A6E gelesen und nirge
 1979 hat jemand die falsche Adresse getippt, und der Leser griff ab, was gerade dort stand. Das
 Schreiben nach 7CB9H verbindet beide. Die Umstellung ergibt sich daraus: das Original verlässt
 sich darauf, dass `OR A` die Flags für `CALL NZ` setzt, speichert also zuerst; der Patch ruft
-zuerst, lädt `LD A,C` neu (5DEF überschreibt A) und speichert dann — bezahlt mit dem `NOP` bei
-5DD2.
+zuerst, lädt `LD A,C` neu (5DEF überschreibt A) und speichert dann. Den Platz dafür liefert das
+`NOP` bei 5DD2.
 
 **7A20H / 7A22H — die Seitenvorgaben.** Der 20-Byte-Block bei 7A15H wird beim Start nach 7C64H
 kopiert. 7C6FH ist `BM` (Unterer Rand, 60), 7C71H ist `PL` (Seitenlänge, 66) — bestätigt durch die
